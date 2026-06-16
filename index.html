@@ -16,6 +16,7 @@
   --purple:#6b5ce7;--purple-dim:#ede9ff;--purple-bg:#f4f1ff;--purple-text:#4a3db5;
   --teal:#0d9488;--teal-dim:#ccfbf1;--teal-bg:#f0fdfb;--teal-text:#065f56;
   --coral:#e5533d;--coral-dim:#fee2dc;--coral-bg:#fff4f2;--coral-text:#b83222;
+  --orange:#ea7714;--orange-dim:#fed7aa;--orange-bg:#fff7ed;--orange-text:#9a3412;
   --amber:#d97706;--amber-dim:#fef3c7;--amber-bg:#fffbeb;--amber-text:#92400e;
   --blue:#2563eb;--blue-dim:#dbeafe;--blue-bg:#eff6ff;--blue-text:#1e40af;
   --gray:#6b7280;--gray-dim:#f3f4f6;--gray-bg:#f9fafb;--gray-text:#374151;
@@ -83,6 +84,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .accent-purple{background:linear-gradient(135deg,var(--grad-start),var(--grad-mid))}
 .accent-teal{background:var(--teal)}
 .accent-coral{background:var(--coral)}
+.accent-orange{background:var(--orange)}
 .accent-amber{background:var(--amber)}
 .accent-blue{background:var(--blue)}
 .accent-gray{background:var(--border2)}
@@ -90,6 +92,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .badge-purple{background:var(--purple-bg);color:var(--purple-text);border:1px solid var(--purple-dim)}
 .badge-teal{background:var(--teal-bg);color:var(--teal-text);border:1px solid var(--teal-dim)}
 .badge-coral{background:var(--coral-bg);color:var(--coral-text);border:1px solid var(--coral-dim)}
+.badge-orange{background:var(--orange-bg);color:var(--orange-text);border:1px solid var(--orange-dim)}
 .badge-amber{background:var(--amber-bg);color:var(--amber-text);border:1px solid var(--amber-dim)}
 .badge-blue{background:var(--blue-bg);color:var(--blue-text);border:1px solid var(--blue-dim)}
 .badge-gray{background:var(--gray-bg);color:var(--gray-text);border:1px solid var(--border)}
@@ -105,12 +108,21 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .pill-cag1.active{background:var(--amber-bg);border-color:var(--amber-dim);color:var(--amber-text)}
 .pill-cag2.active{background:var(--teal-bg);border-color:var(--teal-dim);color:var(--teal-text)}
 .pill-cag3.active{background:var(--purple-bg);border-color:var(--purple-dim);color:var(--purple-text)}
+.pill-cbg-dec.active{background:var(--amber-bg);border-color:var(--amber-dim);color:var(--amber-text)}
+.pill-cbg-cen.active{background:var(--purple-bg);border-color:var(--purple-dim);color:var(--purple-text)}
+.score-cbg-dec{background:var(--amber-bg);color:var(--amber-text);border:1px solid var(--amber-dim)}
+.score-cbg-cen{background:var(--purple-bg);color:var(--purple-text);border:1px solid var(--purple-dim)}
 .pill-mskl.active{background:var(--blue-bg);border-color:var(--blue-dim);color:var(--blue-text)}
-.pill-mskh.active{background:var(--coral-bg);border-color:var(--coral-dim);color:var(--coral-text)}
+.pill-mskh.active{background:var(--orange-bg);border-color:var(--orange-dim);color:var(--orange-text)}
 .pill-edb-1.active{background:var(--red-bg);border-color:var(--red-dim);color:var(--red-text)}
 .pill-edb0.active{background:var(--gray-bg);border-color:var(--border2);color:var(--gray-text)}
 .pill-edb1.active{background:var(--teal-bg);border-color:var(--teal-dim);color:var(--teal-text)}
 .results-meta{font-size:12px;color:var(--text3);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.search-input-wrap{flex:1;min-width:200px}
+.search-input{width:100%;padding:7px 12px 7px 34px;border:1px solid var(--border);border-radius:20px;font-size:13px;font-family:'Inter',sans-serif;color:var(--text);background:var(--surface);outline:none;transition:border-color 0.15s;box-shadow:var(--shadow)}
+.search-input:focus{border-color:var(--accent)}
+.search-input-wrap{position:relative}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none;font-size:13px}
 .results-count{font-weight:600;color:var(--text2)}
 .company-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
 .company-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.125rem 1.25rem;cursor:pointer;transition:all 0.18s;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
@@ -123,7 +135,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .score-tag{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}
 .score-cag{background:var(--purple-bg);color:var(--purple-text);border:1px solid var(--purple-dim)}
 .score-msk-low{background:var(--blue-bg);color:var(--blue-text);border:1px solid var(--blue-dim)}
-.score-msk-high{background:var(--coral-bg);color:var(--coral-text);border:1px solid var(--coral-dim)}
+.score-msk-high{background:var(--orange-bg);color:var(--orange-text);border:1px solid var(--orange-dim)}
 .score-edb-n{background:var(--red-bg);color:var(--red-text);border:1px solid var(--red-dim)}
 .score-edb-0{background:var(--gray-bg);color:var(--gray-text);border:1px solid var(--border)}
 .score-edb-p{background:var(--teal-bg);color:var(--teal-text);border:1px solid var(--teal-dim)}
@@ -176,6 +188,15 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 .info-chip{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;flex:1;min-width:120px}
 .info-chip-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-bottom:4px}
 .info-chip-value{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.intel-group{border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:1rem}
+.intel-group:last-child{margin-bottom:0}
+.intel-group-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.intel-group-cbg .intel-group-label{color:var(--purple-text)}
+.intel-group-cbg{background:var(--purple-bg);border-color:var(--purple-dim)}
+.intel-group-bis .intel-group-label{color:var(--amber-text)}
+.intel-group-bis{background:var(--amber-bg);border-color:var(--amber-dim)}
+.intel-group-edb .intel-group-label{color:var(--teal-text)}
+.intel-group-edb{background:var(--teal-bg);border-color:var(--teal-dim)}
 .divider{height:1px;background:var(--border);margin:1.25rem 0}
 .module-source-tag{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500}
 
@@ -214,21 +235,95 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
     <button class="nav-tab" onclick="showPage('explorer')">Company Explorer</button>
     <button class="nav-tab" onclick="showPage('playbook')" id="tab-playbook" style="display:none">Playbook</button>
     <button class="nav-tab" onclick="showPage('builder')">GTM Builder</button>
+    <button class="nav-tab" onclick="showPage('guide')">How to Read</button>
   </div>
   <div class="nav-right">
     <span class="badge-internal">Internal Use Only</span>
   </div>
 </nav>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script>
+function renderBlocks(blocks){
+  if(!blocks) return '';
+  return blocks.map(b=>{
+    if(b.type==='text')      return `<div class="doc-p">${b.text}</div>`;
+    if(b.type==='label')     return `<div class="doc-label">${b.text}</div>`;
+    if(b.type==='highlight') return `<div class="doc-highlight"><p>${b.text}</p></div>`;
+    if(b.type==='bullets')   return `<ul class="doc-bullets">${b.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    if(b.type==='objections') return b.items.map(o=>`<div class="doc-objection"><div class="doc-objection-q">"${o.q}"</div><div class="doc-objection-a">${o.a}</div></div>`).join('');
+    if(b.type==='table')     return `<table class="doc-table"><thead><tr>${b.headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${b.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+    if(b.type==='cards'){
+      const cols=b.columns||3; const acc=b.accent||[];
+      return `<div class="doc-grid-${cols}">${b.items.map((c,i)=>`<div class="doc-card" style="${acc[i]?`border-color:var(--${acc[i]}-dim)`:''}"><div class="doc-card-label" style="${acc[i]?`color:var(--${acc[i]})`:''}">${c.label}</div>${c.title?`<div class="doc-card-title">${c.title}</div>`:''}<div class="doc-card-body">${c.body}</div></div>`).join('')}</div>`;
+    }
+    return '';
+  }).join('');
+}
+
+function renderModuleBlocks(blocks){
+  if(!blocks) return '';
+  return blocks.map(b=>{
+    if(b.type==='text')      return `<div class="module-row"><div class="module-row-content">${b.text}</div></div>`;
+    if(b.type==='label')     return `<div class="module-row"><div class="module-row-label">${b.text}</div></div>`;
+    if(b.type==='highlight') return `<div class="module-row"><div class="module-row-content" style="font-style:italic">${b.text}</div></div>`;
+    if(b.type==='bullets')   return `<div class="module-row"><ul class="module-bullets">${b.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;
+    if(b.type==='objections') return `<div class="module-row">${b.items.map(o=>`<div class="objection-item"><div class="objection-q">"${o.q}"</div><div class="objection-a">${o.a}</div></div>`).join('')}</div>`;
+    if(b.type==='table')     return `<div class="module-row"><table class="doc-table"><thead><tr>${b.headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${b.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    return '';
+  }).join('');
+}
+
+async function loadContent(){
+  try{
+    const res = await fetch('content.json');
+    if(!res.ok) return;
+    const data = await res.json();
+    const cm = data.modules;
+    if(cm){
+      ['dec','cen'].forEach(n=>{
+        const src=cm.cbg?.[n]; if(!src||!MODULES.cbg[n]) return;
+        MODULES.cbg[n].label=src.label; MODULES.cbg[n].sub=src.sub; MODULES.cbg[n]._blocks=src.blocks;
+        const g=(lbl)=>{const b=src.blocks.find(x=>x.type==='label'&&x.text===lbl);if(!b)return'';const nx=src.blocks[src.blocks.indexOf(b)+1];return nx?.text||nx?.items?.join(' · ')||'';};
+        MODULES.cbg[n].entry=g('Entry Motion'); MODULES.cbg[n].buyer=g('Buyer Persona');
+        MODULES.cbg[n].outreach=g('Outreach Sequence'); MODULES.cbg[n].cycle=g('Deal Cycle');
+        MODULES.cbg[n].pilot=g('Pilot Design'); MODULES.cbg[n].expansion=g('Expansion Path');
+        MODULES.cbg[n].risk=g('Key Risk'); MODULES.cbg[n].rep=g('Rep Investment');
+      });
+      ['low','high'].forEach(band=>{
+        const src=cm.msk?.[band]; if(!src||!MODULES.msk[band]) return;
+        MODULES.msk[band].label=src.label; MODULES.msk[band].sub=src.sub; MODULES.msk[band]._blocks=src.blocks;
+        const g=(lbl)=>{const b=src.blocks.find(x=>x.type==='label'&&x.text===lbl);if(!b)return'';const nx=src.blocks[src.blocks.indexOf(b)+1];return nx?.text||'';};
+        const gb=(lbl)=>{const b=src.blocks.find(x=>x.type==='label'&&x.text===lbl);if(!b)return[];const nx=src.blocks[src.blocks.indexOf(b)+1];return nx?.items||[];};
+        const hi=src.blocks.find(x=>x.type==='highlight');
+        MODULES.msk[band].headline=hi?.text||''; MODULES.msk[band].pain=g('Primary Pain');
+        MODULES.msk[band].narrative=g('Narrative Angle'); MODULES.msk[band].proofpoints=gb('Proof Points');
+        MODULES.msk[band].chro=g('CHRO Message'); MODULES.msk[band].cfo=g('CFO Message');
+      });
+      ['-1','0','+1'].forEach(key=>{
+        const src=cm.edb?.[key]; if(!src||!MODULES.edb[key]) return;
+        MODULES.edb[key].label=src.label; MODULES.edb[key].sub=src.sub; MODULES.edb[key]._blocks=src.blocks;
+        const g=(lbl)=>{const b=src.blocks.find(x=>x.type==='label'&&x.text===lbl);if(!b)return'';const nx=src.blocks[src.blocks.indexOf(b)+1];return nx?.text||'';};
+        const gb=(lbl)=>{const b=src.blocks.find(x=>x.type==='label'&&x.text===lbl);if(!b)return[];const nx=src.blocks[src.blocks.indexOf(b)+1];return nx?.items||[];};
+        const go=(lbl)=>{const b=src.blocks.find(x=>x.type==='label'&&x.text===lbl);if(!b)return[];const nx=src.blocks[src.blocks.indexOf(b)+1];return nx?.items||[];};
+        MODULES.edb[key].context=g('Situation'); MODULES.edb[key].framing=g('Strategic Framing');
+        MODULES.edb[key].entry=g('Entry Angle'); MODULES.edb[key].messages=gb('Key Messages');
+        MODULES.edb[key].objections=go('Objection Handling');
+      });
+    }
+    if(data.builder) window._builderContent=data.builder;
+  } catch(e){ /* no content.json — use hardcoded */ }
+}
+</script>
+
 <!-- PAGE 1: MODULE LIBRARY -->
 <div id="page-modules" class="page active">
   <div class="page-header">
     <div class="page-title">Module Library</div>
-    <div class="page-sub">Eight interchangeable content modules that assemble into company-specific playbooks. Each module has 2–3 variants driven by CAG, MSK, and EDB scores.<br>Click any module to expand its full content.</div>
+    <div class="page-sub">Eight interchangeable content modules that assemble into company-specific playbooks. Each module has 2–3 variants driven by CBG, MSK, and EDB scores.<br>Click any module to expand its full content.</div>
   </div>
 
   <div class="module-section">
-    <div class="module-section-label">Entry Motion — CAG (Centralized Benefits Governance)</div>
+    <div class="module-section-label">Entry Motion — CBG (Centralized Benefits Governance) · 2 Variants</div>
     <div class="module-cards" id="cag-cards"></div>
   </div>
 
@@ -252,11 +347,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 
   <div class="explorer-controls">
     <div class="filter-group">
-      <div class="filter-label">Entry Motion (CAG)</div>
+      <div class="filter-label">Entry Motion (CBG)</div>
       <div class="filter-pills">
-        <div class="pill pill-cag1 active" data-filter="cag" data-val="1" onclick="toggleFilter(this)">CAG 1 · Land &amp; Expand</div>
-        <div class="pill pill-cag2 active" data-filter="cag" data-val="2" onclick="toggleFilter(this)">CAG 2 · Regional Entry</div>
-        <div class="pill pill-cag3 active" data-filter="cag" data-val="3" onclick="toggleFilter(this)">CAG 3 · Enterprise Direct</div>
+        <div class="pill pill-cbg-dec active" data-filter="cbg" data-val="dec" onclick="toggleFilter(this)">Decentralized (CBG 1–2)</div>
+        <div class="pill pill-cbg-cen active" data-filter="cbg" data-val="cen" onclick="toggleFilter(this)">Centralized (CBG 3)</div>
       </div>
     </div>
     <div class="filter-group">
@@ -300,36 +394,26 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
 let COMPANIES = [];
 
 const MODULES = {
-  cag: {
-    1: {label:"CAG 1 — Land & Expand",sub:"Decentralized governance · Country-by-country entry",color:"amber",
-      entry:"Identify the most receptive country market first — typically where MSK burden is highest, union constraints are lowest, or a senior HR contact already exists. Do not attempt enterprise-wide conversations until a country-level proof of value is established.",
-      buyer:"Country HR Director or local Head of Benefits. This person owns the decision within their geography and reports upward to a regional or global HR function with limited interest in a bottom-up proposal until it proves itself. Your champion is pragmatic, under-resourced, and motivated by visible impact they can claim.",
-      outreach:"Step 1: Identify the country HR lead or local Total Rewards contact from LinkedIn or CAG research. Step 2: Lead with a country-specific insight — absenteeism data, industry benchmarking, or a local peer reference. Step 3: Propose a contained pilot framed as 'no global commitment, just local proof.' Step 4: Use pilot results to build the internal case that travels upward.",
-      cycle:"Longer by design — expect 6–12 months for a country pilot, 12–24 months before any regional discussion. Patience is the strategy. The goal of the first 12 months is not revenue, it is a reference story that earns the right to the next conversation.",
-      pilot:"Single country, single business unit, 500–2,000 employees. Success metrics must be locally meaningful — absenteeism reduction and employee NPS matter more to a country HR lead than a global ROI calculation. Make reporting something the local champion can present upward without translation.",
-      expansion:"Country pilot → regional HR briefing → voluntary adoption by adjacent countries → formal regional rollout. Each step is earned, not assumed. The internal champion in the pilot country is your expansion engine — equip them with data and language to sell upward.",
-      risk:"Pilot succeeds but fails to travel. Local HR champion lacks the organizational authority or appetite to escalate. Mitigate by identifying the regional or global HR sponsor early — even informally — so the expansion conversation is not a cold one.",
-      rep:"High patience, low urgency pressure. Quarterly check-ins during the pilot. No aggressive multi-threading until the local champion signals readiness."
+  cbg: {
+    dec: {label:"CBG 1–2 — Decentralized",sub:"Country or regional governance · Land & Expand motion",color:"amber",
+      entry:"Identify the most receptive country or region first — where MSK burden is highest, union constraints are lowest, or a senior HR contact already exists. Do not attempt enterprise-wide conversations until a country or regional proof of value is established.",
+      buyer:"Country HR Director, Regional Benefits Manager, or local Head of Total Rewards. This person has local budget authority and local pain, but limited mandate to escalate. Your champion is pragmatic and motivated by visible impact they can claim within their market.",
+      outreach:"Step 1: Identify the country or regional HR lead from CBG research. Step 2: Lead with a local or regional insight — absenteeism data, industry benchmarking, or a peer reference in their market. Step 3: Propose a contained pilot framed as 'no global commitment, just local proof.' Step 4: Equip the local champion to carry results upward.",
+      cycle:"10–23 months full cycle. 4–10 months to pilot agreement. 6 months to 1 year for ROI validation and first expansion discussion. Patience is the strategy — the global agreement is earned, not assumed.",
+      pilot:"Single country or region, single BU, 1,000–5,000 employees. Pilot scoped as a standalone proof of value — no pre-committed expansion, but expansion triggers should be documented and counter-signed at pilot agreement. Select the pilot market using: (Headcount × 30%) + (MSK/MH risk × 25%) + (Sword footprint × 25%) + (Regulatory friction, negative × 15%) + (Reference availability × 5%).",
+      expansion:"Country/region pilot → ROI validation → HQ briefing → next region or population expansion → global contract (if governance evolves). Each step is earned. The global deal requires a governance evolution the rep cannot control — do not forecast it within 12 months.",
+      risk:"Pilot succeeds but fails to travel. Local champion lacks authority to escalate. Mitigate by identifying the regional or global HR sponsor early — even informally — so the expansion conversation is not cold.",
+      rep:"High patience, low urgency pressure. Quarterly check-ins during pilot. No aggressive multi-threading until local champion signals readiness to escalate."
     },
-    2: {label:"CAG 2 — Regional Entry",sub:"Semi-centralized governance · Regional hub strategy",color:"teal",
-      entry:"Enter at the regional benefits or total rewards level. A regional head has enough authority to commit a multi-country pilot but enough proximity to local markets to understand variation. This is the most efficient entry point — above the noise of country-level fragmentation, below the complexity of a global enterprise sale.",
-      buyer:"EMEA Benefits Manager, APAC Total Rewards Lead, or equivalent regional title. This person manages a portfolio of country HR teams, is accountable for benefits consistency across a region, and reports to a global HR function. They are motivated by vendor consolidation, regional benchmarking, and solutions that reduce coordination overhead of managing multiple country-specific providers.",
-      outreach:"Step 1: Identify the regional benefits lead from CAG research — the named role and individual are your entry point. Step 2: Lead with a regional workforce health insight — MSK burden by industry in their geography, regional peer adoption, or absenteeism cost benchmarking. Step 3: Propose a multi-country regional pilot framed as regional standardization, not a test. Step 4: Engage the global HR sponsor early — not as the buyer, but as an informed observer who will approve expansion.",
-      cycle:"6–9 months to a regional pilot agreement. 12–18 months to a global conversation. The regional entry compresses the country-by-country land and expand motion while still building the proof of value needed for a global commitment.",
-      pilot:"2–3 priority countries within the region, 1,000–5,000 employees total. Define the pilot as the first phase of regional standardization — not an experiment. Build reporting that speaks to both regional and global stakeholders simultaneously.",
-      expansion:"Regional pilot → global HR briefing → cross-regional rollout proposal → enterprise agreement. The regional champion is the bridge to the global buyer. Their internal credibility is the deal's best asset.",
-      risk:"Regional champion exists but global governance is more fragmented than the CAG score suggests. Verify early whether the regional role has budget authority or is advisory only. A regional title without budget is a Band 1 situation in practice.",
-      rep:"Moderate investment, structured cadence. Monthly updates to regional champion during pilot. Proactive identification of the global sponsor within the first 90 days. Multi-thread to both regional and global stakeholders in parallel from month 3 onward."
-    },
-    3: {label:"CAG 3 — Enterprise Direct",sub:"Centralized governance · Global buyer, single contract",color:"purple",
-      entry:"Go directly to the global benefits or total rewards decision-maker. This company has the governance infrastructure to make an enterprise-wide decision. Do not start at country or regional level — that is slower, not safer. The centralized structure is the asset. Use it.",
-      buyer:"VP Global Benefits, Global Head of Total Rewards, or equivalent title confirmed in CAG research. This person has mandate, budget, and organizational authority to deploy globally. They are accountable for benefits consistency, vendor consolidation, and measurable ROI across the enterprise. Their pain is fragmentation — multiple regional vendors, inconsistent employee experience, no unified data. Their ambition is a world-class benefits portfolio they can present to the CHRO and CFO as a strategic asset.",
-      outreach:"Step 1: Use the named individual from CAG research as your first contact. Step 2: Lead with an enterprise-level insight — global absenteeism cost, industry benchmarking against named peers, or the cost of the current fragmented vendor landscape. Step 3: Request a discovery conversation framed around workforce health strategy, not product. Step 4: Within the first two meetings, introduce the CHRO as economic sponsor and Procurement as gatekeeper — engage all three stakeholders within 60 days.",
-      cycle:"3–6 months from first contact to pilot agreement. The centralized governance structure removes the country-by-country approval bottleneck. A pilot is designed from Day 1 as the first phase of a global agreement — not a trial that must earn the right to expand.",
-      pilot:"Single business unit or priority country, 1,000–5,000 employees, scoped as Phase 1 of global rollout. Success metrics defined at the enterprise level — absenteeism cost reduction, surgery avoidance, NPS, and a Finance-ready ROI calculation. The pilot agreement should include a pre-negotiated expansion pathway.",
-      expansion:"Pilot → global enterprise agreement via the centralized governance structure. One contract. Multi-region activation sequenced by HR calendar and SSO readiness. The CHRO's mandate bypasses country re-selling. This is the designed outcome, not an upsell.",
-      risk:"Global buyer has authority in principle but faces internal resistance from entrenched regional vendors or country HR teams who see centralization as a loss of autonomy. Mitigate by co-opting one or two regional HR leaders as pilot champions — internal allies who benefit from the outcome.",
-      rep:"Highest investment, most compressed timeline. Weekly engagement with the global benefits lead during the sales cycle. Parallel CHRO and CFO conversations from month 1. Treat this as a strategic account from Day 1."
+    cen: {label:"CBG 3 — Centralized",sub:"Global governance · Enterprise Direct · Single contract",color:"purple",
+      entry:"Go directly to the global benefits or total rewards decision-maker. This company has the governance infrastructure for an enterprise-wide decision. Do not start at country or regional level — that is slower, not safer. The centralized structure is the asset. Use it.",
+      buyer:"VP Global Benefits, Global Head of Total Rewards, or equivalent confirmed in CBG research. This person has mandate, budget, and organizational authority to deploy globally. Their pain is fragmentation — multiple regional vendors, inconsistent employee experience, no unified data. Their ambition is a world-class benefits portfolio defensible to the CHRO and CFO.",
+      outreach:"Step 1: Use the named individual from CBG research as first contact. Step 2: Lead with an enterprise insight — global absenteeism cost, industry benchmarking, or the cost of current vendor fragmentation. Step 3: Frame the discovery conversation around workforce health strategy, not product. Step 4: Thread to CHRO and Procurement within 60 days.",
+      cycle:"6–12 months full cycle. 3–6 months to pilot agreement or direct enterprise agreement. Where governance is strong and the sponsor has unambiguous authority, Sword can move directly to a global agreement without a pilot.",
+      pilot:"Single BU or priority country, 1,000–5,000 employees, scoped as Phase 1 of global rollout. Expansion pathway pre-negotiated and counter-signed before Phase 1 closes. Select Phase 1 region using: (Headcount × 30%) + (MSK/MH risk × 25%) + (Sword footprint × 25%) + (Regulatory friction, negative × 15%) + (Reference availability × 5%).",
+      expansion:"Pilot (Phase 1) → country-wide rollout → regional expansion → global enterprise agreement. One governance motion. One contract amendment. The CHRO's mandate bypasses country re-selling — this is the designed outcome.",
+      risk:"Global buyer has authority in principle but faces resistance from entrenched regional vendors or country HR teams who see centralization as a threat. Mitigate by co-opting regional HR leaders as Phase 1 champions.",
+      rep:"Highest investment, most compressed timeline. Weekly engagement during the sales cycle. Parallel CHRO and CFO conversations from month 1. Treat as a strategic account from Day 1."
     }
   },
   msk: {
@@ -342,7 +426,7 @@ const MODULES = {
       chro:"Your workforce health investment is incomplete. You have mental health covered but physical health — the number one driver of absenteeism and the leading reason high performers quietly underperform — is either absent or handled by a low-engagement point solution. Sword Health closes that gap with clinical outcomes, not engagement theater.",
       cfo:"The ROI case in a knowledge workforce is productivity recovery. A 5% improvement in the performance of your top quartile of employees is worth more than eliminating all sick days in your operations team. Sword Health's outcomes data makes that case with third-party validation."
     },
-    high: {label:"MSK High — ROI & Absenteeism",sub:"MSK Risk 2–3 · Physical workforce, high MSK exposure",color:"coral",
+    high: {label:"MSK High — ROI & Absenteeism",sub:"MSK Risk 2–3 · Physical workforce, high MSK exposure",color:"orange",
       industries:"Logistics, Manufacturing, Retail, Construction, Healthcare, Food Processing, Mining, Transportation, Automotive, Industrial",
       pain:"Measurable, material absenteeism and productivity loss from MSK conditions. This workforce lifts, bends, stands, drives, and operates machinery. MSK is not a background risk — it is a line item in HR reporting, a driver of insurance claims, and a known contributor to workforce attrition in roles that are expensive to replace. The pain is quantifiable and the cost of inaction is visible.",
       narrative:"Sword Health delivers the clinical outcomes that make the MSK cost problem go away. Not lower. Away. With independently validated ROI of 3–5× and measurable reductions in surgery intent, absenteeism, and disability claims, the business case is not aspirational — it is actuarial. For a company carrying a large operational workforce, the math is not close.",
@@ -416,7 +500,7 @@ const MODULES_V2 = {
     msk: {
       high: {
         demand_signals: [
-          "Large physical or operational workforce creates meaningful revenue opportunity at $1 PMPM",
+          "Large physical or operational workforce creates meaningful revenue opportunity at $2 PMPM",
           "High MSK exposure — logistics, manufacturing, retail, construction — indicating measurable productivity loss and absenteeism risk",
           "Existing benefits spend on traditional health insurance with limited clinical MSK coverage",
           "Clear, quantifiable ROI case: surgery avoidance, absenteeism reduction, disability claim prevention",
@@ -426,7 +510,7 @@ const MODULES_V2 = {
       },
       low: {
         demand_signals: [
-          "Large knowledge or office-based workforce creates significant revenue opportunity at $1 PMPM",
+          "Large knowledge or office-based workforce creates significant revenue opportunity at $2 PMPM",
           "Moderate MSK exposure — sedentary work creates strain patterns that don't appear in injury data but drive presenteeism",
           "Talent competition and employer brand are primary workforce investment drivers",
           "Benefits sophistication signals willingness to invest in differentiated employee experience",
@@ -440,7 +524,7 @@ const MODULES_V2 = {
   // ── SECTION 02: Ideal Customer Profile ───────────────────────────────────
   s02: {
     fixed: {
-      workforce_size: "80,000+ employees. Strong fit at 150,000+. Revenue opportunity scales linearly with headcount at $1 PMPM — a 100K workforce represents $1.2M ARR at full deployment.",
+      workforce_size: "80,000+ employees. Strong fit at 150,000+. Revenue opportunity scales linearly with headcount at $2 PMPM — a 100K workforce represents $2.4M ARR at full deployment.",
       geography: "Multi-country operations across at least 3 regions. Strongest fit where at least one region has centralized benefits governance or a named regional benefits lead.",
       digital_readiness: "HR tech stack in place (Workday, SAP SuccessFactors, Oracle HCM, or equivalent) with digital benefits delivery infrastructure. SSO-capable preferred for rapid enrollment and activation.",
       procurement: "Structured but not obstructive. RFP-capable with defined vendor onboarding pathways. Annual benefits renewal cycles are ideal entry windows — identify the renewal date early.",
@@ -775,7 +859,7 @@ const MODULES_V2 = {
         narrative: "For centralized accounts, expansion is not a separate sales motion — it is the designed outcome of a pilot scoped from Day 1 with global rollout as the destination. The centralized governance structure is the infrastructure that makes this possible without re-selling country by country.",
         architecture: ["Single BU Pilot", "Country-Wide Rollout", "Regional Expansion (2–4 regions)", "Global Enterprise Agreement"],
         phases: [
-          { phase: "Pilot", scope: "1 BU or priority country · 1,000–5,000 employees", driver: "$1 PMPM pilot population · pre-negotiated expansion pathway in contract", timeline: "Months 1–5" },
+          { phase: "Pilot", scope: "1 BU or priority country · 1,000–5,000 employees", driver: "$2 PMPM pilot population · pre-negotiated expansion pathway in contract", timeline: "Months 1–5" },
           { phase: "Country Rollout", scope: "Full home-country workforce", driver: "Pilot ROI triggers automatic expansion clause. Benefits lead presents results to CHRO — not a new vendor decision, a results-backed expansion.", timeline: "Months 4–8" },
           { phase: "Regional Expansion", scope: "2–4 priority regions (EU, APAC, LATAM, NA)", driver: "Centralized governance activates multi-country deployment without country-by-country re-selling. Single contract amendment.", timeline: "Months 8–15" },
           { phase: "Global Agreement", scope: "Full enterprise workforce globally", driver: "Enterprise license covering all geographies. One SLA, one KPI framework, one renewal cycle. Replaces fragmented vendor spend.", timeline: "Month 12+" }
@@ -878,10 +962,11 @@ const MODULES_V2 = {
 
 
 // --- FILTERS STATE ---
-const activeFilters = {cag: new Set(['1','2','3']), msk: new Set(['low','high']), edb: new Set(['-1','0','1'])};
+const activeFilters = {cbg: new Set(['dec','cen']), msk: new Set(['low','high']), edb: new Set(['-1','0','1'])};
 
 function mskBand(msk){ return msk <= 1 ? 'low' : 'high'; }
 function edbKey(edb){ return edb === -1 ? '-1' : edb === 0 ? '0' : '+1'; }
+function cbgGroup(cbg){ return cbg >= 3 ? 'cen' : 'dec'; }
 function edbVal(edb){ return edb === -1 ? '-1' : edb === 0 ? '0' : '1'; }
 
 // --- PAGE SWITCHING ---
@@ -894,16 +979,17 @@ function showPage(p){
   else if(p==='explorer') tabs[1].classList.add('active');
   else if(p==='playbook') tabs[2].classList.add('active');
   else if(p==='builder') tabs[3].classList.add('active');
+  else if(p==='guide') tabs[4].classList.add('active');
   if(p!=='playbook') document.getElementById('tab-playbook').style.display='none';
 }
 
 // --- MODULE LIBRARY ---
 function renderModules(){
-  // CAG
+  // CBG
   const cagContainer = document.getElementById('cag-cards');
-  [1,2,3].forEach(n=>{
-    const m = MODULES.cag[n];
-    cagContainer.innerHTML += buildModuleCard(`cag-${n}`, m.color, `CAG ${n}`, m.label, m.sub, `
+  ['dec','cen'].forEach(key=>{
+    const m = MODULES.cbg[key];
+    const _bcag = m._blocks ? renderModuleBlocks(m._blocks) : `
       <div class="module-row"><div class="module-row-label">Entry Motion</div><div class="module-row-content">${m.entry}</div></div>
       <div class="module-row"><div class="module-row-label">Buyer Persona</div><div class="module-row-content">${m.buyer}</div></div>
       <div class="module-row"><div class="module-row-label">Outreach Sequence</div><div class="module-row-content">${m.outreach}</div></div>
@@ -912,13 +998,15 @@ function renderModules(){
       <div class="module-row"><div class="module-row-label">Expansion Path</div><div class="module-row-content">${m.expansion}</div></div>
       <div class="module-row"><div class="module-row-label">Key Risk</div><div class="module-row-content">${m.risk}</div></div>
       <div class="module-row"><div class="module-row-label">Rep Investment</div><div class="module-row-content">${m.rep}</div></div>
-    `);
+    `;
+    const badge = key==='cen' ? 'CBG 3' : 'CBG 1–2';
+    cagContainer.innerHTML += buildModuleCard(`cbg-${key}`, m.color, badge, m.label, m.sub, _bcag);
   });
   // MSK
   const mskContainer = document.getElementById('msk-cards');
   ['low','high'].forEach(band=>{
     const m = MODULES.msk[band];
-    mskContainer.innerHTML += buildModuleCard(`msk-${band}`, m.color, band==='low'?'MSK 0–1':'MSK 2–3', m.label, m.sub, `
+    const _bmsk = m._blocks ? renderModuleBlocks(m._blocks) : `
       <div class="module-row"><div class="module-row-label">Target Industries</div><div class="module-row-content">${m.industries}</div></div>
       <div class="module-row"><div class="module-row-label">Primary Pain</div><div class="module-row-content">${m.pain}</div></div>
       <div class="module-row"><div class="module-row-label">Narrative Angle</div><div class="module-row-content">${m.narrative}</div></div>
@@ -926,19 +1014,21 @@ function renderModules(){
       <div class="module-row"><div class="module-row-label">Proof Points</div><ul class="module-bullets">${m.proofpoints.map(p=>`<li>${p}</li>`).join('')}</ul></div>
       <div class="module-row"><div class="module-row-label">CHRO Message</div><div class="module-row-content">${m.chro}</div></div>
       <div class="module-row"><div class="module-row-label">CFO Message</div><div class="module-row-content">${m.cfo}</div></div>
-    `);
+    `;
+    mskContainer.innerHTML += buildModuleCard(`msk-${band}`, m.color, band==='low'?'MSK 0–1':'MSK 2–3', m.label, m.sub, _bmsk);
   });
   // EDB
   const edbContainer = document.getElementById('edb-cards');
   ['-1','0','+1'].forEach(key=>{
     const m = MODULES.edb[key];
-    edbContainer.innerHTML += buildModuleCard(`edb-${key}`, m.color, key==='−1'?'EDB –1':key==='0'?'EDB 0':'EDB +1', m.label, m.sub, `
+    const _bedb = m._blocks ? renderModuleBlocks(m._blocks) : `
       <div class="module-row"><div class="module-row-label">Context</div><div class="module-row-content">${m.context}</div></div>
       <div class="module-row"><div class="module-row-label">Strategic Framing</div><div class="module-row-content">${m.framing}</div></div>
       <div class="module-row"><div class="module-row-label">Entry Angle</div><div class="module-row-content">${m.entry}</div></div>
       <div class="module-row"><div class="module-row-label">Key Messages</div><ul class="module-bullets">${m.messages.map(p=>`<li>${p}</li>`).join('')}</ul></div>
       <div class="module-row"><div class="module-row-label">Objection Handling</div>${m.objections.map(o=>`<div class="objection-item"><div class="objection-q">"${o.q}"</div><div class="objection-a">${o.a}</div></div>`).join('')}</div>
-    `);
+    `;
+    edbContainer.innerHTML += buildModuleCard(`edb-${key}`, m.color, key==='-1'?'EDB –1':key==='0'?'EDB 0':'EDB +1', m.label, m.sub, _bedb);
   });
 }
 
@@ -961,7 +1051,8 @@ function toggleModule(id){
 
 // --- COMPANY EXPLORER ---
 function toggleFilter(el){
-  const {filter, val} = el.dataset;
+  const filter = el.dataset.filter === 'cag' ? 'cbg' : el.dataset.filter;
+  const val = el.dataset.val;
   const set = activeFilters[filter];
   if(set.has(val)){ if(set.size>1){ set.delete(val); el.classList.remove('active'); } }
   else { set.add(val); el.classList.add('active'); }
@@ -971,12 +1062,20 @@ function toggleFilter(el){
 function renderCompanyGrid(){
   const grid = document.getElementById('company-grid');
   const mskActive = activeFilters.msk;
-  const cagActive = activeFilters.cag;
+  const cbgActive = activeFilters.cbg;
   const edbActive = activeFilters.edb;
+  const searchEl = document.getElementById('explorer-search');
+  const query = searchEl ? searchEl.value.toLowerCase().trim() : '';
   const filtered = COMPANIES.filter(c=>{
     const mband = mskBand(c.msk);
     const eval_ = edbVal(c.edb);
-    return cagActive.has(String(c.cag)) && mskActive.has(mband) && edbActive.has(eval_);
+    const cgrp = cbgGroup(c.cag||c.cbg||0);
+    const matchesPills = cbgActive.has(cgrp) && mskActive.has(mband) && edbActive.has(eval_);
+    if(!matchesPills) return false;
+    if(!query) return true;
+    return (c.name||'').toLowerCase().includes(query) ||
+           (c.industry||'').toLowerCase().includes(query) ||
+           (c.hq||'').toLowerCase().includes(query);
   });
   document.getElementById('results-count').textContent = filtered.length;
   if(filtered.length===0){
@@ -986,7 +1085,7 @@ function renderCompanyGrid(){
   grid.innerHTML = filtered.map(c=>{
     const mband = mskBand(c.msk);
     const ekey = edbKey(c.edb);
-    const cagM = MODULES.cag[c.cag];
+    // cagM alias handled above via cbgM
     const mskM = MODULES.msk[mband];
     const edbM = MODULES.edb[ekey];
     return `<div class="company-card" onclick="openPlaybook(${c.rank})">
@@ -999,7 +1098,7 @@ function renderCompanyGrid(){
       </div>
       <div class="company-meta">${c.employees.toLocaleString()} employees</div>
       <div class="company-scores">
-        <span class="score-tag score-cag">CAG ${c.cag}</span>
+        <span class="score-tag score-${cbgGroup(c.cag||c.cbg||0)==='cen'?'cbg-cen':'cbg-dec'}">CBG ${c.cag||c.cbg||0} ${cbgGroup(c.cag||c.cbg||0)==='cen'?'· Centralized':'· Decentralized'}</span>
         <span class="score-tag score-msk-${mband}">MSK ${c.msk}</span>
         <span class="score-tag score-edb-${c.edb===0?'0':c.edb>0?'p':'n'}">EDB ${c.edb>0?'+'+c.edb:c.edb}</span>
         <span class="score-tag score-bis">BIS ${c.bis}</span>
@@ -1009,14 +1108,218 @@ function renderCompanyGrid(){
 }
 
 // --- PLAYBOOK ---
+
+// ── COMPETITOR BATTLE CARDS ─────────────────────────────────────────────────
+const BATTLE_CARDS = {
+  "Hinge Health": {
+    category: "MSK (Thrive)",
+    vulnerabilities: [
+      "Global footprint limited to 40+ countries — large coverage gaps outside the US and Western Europe",
+      "Wearable sensor and tablet kit model creates hardware distribution and logistics challenges for non-US workforces",
+      "Clinical digital MSK positioning introduces regulatory and compliance complexity in non-clinical markets — may delay or block deployment"
+    ],
+    positioning: [
+      "Thrive Global reaches 150+ countries from day one with a single contract and a consistent member experience",
+      "Phone-only delivery — no sensors, no tablets, no hardware logistics; members start with a device they already own",
+      "Wellness positioning avoids clinical regulatory hurdles — simpler, faster deployment globally"
+    ]
+  },
+  "KAIA Health": {
+    category: "MSK (Thrive)",
+    vulnerabilities: [
+      "Acquired by Sword Health in January 2026 — product roadmap, contract continuity, and support model are in transition",
+      "Health coach model adds human cost at scale; personalisation relies partly on manual input rather than pure AI adaptation",
+      "Evidence base concentrated on lower back pain in European populations — generalisability across diverse global workforces is limited"
+    ],
+    positioning: [
+      "Thrive Global is purpose-built as a global wellbeing solution — not a DTx platform adapted for global use",
+      "AI-led adaptation and real-time motion feedback without reliance on health coaches — consistent quality across all 150+ countries",
+      "Stable commercial entity with a clear global roadmap — no transition risk for a prospect signing a new contract today"
+    ]
+  },
+  "OMADA Health": {
+    category: "MSK (Thrive)",
+    vulnerabilities: [
+      "US-centric platform — no confirmed international MSK availability; global employers do not gain coverage for non-US employees",
+      "MSK is a secondary programme within a cardiometabolic bundle — not a purpose-built standalone MSK solution",
+      "PT-led model requires licensed physical therapist availability — creates access constraints outside the US and adds human cost at scale"
+    ],
+    positioning: [
+      "Thrive Global covers 150+ countries with one contract — Omada's MSK programme does not extend internationally",
+      "Purpose-built MSK wellbeing platform, not a chronic care bundle — employers pay for MSK specifically, not capabilities they may not use globally",
+      "AI-led delivery: no PT scheduling required, no geographic access constraints — same quality experience in every country"
+    ]
+  },
+  "LYRA Health": {
+    category: "MH (Mind)",
+    strengths: [
+      "17M+ people covered globally — strong enterprise brand",
+      "20+ peer-reviewed publications — credible clinical evidence base",
+      "Broad scope: therapy, coaching, medication management, EAP replacement, crisis support",
+      "Outcomes-based pricing model launched 2025"
+    ],
+    scope_considerations: [
+      "MSK care is outside Lyra's platform scope",
+      "EAP baseline: 2.5 sessions on average — typically insufficient for sustained clinical improvement",
+      "National average psychiatry wait: 25 days — access to specialist care can still be slow",
+      "74% of benefits leaders say employees still struggle to find specialists"
+    ],
+    positioning: [
+      "Thrive addresses MSK — the #1 cause of disability globally, a cost category Lyra does not cover",
+      "$3,177/member/yr in gross MSK savings (Year 1) vs Lyra's MH-only ROI — the financial case is in physical spend",
+      "81% Sword programme completion vs 2.5 average EAP sessions — Sword members complete care"
+    ]
+  },
+  "Spring Health": {
+    category: "MH (Mind)",
+    strengths: [
+      "92.3% of patients improved or recovered — largest outcomes study in behavioural health (53,000 patients, 500+ employers)",
+      "Average appointment in 1.3 days; depression remission in 32.6 days vs 3–6 months nationally",
+      "1.9x ROI; 3x ROI guaranteed in Year 3",
+      "$3.3B valuation — well-capitalised, credible enterprise vendor"
+    ],
+    scope_considerations: [
+      "MSK care is outside Spring Health's scope",
+      "3x ROI guarantee is in Year 3 only — Year 1 is cost-neutral, not a savings event",
+      "Two separate platforms required: Spring Health for MH + a separate MSK tool — two contracts, two integrations"
+    ],
+    positioning: [
+      "Sword delivers $3,177/member/yr in gross MSK savings in Year 1 — vs Spring's cost-neutral Year 1",
+      "MSK conditions affect 1.71 billion people globally and are the #1 cause of disability — a cost category Spring Health does not address",
+      "Front-loaded financial case: Sword ROI is Year 1, not Year 3"
+    ]
+  },
+  "Headspace": {
+    category: "MH (Mind)",
+    strengths: [
+      "27% reduction in perceived stress — published UCSF randomised controlled trial",
+      "29% insomnia reduction",
+      "High consumer brand recognition — low friction for employee adoption",
+      "Available through 45+ health plans; Cigna partnership reaches 7M members from Jan 2026"
+    ],
+    scope_considerations: [
+      "MSK care is outside Headspace's scope — wellness and mindfulness only",
+      "Wellness app model — engagement typically drops significantly after the first 30 days",
+      "Organisational instability: layoffs in 2023 (15%) and 2024 (13%); shift to contractor therapist model March 2025",
+      "Pricing: $3–12 PEPM — highly variable depending on utilisation assumptions"
+    ],
+    positioning: [
+      "Sword is a clinical MSK programme — 54.8% peer-reviewed pain reduction vs Headspace's wellness app",
+      "For any High MSK workforce, Headspace does not address the physical cost drivers",
+      "81% programme completion and $3,177/member/yr savings (Sword) vs wellness engagement metric (Headspace)"
+    ]
+  }
+};
+
+// Normalize a raw competitor string to match a BATTLE_CARDS key
+function resolveCompetitorKey(raw) {
+  if (!raw || raw === 'N/A') return null;
+  // Try exact match first
+  if (BATTLE_CARDS[raw]) return raw;
+  // Fuzzy: check if any battle card key appears in the raw string (case-insensitive)
+  const lower = raw.toLowerCase();
+  for (const key of Object.keys(BATTLE_CARDS)) {
+    if (lower.includes(key.toLowerCase())) return key;
+  }
+  return null; // identified but no card
+}
+
+function renderBattleCard(competitorRaw) {
+  if (!competitorRaw || competitorRaw === 'N/A' || competitorRaw === '') return '';
+
+  // Split on semicolon or comma to handle multiple competitors
+  const parts = competitorRaw.split(/[;,]/).map(s => s.trim()).filter(Boolean);
+
+  return parts.map(raw => {
+    const key = resolveCompetitorKey(raw);
+
+    // No battle card found — show amber warning with the raw name
+    if (!key) {
+      return `<div class="pb-highlight" style="background:var(--amber-bg);border-color:var(--amber-dim);margin-top:1rem">
+        <div class="pb-highlight-label" style="color:var(--amber-text)">Competitor Identified — No Battle Card</div>
+        <div class="pb-highlight-value" style="color:var(--amber-text)"><strong>${raw}</strong> has been identified but no battle card is available. Brief the sales team manually on displacement strategy.</div>
+      </div>`;
+    }
+
+    const card = BATTLE_CARDS[key];
+    let html = `
+      <div style="background:var(--red-bg);border:1.5px solid var(--red-dim);border-radius:var(--radius-lg);padding:1.25rem;margin-top:1rem">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;flex-wrap:wrap">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--red-text);text-transform:uppercase">Displacement Required</span>
+          <span style="font-size:11px;padding:2px 8px;border-radius:20px;background:var(--red-dim);color:var(--red-text);font-weight:600">${key}</span>
+          <span style="font-size:11px;padding:2px 8px;border-radius:20px;background:var(--surface2);color:var(--text3);border:1px solid var(--border)">${card.category}</span>
+        </div>`;
+    if (card.strengths) {
+      html += `<div class="pb-field-label" style="margin-bottom:6px">Strengths to Acknowledge</div>
+        <ul class="pb-bullets" style="margin-bottom:1rem">${card.strengths.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+    }
+    if (card.vulnerabilities) {
+      html += `<div class="pb-field-label" style="margin-bottom:6px">Key Vulnerabilities to Probe</div>
+        <ul class="pb-bullets" style="margin-bottom:1rem">${card.vulnerabilities.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+    }
+    if (card.scope_considerations) {
+      html += `<div class="pb-field-label" style="margin-bottom:6px">Scope Considerations</div>
+        <ul class="pb-bullets" style="margin-bottom:1rem">${card.scope_considerations.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+    }
+    html += `<div class="pb-field-label" style="margin-bottom:6px;color:var(--teal-text)">Sword Positioning</div>
+      <ul class="pb-bullets">${card.positioning.map(s=>`<li>${s}</li>`).join('')}</ul>
+      </div>`;
+    return html;
+  }).join('');
+}
+
+
+function renderSources(raw) {
+  if (!raw || raw === 'N/A' || raw === '') return '<span style="color:var(--text3);font-size:12px">Not available</span>';
+  const parts = raw.split(/;|\n|(?=https?:\/\/)/).map(s => s.trim()).filter(Boolean);
+
+  const linkedins = parts.filter(p => p.startsWith('http') && p.includes('linkedin.com'));
+  const others    = parts.filter(p => p.startsWith('http') && !p.includes('linkedin.com'));
+  const texts     = parts.filter(p => !p.startsWith('http'));
+
+  const liIcon = `<svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="border-radius:3px;flex-shrink:0;vertical-align:middle"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path d="M7.5 9.5H5V19H7.5V9.5ZM6.25 8.5C7.08 8.5 7.75 7.83 7.75 7C7.75 6.17 7.08 5.5 6.25 5.5C5.42 5.5 4.75 6.17 4.75 7C4.75 7.83 5.42 8.5 6.25 8.5ZM19 19H16.5V14C16.5 12.62 15.38 11.5 14 11.5C12.62 11.5 11.5 12.62 11.5 14V19H9V9.5H11.5V10.76C12.2 9.95 13.26 9.5 14.5 9.5C16.98 9.5 19 11.52 19 14V19Z" fill="white"/></svg>`;
+
+  function liLink(p) {
+    try {
+      const name = new URL(p).pathname.replace(/\/$/, '').split('/').pop() || 'profile';
+      return `<a href="${p}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;text-decoration:none;margin-right:8px">${liIcon}<span style="font-size:11px;color:var(--accent);text-decoration:underline">${name}</span></a>`;
+    } catch(e) {
+      return `<a href="${p}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;text-decoration:none;margin-right:8px">${liIcon}<span style="font-size:11px;color:var(--accent);text-decoration:underline">profile</span></a>`;
+    }
+  }
+
+  function otherLink(p) {
+    try {
+      const u = new URL(p);
+      const display = u.hostname.replace('www.','') + (u.pathname.length > 35 ? u.pathname.slice(0,33)+'…' : u.pathname);
+      return `<a href="${p}" target="_blank" rel="noopener" style="font-size:11px;color:var(--accent);text-decoration:underline;margin-right:8px;display:inline-block">${display}</a>`;
+    } catch(e) {
+      return `<a href="${p}" target="_blank" rel="noopener" style="font-size:11px;color:var(--accent);text-decoration:underline;margin-right:8px">${p.slice(0,50)}…</a>`;
+    }
+  }
+
+  const rows = [];
+  if (linkedins.length)
+    rows.push(`<div style="display:flex;align-items:center;gap:4px;margin-bottom:${others.length||texts.length?'5px':'0'}"><span style="font-size:10px;color:var(--text3);min-width:52px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em">LinkedIn</span><div>${linkedins.map(liLink).join('')}</div></div>`);
+  if (others.length)
+    rows.push(`<div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:${texts.length?'5px':'0'}"><span style="font-size:10px;color:var(--text3);min-width:52px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;padding-top:2px">Sources</span><div>${others.map(otherLink).join('')}</div></div>`);
+  if (texts.length)
+    rows.push(`<div style="display:flex;align-items:flex-start;gap:4px"><span style="font-size:10px;color:var(--text3);min-width:52px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;padding-top:2px">Notes</span><div>${texts.map(t=>`<span style="font-size:11px;color:var(--text2);margin-right:8px">${t}</span>`).join('')}</div></div>`);
+
+  return rows.length ? rows.join('') : '<span style="color:var(--text3);font-size:12px">Not available</span>';
+}
+
 function openPlaybook(rank){
   const c = COMPANIES.find(x=>x.rank===rank);
   if(!c) return;
   const mband = mskBand(c.msk);
   const ekey = edbKey(c.edb);
-  const cagM = MODULES.cag[c.cag] || MODULES.cag[3];
+  const cgrp = cbgGroup(c.cag||c.cbg||0);
+  const cbgM = MODULES.cbg[cgrp];
   const mskM = MODULES.msk[mband];
   const edbM = MODULES.edb[ekey];
+  // keep cagM alias for any legacy references
+  const cagM = cbgM;
 
   document.getElementById('pb-company-name').textContent = c.name;
   document.getElementById('pb-company-meta').textContent = `${c.hq} · ${c.industry} · ${c.employees.toLocaleString()} employees · Rank #${c.rank}`;
@@ -1024,86 +1327,248 @@ function openPlaybook(rank){
   // Scores row
   const scoresRow = document.getElementById('pb-scores-row');
   scoresRow.innerHTML = [
-    {label:'Entry Motion',val:`CAG ${c.cag} — ${cagM.label.split('—')[1].trim()}`,bg:`var(--${cagM.color}-bg)`,border:`var(--${cagM.color}-dim)`,color:`var(--${cagM.color}-text,var(--${cagM.color}))`},
+    {label:'Governance',val:`CBG ${c.cag||c.cbg||0} — ${cgrp==='cen'?'Centralized':'Decentralized'}`,bg:`var(--${cbgM.color}-bg)`,border:`var(--${cbgM.color}-dim)`,color:`var(--${cbgM.color}-text,var(--${cbgM.color}))`},
     {label:'MSK Narrative',val:`${mskM.label.split('—')[1].trim()}`,bg:`var(--${mskM.color}-bg)`,border:`var(--${mskM.color}-dim)`,color:`var(--${mskM.color}-text,var(--${mskM.color}))`},
     {label:'Competitive Frame',val:`${edbM.label}`,bg:`var(--${edbM.color}-bg)`,border:`var(--${edbM.color}-dim)`,color:`var(--${edbM.color}-text,var(--${edbM.color}))`},
     {label:'BIS Score',val:`${c.bis}/3`,bg:'var(--amber-bg)',border:'var(--amber-dim)',color:'var(--amber-text)'},
   ].map(s=>`<div class="playbook-score-chip" style="background:${s.bg};border:1px solid ${s.border};color:${s.color}"><span class="chip-label">${s.label}:</span> ${s.val}</div>`).join('');
 
-  // Build playbook sections
+  // ── Chip helpers ────────────────────────────────────────────────────────
+  const cbgChip  = `<span class="score-tag score-${cgrp==='cen'?'cbg-cen':'cbg-dec'}">${cgrp==='cen'?'CBG 3 · Centralized':'CBG 1–2 · Decentralized'}</span>`;
+  const mskChip  = `<span class="score-tag score-msk-${mband}">MSK ${c.msk} · ${mband==='high'?'High':'Low'}</span>`;
+  const edbScore = c.edb > 0 ? '+1' : c.edb === 0 ? '0' : '–1';
+  const edbLabel = c.edb > 0 ? 'Adjacent' : c.edb === 0 ? 'Greenfield' : 'Competitor';
+  const edbCls   = c.edb > 0 ? 'score-edb-p' : c.edb === 0 ? 'score-edb-0' : 'score-edb-n';
+  const edbChip  = `<span class="score-tag ${edbCls}">EDB ${edbScore} · ${edbLabel}</span>`;
+
+  // ── Stakeholder map content ──────────────────────────────────────────────
+  const stakeholderContent = cgrp==='cen' ? `
+    <table class="doc-table">
+      <thead><tr><th>Role</th><th>Needs</th><th>Pain</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Global VP/Director of Benefits</strong></td><td>Enterprise business case, peer benchmarking, consolidated vendor narrative, Finance-ready ROI</td><td>Fragmented vendors, inconsistent employee experience, no unified data</td></tr>
+        <tr><td><strong>Global Procurement / Legal</strong></td><td>Compliance answers, data security posture, GDPR and cross-border transfer evidence, vendor standardization alignment</td><td>—</td></tr>
+        <tr><td><strong>CHRO</strong></td><td>Visibility into strategic impact, employee experience consistency, enterprise adoption progress</td><td>—</td></tr>
+        <tr><td><strong>Global CFO</strong></td><td>ROI proof, cost efficiency, vendor consolidation value, measurable enterprise outcomes</td><td>—</td></tr>
+      </tbody>
+    </table>` : `
+    <table class="doc-table">
+      <thead><tr><th>Role</th><th>Needs</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Regional / Country Benefits Lead</strong></td><td>Outcome evidence + business case</td></tr>
+        <tr><td><strong>Regional CFO / Finance Controller</strong></td><td>ROI proof, absenteeism reduction, productivity recovered, lower healthcare claims</td></tr>
+        <tr><td><strong>HR Partner</strong></td><td>Easy launch + clear member journey</td></tr>
+        <tr><td><strong>Regulatory Gatekeepers</strong></td><td>Compliance answers</td></tr>
+        <tr><td><strong>HQ Escalation Contact</strong></td><td>Visibility into regional progress before expansion conversion</td></tr>
+      </tbody>
+    </table>`;
+
+  // ── Competitive framing text ─────────────────────────────────────────────
+  const competitiveText = c.edb > 0
+    ? `${c.name} has a confirmed digital health benefit in place, but no direct MSK and Mental Health competitor has been identified. Position Thrive Global and Mind as the natural extension of their existing wellbeing stack, not a displacement.`
+    : c.edb === 0
+    ? `${c.name} has no confirmed digital health benefit in place. This is a category creation conversation — the priority is educating the buyer on MSK and Mental Health as a cost driver and building the business case for Thrive Global and Mind from scratch.`
+    : `${c.name} has at least one employer-sponsored digital health benefit confirmed, and the identified solution is a direct MSK and/or Mental Health competitor${c.competitor ? ': <strong>' + c.competitor + '</strong>' : ''}. This account requires a displacement conversation.`;
+
+  // ── MSK positioning content ──────────────────────────────────────────────
+  const mskPositioningContent = mband==='high' ? `
+    <div class="pb-field"><div class="pb-field-label">Target Industries</div><div class="pb-field-value">Logistics · Manufacturing · Retail · Construction · Healthcare · Food Processing · Mining · Transportation · Automotive · Industrial</div></div>
+    <div class="pb-field"><div class="pb-field-label">Primary Pain</div><div class="pb-field-value">${mskM.pain}</div></div>
+    <div class="pb-field"><div class="pb-field-label">Narrative Angle</div><div class="pb-field-value">${mskM.narrative}</div></div>
+    <div class="pb-highlight"><div class="pb-highlight-label">Headline Message</div><div class="pb-highlight-value">${mskM.headline}</div></div>
+    <div class="pb-field"><div class="pb-field-label">Proof Points</div><ul class="pb-bullets">${mskM.proofpoints.map(p=>`<li>${p}</li>`).join('')}</ul></div>` : `
+    <div class="pb-field"><div class="pb-field-label">Target Industries</div><div class="pb-field-value">Banking · Financial Services · Software · Technology · Consulting · Insurance · Legal · Professional Services</div></div>
+    <div class="pb-field"><div class="pb-field-label">Primary Pain</div><div class="pb-field-value">${mskM.pain}</div></div>
+    <div class="pb-field"><div class="pb-field-label">Narrative Angle</div><div class="pb-field-value">${mskM.narrative}</div></div>
+    <div class="pb-highlight"><div class="pb-highlight-label">Headline Message</div><div class="pb-highlight-value">${mskM.headline}</div></div>
+    <div class="pb-field"><div class="pb-field-label">Proof Points</div><ul class="pb-bullets">${mskM.proofpoints.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+
+  // ── Messaging opening by EDB ─────────────────────────────────────────────
+  const messagingOpening = c.edb < 0
+    ? `You already have a digital MSK solution. The question is whether it's delivering strong enough outcomes. Industry completion rates are 30–50% versus Sword's 81%, with care starting in 6.3 days.`
+    : c.edb === 0
+    ? `MSK is the leading cause of disability, but most employers still rely on slow, fragmented care. Traditional PT often takes 2–4 weeks to start, has 30–50% completion rates, and is usually too late to prevent escalation. Sword delivers MSK care in 6.3 days with 81% completion, driving ~$3,177 per member per year in savings.`
+    : `You already invest in digital health, so the infrastructure and buy-in are in place. The gap is MSK-specific clinical depth. Most platforms focus on general wellbeing, not the high-cost MSK conditions driving claims and absence. Sword adds a dedicated MSK layer with fast integration via HRIS and SSO.`;
+
+  // ── Messaging statements by MSK ──────────────────────────────────────────
+  const messagingStatements = mband==='high' ? `
+    <div class="pb-field"><div class="pb-field-label">Statement 1 — Standard Opening</div><div class="pb-field-value">MSK affects 1.71B people and is the leading cause of global disability. In ${c.industry} workforces like ${c.name}, it drives claims, surgeries, and delayed recovery. Sword Thrive delivers AI-powered digital PT in 6.3 days with 81% completion (vs 30–50%), generating ~$3,177 per member per year in savings.</div></div>
+    <div class="pb-field"><div class="pb-field-label">Statement 2 — Finance-First</div><div class="pb-field-value">MSK is the largest healthcare cost driver in physically demanding workforces. Sword reduces MSK spend by ~$3,177 per member per year (2,700+ member study), delivering 3.2× ROI. For ${c.name}, this equals ~$${Math.round(c.employees*0.3*3177/1000).toLocaleString()}K estimated annual impact, validated in a 12-week pilot.</div></div>
+    <div class="pb-field"><div class="pb-field-label">Statement 3 — Operations-First</div><div class="pb-field-value">In ${c.industry}, MSK is a workforce capacity constraint. Each injury removes skilled labour and creates operational gaps. Sword reduces time to care to 6.3 days (vs 2–4 weeks), achieves 81% completion, and drives ~$2,916 per member per year in productivity gains. Predict identifies 73% of MSK surgeries 6+ months in advance.</div></div>` : `
+    <div class="pb-field"><div class="pb-field-label">Statement 1 — Standard Opening</div><div class="pb-field-value">Back and joint discomfort affects ~2 billion people — including desk-based workforces like ${c.name}'s, where it quietly drains energy, focus, and engagement. Thrive Global delivers AI-guided movement support through each employee's own smartphone, consistently across 150+ countries.</div></div>
+    <div class="pb-field"><div class="pb-field-label">Statement 2 — People-First</div><div class="pb-field-value">For ${c.name}, wellbeing is a retention and talent story. Thrive Global gives every employee, in every country, the same AI-personalised movement experience: visible care that strengthens the employee value proposition, supports engagement, and protects long-term retention.</div></div>
+    <div class="pb-field"><div class="pb-field-label">Statement 3 — Productivity-First</div><div class="pb-field-value">In sedentary and hybrid workforces, MSK discomfort shows up as presenteeism — 14 working days per employee lost globally each year to MSK-related absence. Thrive Global helps employees address strain proactively, protecting focus, energy, and output at an expected 3.2× ROI.</div></div>`;
+
+  // ── GTM Motion by CBG ────────────────────────────────────────────────────
+  const selectionFormula = `<div style="font-family:monospace;background:var(--surface2);padding:10px 14px;border-radius:var(--radius);border:1px solid var(--border);font-size:12px;margin-top:8px">(Headcount concentration × 30%) + (MSK/MH risk profile × 25%) + (Sword existing footprint × 25%) + (Regulatory friction, negative × 15%) + (Reference availability × 5%)</div>`;
+
+  const gtmMotionContent = cgrp==='cen' ? `
+    <div class="pb-field"><div class="pb-field-label">6A — Channel Strategy</div><div class="pb-field-value">Direct enterprise sale. Field team engages the global buyer directly. Single contract covering the full deployment scope. No country-by-country selling; no broker intermediary required at the primary contact stage.</div></div>
+    <div class="pb-field"><div class="pb-field-label">Full Cycle</div><div class="pb-field-value">6–12 months. Where the commercial case is strong and the sponsor has unambiguous authority, Sword can move directly to a global enterprise agreement without a pilot.</div></div>
+
+    <div class="pb-field"><div class="pb-field-label">Phase 1 — Discovery, Solution Design & Procurement (3–6 months)</div>
+      <div class="pb-highlight" style="margin-top:6px"><div class="pb-highlight-label">Exit Criteria</div><div class="pb-highlight-value">Sponsor authority confirmed · Procurement and Legal engaged · Enterprise business case drafted · Qualified enterprise ACV · Global deployment scope agreed in writing · Expansion pathway documented and counter-signed · Data security and cross-border compliance passed · Contract executed</div></div>
+      <div class="pb-field-label" style="margin-top:10px">Discovery Questionnaire — 5 Areas</div>
+      <ul class="pb-bullets">
+        <li><strong>Population & workforce:</strong> Global eligible employee count by region; workforce demographics; known regional health concerns</li>
+        <li><strong>Current state of benefits:</strong> Existing MSK and MH vendors by region (related to EDBA); current vendor contract end dates; pain points with current fragmented global setup</li>
+        <li><strong>Decision structure:</strong> Confirmation of sponsor authority for global agreement; Procurement and Legal process and timeline; HQ approval thresholds</li>
+        <li><strong>Strategic context:</strong> Top 3 benefit priorities for next 12 months; CHRO or CFO-level mandates relevant to benefits consolidation; recent workforce health incidents that elevated MSK or MH visibility</li>
+        <li><strong>Pilot readiness (if applicable):</strong> Preferred Phase 1 region or BU; data access for ROI measurement; metrics the buyer considers credible at enterprise level</li>
+      </ul>
+    </div>
+
+    <div class="pb-field"><div class="pb-field-label">Phase 2 — Pilot / Phase 1 Rollout (3–6 months)</div>
+      <div class="pb-highlight" style="margin-top:6px"><div class="pb-highlight-label">Exit Criteria</div><div class="pb-highlight-value">Phase 1 population enrolled · Outcome data collected for both Thrive and Mind · Enterprise ROI report drafted</div></div>
+    </div>
+
+    <div class="pb-field"><div class="pb-field-label">Phase 3 — Global Rollout & Expansion (Ongoing)</div>
+      <div class="pb-highlight" style="margin-top:6px"><div class="pb-highlight-label">Exit Criteria</div><div class="pb-highlight-value">Each contracted region activated per rollout sequence · Enterprise ROI report delivered · Next region or second product activated under existing contract</div></div>
+    </div>
+
+    <div class="pb-field"><div class="pb-field-label">Centralized-Specific KPIs</div>
+      <ul class="pb-bullets">
+        <li>Finance-ready ROI calculation: claims-based actuarial framework, propensity matching, difference-in-difference analysis</li>
+        <li>Absenteeism cost reduction — days recovered per enrolled member</li>
+        <li>Surgery avoidance rate</li>
+        <li>Employer savings per member per year — Sword benchmark: <strong>$3,177/member/year</strong></li>
+        <li>Region activation rate — % of contracted regions activated within 24 months. Target: ≥80%</li>
+      </ul>
+    </div>
+    <div class="pb-field" style="margin-bottom:0"><div class="pb-field-label">First Contact</div><div class="pb-field-value"><strong>${c.buyer}</strong></div></div>` : `
+
+    <div class="pb-field"><div class="pb-field-label">6A — Channel Strategy</div><div class="pb-field-value">Targeted direct selling with broker awareness. Pilots as the international entry mechanism.</div></div>
+    <div class="pb-field"><div class="pb-field-label">Full Cycle</div><div class="pb-field-value">10–23 months. The "land" (always with the bundle) is a single BU or region; the "expand" is geographic and population expansion.</div></div>
+
+    <div class="pb-field"><div class="pb-field-label">Phase 1 — First Contact, Pilot Proposal & Procurement (4–10 months)</div>
+      <div class="pb-highlight" style="margin-top:6px"><div class="pb-highlight-label">Exit Criteria</div><div class="pb-highlight-value">Stakeholder map complete · GTM data collected · Primary business case drafted · Qualified bundle ACV · Bundle pilot scope agreed in writing · Expansion triggers documented and counter-signed · Vendor onboarding complete · Data security and works council passed · Contract executed</div></div>
+      <div class="pb-field-label" style="margin-top:10px">Beachhead Questionnaire — 5 Areas</div>
+      <ul class="pb-bullets">
+        <li><strong>Population & workforce:</strong> Eligible employee count by region/country; workforce demographics; known regional health concerns</li>
+        <li><strong>Current state of benefits:</strong> Existing MSK and MH vendors by region (related to EDBA); current vendor contract end dates; pain points with current setup</li>
+        <li><strong>Decision structure:</strong> Who has signing authority for a regional pilot; what is the regional procurement process</li>
+        <li><strong>Strategic context:</strong> Top 3 benefit priorities for next 12 months; recent workforce health incidents related to MSK or MH</li>
+        <li><strong>Pilot readiness:</strong> Data access for ROI measurement; preferred pilot timing; metrics the buyer would consider credible</li>
+      </ul>
+    </div>
+
+    <div class="pb-field"><div class="pb-field-label">Phase 2 — Pilot (3–6 months)</div>
+      <div class="pb-highlight" style="margin-top:6px"><div class="pb-highlight-label">Exit Criteria</div><div class="pb-highlight-value">Pilot population enrolled · Outcome data collected for both Thrive and Mind</div></div>
+      <div class="pb-field-label" style="margin-top:10px">Region / Country / BU Selection</div>
+      ${selectionFormula}
+      <div style="font-size:12px;color:var(--text3);margin-top:6px">The 3-month floor allows Thrive and Mind to demonstrate outcomes and engagement curves. Beyond 6 months it becomes a contract.</div>
+    </div>
+
+    <div class="pb-field"><div class="pb-field-label">Phase 3 — ROI Validation & Expansion (6 months–1 year)</div>
+      <div class="pb-highlight" style="margin-top:6px"><div class="pb-highlight-label">Exit Criteria</div><div class="pb-highlight-value">Bundle ROI report delivered · HQ briefing completed · Expanded population or next region contract signed</div></div>
+    </div>
+
+    <div class="pb-field"><div class="pb-field-label">Pilot KPIs</div>
+      <ul class="pb-bullets">
+        <li><strong>Enrolment rate</strong> — Industry benchmark: 5–10%; leading solutions: 20–30%; Sword target: >75%</li>
+        <li><strong>Engagement rate</strong> — Thrive Global, Mind Global and Dual-Product; weekly active users at 30 days, mid-pilot and end of pilot</li>
+        <li><strong>Sustained engagement</strong> — % of total employees enrolled at end of pilot</li>
+        <li><strong>Retention rates</strong> — measured at 30 days, mid-pilot and end of pilot</li>
+        <li><strong>Clinical outcomes</strong> — measured mid-pilot and sustained outcomes at end</li>
+        <li><strong>Self-reported productivity recovery</strong> — measured at end of pilot</li>
+        <li><strong>Net Promoter Score (NPS)</strong></li>
+      </ul>
+    </div>
+    <div class="pb-field" style="margin-bottom:0"><div class="pb-field-label">First Contact</div><div class="pb-field-value"><strong>${c.buyer}</strong></div></div>`;
+
+  // ── Revenue ──────────────────────────────────────────────────────────────
+  const annualRev = Math.round(c.employees * 24 / 1000);
+
+  // ── Build sections ───────────────────────────────────────────────────────
   const sections = [
-    {num:'01',title:'Company Intelligence',tags:[],content:`
+    {num:'00', title:'Company Intelligence', chips:[], open:true, content:`
       <div class="info-row">
         <div class="info-chip"><div class="info-chip-label">HQ</div><div class="info-chip-value">${c.hq}</div></div>
         <div class="info-chip"><div class="info-chip-label">Industry</div><div class="info-chip-value">${c.industry}</div></div>
         <div class="info-chip"><div class="info-chip-label">Employees</div><div class="info-chip-value">${c.employees.toLocaleString()}</div></div>
         <div class="info-chip"><div class="info-chip-label">Priority Rank</div><div class="info-chip-value">#${c.rank} of 230</div></div>
+        <div class="info-chip"><div class="info-chip-label">Full Deploy ARR</div><div class="info-chip-value">$${annualRev.toLocaleString()}K/yr</div></div>
       </div>
-      <div class="pb-field"><div class="pb-field-label">Named Buyer</div><div class="pb-field-value"><strong>${c.buyer}</strong></div></div>
-      <div class="pb-field"><div class="pb-field-label">Identified Wellbeing Program</div><div class="pb-field-value">${c.program || 'Not identified'}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Digital Health Tools in Place</div><div class="pb-field-value">${c.tool || 'None identified'}</div></div>
-      <div class="pb-field"><div class="pb-field-label">EDB Classification</div><div class="pb-field-value">Current score: <strong>${c.edb > 0 ? '+1 Adjacent' : c.edb === 0 ? '0 Greenfield' : '–1 Competitor'}</strong>. Note: final –1/0/+1 reclassification pending competitor identification pass.</div></div>
-    `},
-    {num:'02',title:'Entry Motion',tags:[`CAG ${c.cag}`],content:`
-      <div class="pb-field"><div class="pb-field-label">Play Type</div><div class="pb-field-value"><strong>${cagM.label}</strong> — ${cagM.sub}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Entry Logic</div><div class="pb-field-value">${cagM.entry}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Buyer Persona</div><div class="pb-field-value">${cagM.buyer}</div></div>
-      <div class="pb-field"><div class="pb-field-label">For ${c.name} Specifically</div><div class="pb-field-value">First contact: <strong>${c.buyer}</strong>. ${c.cag===3?'This is a centralized governance account — go directly to the global buyer, do not start at country level.':c.cag===2?'This is a regional entry account — identify the regional benefits lead and engage the global HR sponsor in parallel from month 3.':'This is a land and expand account — identify the most receptive country market and build proof of value before escalating.'}</div></div>
-    `},
-    {num:'03',title:'Outreach Sequence',tags:[`CAG ${c.cag}`],content:`
-      <div class="pb-field"><div class="pb-field-label">Sequence</div><div class="pb-field-value">${cagM.outreach}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Deal Cycle Expectation</div><div class="pb-field-value">${cagM.cycle}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Rep Investment Level</div><div class="pb-field-value">${cagM.rep}</div></div>
-    `},
-    {num:'04',title:'Value Proposition & Narrative',tags:[`MSK ${c.msk}`],content:`
-      <div class="pb-highlight"><div class="pb-highlight-label">Headline</div><div class="pb-highlight-value">${mskM.headline}</div></div>
-      <div class="pb-field" style="margin-top:1.25rem"><div class="pb-field-label">Primary Pain to Lead With</div><div class="pb-field-value">${mskM.pain}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Narrative Angle</div><div class="pb-field-value">${mskM.narrative}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Proof Points</div><ul class="pb-bullets">${mskM.proofpoints.map(p=>`<li>${p}</li>`).join('')}</ul></div>
-      <div class="pb-two-col">
-        <div class="pb-col"><div class="pb-col-label">CHRO Message</div><div class="pb-col-value">${mskM.chro}</div></div>
-        <div class="pb-col"><div class="pb-col-label">CFO Message</div><div class="pb-col-value">${mskM.cfo}</div></div>
+
+      <div class="intel-group intel-group-cbg">
+        <div class="intel-group-label">CBG — Centralized Benefits Governance</div>
+        <div class="pb-field"><div class="pb-field-label">Named Buyer</div><div class="pb-field-value"><strong>${c.buyer || 'Not identified'}</strong></div></div>
+        <div class="pb-field"><div class="pb-field-label">CBG Evidence</div><div class="pb-field-value" style="font-size:12px;color:var(--text2);line-height:1.6">${c.cbgEvidence || 'Not available'}</div></div>
+        <div class="pb-field" style="margin-bottom:0"><div class="pb-field-label">CBG Source</div><div class="pb-field-value">${renderSources(c.cbgSource)}</div></div>
+      </div>
+
+      <div class="intel-group intel-group-bis">
+        <div class="intel-group-label">BIS — Benefits Investment Signals</div>
+        <div class="pb-field"><div class="pb-field-label">Identified Wellbeing Program</div><div class="pb-field-value">${c.program || 'Not identified'}</div></div>
+        <div class="pb-field"><div class="pb-field-label">BIS Evidence</div><div class="pb-field-value" style="font-size:12px;color:var(--text2);line-height:1.6">${c.bisEvidence || 'Not available'}</div></div>
+        <div class="pb-field" style="margin-bottom:0"><div class="pb-field-label">BIS Source</div><div class="pb-field-value">${renderSources(c.bisSource)}</div></div>
+      </div>
+
+      <div class="intel-group intel-group-edb">
+        <div class="intel-group-label">EDB — Existing Digital Benefits</div>
+        <div class="pb-field"><div class="pb-field-label">Classification</div><div class="pb-field-value">
+          <strong>${c.edb > 0 ? '+1 Adjacent' : c.edb === 0 ? '0 Greenfield' : '–1 Competitor'}</strong>
+          ${c.competitor && c.competitor !== 'N/A' && c.competitor !== '' ? `&nbsp;· Competitor: <strong style="color:var(--red-text)">${c.competitor}</strong> <span style="font-size:11px;color:var(--text3)">(${c.competitorCat || ''})</span>` : ''}
+        </div></div>
+        <div class="pb-field"><div class="pb-field-label">Digital Health Tools in Place</div><div class="pb-field-value">${c.tool || 'None identified'}</div></div>
+        <div class="pb-field" style="margin-bottom:0"><div class="pb-field-label">EDB Evidence</div><div class="pb-field-value" style="font-size:12px;color:var(--text2);line-height:1.6">${c.edbEvidence || 'Not available'}</div></div>
       </div>
     `},
-    {num:'05',title:'Competitive Framing',tags:[`EDB ${c.edb>0?'+'+c.edb:c.edb}`],content:`
-      <div class="pb-field"><div class="pb-field-label">Situation</div><div class="pb-field-value">${edbM.context}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Strategic Framing</div><div class="pb-field-value">${edbM.framing}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Entry Angle</div><div class="pb-field-value">${edbM.entry}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Key Messages</div><ul class="pb-bullets">${edbM.messages.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+    {num:'01', title:'Stakeholder Mapping',   chips:[cbgChip],  open:true,  content: stakeholderContent},
+    {num:'02', title:'Competitive Landscape', chips:[edbChip],  open:false, content:`
+      <div class="pb-highlight"><div class="pb-highlight-value">${competitiveText}</div></div>
+      ${c.edb < 0 && c.competitor ? renderBattleCard(c.competitor) : ''}
     `},
-    {num:'06',title:'Discovery Framework',tags:[],content:`
-      <div class="pb-field"><div class="pb-field-label">Opening Questions</div><ul class="pb-bullets">
-        <li>How do you currently measure MSK and physical health burden across your workforce? What does your absenteeism data tell you about musculoskeletal conditions?</li>
-        <li>What does your current benefits portfolio look like for physical health? How confident are you in the utilization and clinical outcomes of those solutions?</li>
-        <li>When you think about your benefits strategy for the next 2–3 years, where are the gaps you most want to close?</li>
-        <li>How are benefits decisions made across your geographies? Is there a central mandate or does each region buy independently?</li>
-      </ul></div>
-      <div class="pb-field"><div class="pb-field-label">Qualification Signals</div><ul class="pb-bullets">
-        <li><strong>Green:</strong> They can quote absenteeism costs, have a named benefits renewal cycle, and the buyer has budget authority</li>
-        <li><strong>Yellow:</strong> They feel the pain but haven't quantified it, or governance is less centralized than CAG score suggests</li>
-        <li><strong>Red:</strong> No internal champion, no budget conversation possible, or currently in procurement freeze</li>
-      </ul></div>
+    {num:'03', title:'Positioning',           chips:[mskChip],  open:false, content: mskPositioningContent},
+    {num:'04', title:'Messaging',             chips:[edbChip, mskChip], open:false, content:`
+      <div class="pb-field"><div class="pb-field-label">Pre-Written Opening — ${edbLabel}</div>
+        <div class="pb-highlight" style="margin-top:6px"><div class="pb-highlight-value">${messagingOpening}</div></div>
+      </div>
+      ${messagingStatements}
     `},
-    {num:'07',title:'Objection Handling',tags:[`EDB ${c.edb>0?'+'+c.edb:c.edb}`],content:`
-      <div class="pb-objections">${edbM.objections.map(o=>`<div class="pb-objection"><div class="pb-objection-q">"${o.q}"</div><div class="pb-objection-a">${o.a}</div></div>`).join('')}</div>
+    {num:'05', title:'Pricing & Commercial',  chips:[],         open:false, content:`
+      <div class="pb-field"><div class="pb-field-label">Bundle Price</div><div class="pb-field-value"><strong>$2 PEPM</strong> — Thrive AI + Mind AI. USD for all contracts. Floor: 50% of total eligible employees.</div></div>
+      <table class="doc-table">
+        <thead><tr><th>Contract Length</th><th>Coverage</th><th>Price (PEPM)</th><th>Discount</th></tr></thead>
+        <tbody>
+          <tr><td>1 year</td><td>Standard (≥50%)</td><td><strong>$2.00</strong></td><td>0%</td></tr>
+          <tr><td>2 years</td><td>Standard (≥50%)</td><td><strong>$1.90</strong></td><td>5%</td></tr>
+          <tr><td>3 years</td><td>Standard (≥50%)</td><td><strong>$1.80</strong></td><td>10%</td></tr>
+          <tr><td>3 years</td><td>>80% employees</td><td><strong>$1.70</strong></td><td>15%</td></tr>
+        </tbody>
+      </table>
+      <div class="pb-field"><div class="pb-field-label">Revenue Potential for ${c.name}</div><div class="pb-field-value">
+        Full deployment: <strong>$${annualRev.toLocaleString()}K/year</strong> (${c.employees.toLocaleString()} employees × $2 PEPM × 12) ·
+        Pilot (1,000–5,000 employees): <strong>$24K–$120K/year</strong>
+      </div></div>
+      <div class="pb-field"><div class="pb-field-label">Contract-Closing Fee</div><div class="pb-field-value">Flat <strong>$8,000</strong></div></div>
     `},
-    {num:'08',title:'Pilot & Expansion Logic',tags:[`CAG ${c.cag}`],content:`
-      <div class="pb-field"><div class="pb-field-label">Pilot Design</div><div class="pb-field-value">${cagM.pilot}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Expansion Path</div><div class="pb-field-value">${cagM.expansion}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Key Risk to Manage</div><div class="pb-field-value">${cagM.risk}</div></div>
-      <div class="pb-field"><div class="pb-field-label">Revenue Potential (indicative)</div><div class="pb-field-value">At $1 PMPM full deployment: <strong>$${Math.round(c.employees*12/1000).toLocaleString()}K/year</strong> at full headcount (${c.employees.toLocaleString()} employees). Pilot population (est. 1,000–5,000): <strong>$12K–$60K/year</strong> first phase.</div></div>
+    {num:'06', title:'GTM Motion & Sales Stages', chips:[cbgChip], open:false, content: gtmMotionContent},
+    {num:'07', title:'Expansion Strategy',    chips:[],         open:false, content:`
+      <div class="pb-highlight"><div class="pb-highlight-value">Expansion follows a sequential two-phase path: (1) account growth — population expansion in the pilot region; (2) geographic expansion or shift to centralized HQ.</div></div>
+      <div class="pb-field"><div class="pb-field-label">Expansion Triggers</div><div class="pb-field-value">Document and counter-sign at pilot agreement. Trigger metrics: enrolment rates, clinical outcome thresholds, ROI projections.</div></div>
+      <div class="pb-field"><div class="pb-field-label">Expected Sequence for ${c.name}</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);margin-top:6px">
+          <span style="font-size:12px;font-weight:500;color:var(--text)">Pilot Region / BU</span>
+          <span style="color:var(--accent)">→</span>
+          <span style="font-size:12px;font-weight:500;color:var(--text)">Next Region(s)</span>
+          <span style="color:var(--accent)">→</span>
+          <span style="font-size:12px;font-weight:500;color:var(--text)">HQ-Level Global Contract</span>
+        </div>
+        <div style="font-size:12px;color:var(--text3);margin-top:6px">Each step re-priced per new volume tier and contract duration.</div>
+      </div>
     `}
   ];
 
-  document.getElementById('pb-body').innerHTML = sections.map((s,i)=>`
-    <div class="playbook-section${i===0?' open':''}">
+  document.getElementById('pb-body').innerHTML = sections.map(s=>`
+    <div class="playbook-section${s.open?' open':''}">
       <div class="playbook-section-header" onclick="toggleSection(this)">
         <div class="section-header-left">
           <span class="section-num">${s.num}</span>
           <span class="section-title">${s.title}</span>
         </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <div class="section-module-tags">${s.tags.map(t=>`<span class="score-tag" style="background:var(--surface2);color:var(--text2);border:1px solid var(--border);font-size:10px">${t}</span>`).join('')}</div>
+        <div style="display:flex;align-items:center;gap:6px">
+          ${s.chips.join('')}
           <span class="section-chevron">▾</span>
         </div>
       </div>
@@ -1123,8 +1588,7 @@ function toggleSection(header){
 }
 
 // --- INIT ---
-renderModules();
-initDataLoader();
+loadContent().then(()=>{ renderModules(); initDataLoader(); });
 
 function initDataLoader() {
   if (COMPANIES.length > 0) {
@@ -1197,11 +1661,10 @@ function handleFile(file) {
           </div>
           <div class="explorer-controls">
             <div class="filter-group">
-              <div class="filter-label">Entry Motion (CAG)</div>
+              <div class="filter-label">Entry Motion (CBG)</div>
               <div class="filter-pills">
-                <div class="pill pill-cag1 active" data-filter="cag" data-val="1" onclick="toggleFilter(this)">CAG 1 · Land &amp; Expand</div>
-                <div class="pill pill-cag2 active" data-filter="cag" data-val="2" onclick="toggleFilter(this)">CAG 2 · Regional Entry</div>
-                <div class="pill pill-cag3 active" data-filter="cag" data-val="3" onclick="toggleFilter(this)">CAG 3 · Enterprise Direct</div>
+                <div class="pill pill-cbg-dec active" data-filter="cbg" data-val="dec" onclick="toggleFilter(this)">Decentralized (CBG 1–2)</div>
+                <div class="pill pill-cbg-cen active" data-filter="cbg" data-val="cen" onclick="toggleFilter(this)">Centralized (CBG 3)</div>
               </div>
             </div>
             <div class="filter-group">
@@ -1219,12 +1682,19 @@ function handleFile(file) {
                 <div class="pill pill-edb1 active" data-filter="edb" data-val="1" onclick="toggleFilter(this)">+1 Adjacent</div>
               </div>
             </div>
+            <div class="filter-group" style="flex:1;min-width:220px">
+              <div class="filter-label">Search</div>
+              <div class="search-input-wrap">
+                <span class="search-icon">⌕</span>
+                <input class="search-input" id="explorer-search" type="text" placeholder="Company, industry, HQ…" oninput="renderCompanyGrid()">
+              </div>
+            </div>
           </div>
           <div class="results-meta"><span class="results-count" id="results-count">${COMPANIES.length}</span> companies match</div>
           <div class="company-grid" id="company-grid"></div>
         `;
         // Reset filters
-        activeFilters.cag = new Set(['1','2','3']);
+        activeFilters.cbg = new Set(['dec','cen']);
         activeFilters.msk = new Set(['low','high']);
         activeFilters.edb = new Set(['-1','0','1']);
         renderCompanyGrid();
@@ -1244,7 +1714,7 @@ function parseWorkbook(wb) {
   const mainRows = XLSX.utils.sheet_to_json(mainSheet, { defval: '' });
 
   // --- Sheet 2: BIS + EDB Final ---
-  const bisSheet = wb.Sheets['BIS + EDB Final'] || wb.Sheets[wb.SheetNames[1]];
+  const bisSheet = wb.Sheets['BIS + EDBA Final'] || wb.Sheets['BIS + EDB Final'] || wb.Sheets[wb.SheetNames[1]];
   const bisRows = bisSheet ? XLSX.utils.sheet_to_json(bisSheet, { defval: '' }) : [];
   const bisMap = {};
   bisRows.forEach(r => {
@@ -1252,10 +1722,11 @@ function parseWorkbook(wb) {
     if (name) bisMap[name] = r;
   });
 
-  // --- Sheets 3+: CAG (Blue + White) ---
+  // --- Sheets 3+: CBG / CAG ---
   const cagRows = [];
   wb.SheetNames.forEach(sn => {
-    if (sn.toLowerCase().includes('cag')) {
+    const snl = sn.toLowerCase();
+    if (snl.includes('cbg') || snl.includes('cag')) {
       const rows = XLSX.utils.sheet_to_json(wb.Sheets[sn], { defval: '' });
       rows.forEach(r => cagRows.push(r));
     }
@@ -1300,9 +1771,9 @@ function parseWorkbook(wb) {
 
     const msk = toInt(col(row, 'MSK RISK', 'MSK Risk', 'msk', 'MSK'));
     const bis = toInt(col(row, 'BIS', 'bis'));
-    const edbRaw = col(row, 'EDHB', 'EDB', 'edb', 'EDHB Score');
+    const edbRaw = col(row, 'EDBA', 'EDHB', 'EDB', 'edb', 'EDBA Score', 'EDHB Score');
     const edb = toInt(edbRaw);
-    const cag = toInt(col(row, 'CAG', 'cag', 'CBG'));
+    const cag = toInt(col(row, 'CBG', 'cbg', 'CAG', 'cag'));
 
     // BIS sheet enrichment
     const bisData = bisMap[name] || {};
@@ -1316,11 +1787,33 @@ function parseWorkbook(wb) {
     // CAG sheet enrichment
     const cagData = cagMap[name] || {};
     const buyer = (col(cagData,
-      'Most senior benefits role(s)', 'Most senior benefits role found',
-      'Most senior benefits role', 'Buyer', 'buyer',
-      'Most Senior Benefits Role') || 'Not identified').toString().trim();
+      'Most Senior Benefits Role Found', 'Most senior benefits role found',
+      'Most senior benefits role(s)', 'Most senior benefits role',
+      'Most Senior Benefits Role', 'Buyer', 'buyer') || 'Not identified').toString().trim();
 
-    companies.push({ rank: r, name, hq, industry, employees, msk, bis, edb, cag, buyer, program, tool });
+    // BIS sheet competitor fields
+    const bisRow = bisMap[name] || {};
+    const competitor = (col(bisRow,
+      'Competitor name', 'Competitor Name', 'competitor name',
+      'Competitor') || '').toString().trim();
+    const competitorCat = (col(bisRow,
+      'Competitive category (product)', 'Competitive category',
+      'competitive category') || '').toString().trim();
+    const bisEvidence = (col(bisRow,
+      'Key Evidence (BIS)', 'Key Evidence BIS', 'Key evidence (BIS)') || '').toString().trim();
+    const bisSource = (col(bisRow,
+      'Source', 'source') || '').toString().trim();
+    const edbEvidence = (col(bisRow,
+      'Key evidence', 'Key Evidence', 'key evidence') || '').toString().trim();
+
+    // CBG sheet enrichment
+    const cbgRow = cagMap[name] || {};
+    const cbgEvidence = (col(cbgRow,
+      'Key evidence', 'Key Evidence', 'key evidence') || '').toString().trim();
+    const cbgSource = (col(cbgRow,
+      'Original/source URL(s)', 'Original/source URL', 'Source URL', 'source url', 'Source') || '').toString().trim();
+
+    companies.push({ rank: r, name, hq, industry, employees, msk, bis, edb, cag, buyer, program, tool, competitor, competitorCat, bisEvidence, bisSource, edbEvidence, cbgEvidence, cbgSource });
   });
 
   return companies.filter(c => c.name && c.cag > 0);
@@ -1407,13 +1900,13 @@ function parseWorkbook(wb) {
 .swapper-msk-low .swapper-dot.active{background:#2563eb}
 .swapper-msk-low .swapper-btn{border-color:#93c5fd;color:#1e3a8a}
 
-.swapper-msk-high{background:#fff4f2;border-color:#fca5a5}
-.swapper-msk-high .swapper-header{background:#fee2dc}
-.swapper-msk-high .swapper-label{color:#7f1d1d}
-.swapper-msk-high .swapper-variant-title{color:#b91c1c}
-.swapper-msk-high .swapper-body{background:#fff4f2}
-.swapper-msk-high .swapper-dot.active{background:#dc2626}
-.swapper-msk-high .swapper-btn{border-color:#fca5a5;color:#7f1d1d}
+.swapper-msk-high{background:#fff7ed;border-color:#fdba74}
+.swapper-msk-high .swapper-header{background:#fed7aa}
+.swapper-msk-high .swapper-label{color:#7c2d12}
+.swapper-msk-high .swapper-variant-title{color:#9a3412}
+.swapper-msk-high .swapper-body{background:#fff7ed}
+.swapper-msk-high .swapper-dot.active{background:#ea7714}
+.swapper-msk-high .swapper-btn{border-color:#fdba74;color:#7c2d12}
 
 .swapper-edb-n1{background:#fff5f5;border-color:#fca5a5}
 .swapper-edb-n1 .swapper-header{background:#fee2e2}
@@ -1475,9 +1968,9 @@ function parseWorkbook(wb) {
 
 <script>
 // ---- BUILDER STATE ----
-const builderState = {cag:2, msk:'high', edb:'+1'};
-const swapperIndices = {cag:1, msk:0, edb:1};
-const CAG_ORDER = [1,2,3];
+const builderState = {cbg:'dec', msk:'high', edb:'+1'};
+const swapperIndices = {cag:0, msk:1, edb:1};
+const CAG_ORDER = ['dec','cen'];
 const MSK_ORDER = ['low','high'];
 const EDB_ORDER = ['-1','0','+1'];
 
@@ -1528,21 +2021,55 @@ function renderDocSection(s){
         <span class="doc-section-title">${s.title}</span>
         ${badge}
       </div>
-      <div class="doc-section-body">${s.content}</div>
+      <div class="doc-section-body">${(!s.modular&&window._builderContent?.[s.id])?renderBlocks(window._builderContent[s.id].blocks):s.content}</div>
     </div>
   `;
 }
 
-function swapModule(type, dir){
+function swapModule(type, dir, ctx){
+  ctx = ctx || '';
   const orders = {cag:CAG_ORDER, msk:MSK_ORDER, edb:EDB_ORDER};
   const order = orders[type];
   let idx = swapperIndices[type];
   idx = Math.max(0, Math.min(order.length-1, idx+dir));
   swapperIndices[type] = idx;
-  const content = document.getElementById(`swapper-content-${type}`);
-  if(content){ content.classList.add('fading'); setTimeout(()=>{ updateSwapper(type); content.classList.remove('fading'); }, 180); }
-  else { updateSwapper(type); }
+  // Update all swapper instances for this type (may have multiple contexts)
+  updateSwapperAllContexts(type, idx, order);
   updateSwapperControls(type);
+}
+
+function updateSwapperAllContexts(type, idx, order){
+  const key = order[idx];
+  const contexts = ['', 'stakeholders', 'motion', 'messaging', 'statements']; // known contexts
+  const allClasses = ['swapper-cag-1','swapper-cag-2','swapper-cag-3','swapper-msk-low','swapper-msk-high','swapper-edb-n1','swapper-edb-0','swapper-edb-p1'];
+  contexts.forEach(ctx => {
+    const uid = ctx ? `${type}-${ctx}` : type;
+    const content = document.getElementById(`swapper-content-${uid}`);
+    const titleEl = document.getElementById(`swapper-title-${uid}`);
+    const wrap = document.getElementById(`swapper-wrap-${uid}`);
+    const dots = document.querySelectorAll(`#swapper-dots-${uid} .swapper-dot`);
+    if(content){
+      content.classList.add('fading');
+      setTimeout(()=>{
+        content.innerHTML = getSwapperBodyWithCtx(type, key, ctx);
+        content.classList.remove('fading');
+      }, 180);
+    }
+    if(titleEl){
+      const m = type==='cag'?(MODULES.cbg[key]||MODULES.cbg['cen']):type==='msk'?MODULES.msk[key]:MODULES.edb[key];
+      titleEl.textContent = m.label;
+    }
+    if(wrap){
+      wrap.classList.remove(...allClasses);
+      wrap.classList.add(swapperClass(type, key));
+    }
+    dots.forEach((d,i)=>d.classList.toggle('active', i===idx));
+  });
+  // Also refresh CBG objection block
+  if(type==='cag'){
+    const ob = document.getElementById('cbg-objection-block');
+    if(ob) ob.innerHTML = getCBGObjectionHTML();
+  }
 }
 
 function updateSwapper(type){
@@ -1554,7 +2081,7 @@ function updateSwapper(type){
   const wrap = document.getElementById(`swapper-wrap-${type}`);
   if(content) content.innerHTML = getSwapperBody(type, key);
   if(titleEl){
-    const m = type==='cag'?MODULES.cag[key]:type==='msk'?MODULES.msk[key]:MODULES.edb[key];
+    const m = type==='cag'?(MODULES.cbg[key]||MODULES.cbg['cen']):type==='msk'?MODULES.msk[key]:MODULES.edb[key];
     titleEl.textContent = m.label;
   }
   if(wrap){
@@ -1569,285 +2096,621 @@ function updateSwapper(type){
 function updateSwapperControls(type){
   const orders = {cag:CAG_ORDER, msk:MSK_ORDER, edb:EDB_ORDER};
   const idx = swapperIndices[type];
-  const btnL = document.getElementById(`swapper-prev-${type}`);
-  const btnR = document.getElementById(`swapper-next-${type}`);
-  if(btnL) btnL.disabled = idx===0;
-  if(btnR) btnR.disabled = idx===orders[type].length-1;
+  const order = orders[type];
+  const atStart = idx === 0;
+  const atEnd   = idx === order.length - 1;
+  // Update buttons across all possible contexts for this type
+  const allCtx = ['', 'stakeholders', 'motion', 'messaging', 'statements'];
+  allCtx.forEach(ctx => {
+    const uid = ctx ? `${type}-${ctx}` : type;
+    const btnL = document.getElementById(`swapper-prev-${uid}`);
+    const btnR = document.getElementById(`swapper-next-${uid}`);
+    if(btnL) btnL.disabled = atStart;
+    if(btnR) btnR.disabled = atEnd;
+  });
 }
 
 function swapperClass(type, key){
-  if(type==='cag') return `swapper-cag-${key}`;
+  if(type==='cag') return key==='cen'?'swapper-cag-3':'swapper-cag-1';
   if(type==='msk') return key==='low'?'swapper-msk-low':'swapper-msk-high';
   if(type==='edb') return key==='-1'?'swapper-edb-n1':key==='0'?'swapper-edb-0':'swapper-edb-p1';
   return '';
 }
 
-function buildSwapper(type, label){
+function buildSwapper(type, label, ctx){
   const orders = {cag:CAG_ORDER, msk:MSK_ORDER, edb:EDB_ORDER};
   const order = orders[type];
   const idx = swapperIndices[type];
   const key = order[idx];
-  const m = type==='cag'?MODULES.cag[key]:type==='msk'?MODULES.msk[key]:MODULES.edb[key];
+  const m = type==='cag'?(MODULES.cbg[key]||MODULES.cbg['cen']):type==='msk'?MODULES.msk[key]:MODULES.edb[key];
   const cls = swapperClass(type, key);
-  const dots = order.map((k,i)=>`<span class="swapper-dot${i===idx?' active':''}" onclick="swapModule('${type}',${i-idx})"></span>`).join('');
+  const dots = order.map((k,i)=>`<span class="swapper-dot${i===idx?' active':''}" onclick="swapModule('${type}',${i-idx},'${ctx||''}')"></span>`).join('');
+  const uid = ctx ? `${type}-${ctx}` : type;
   return `
-    <div class="module-swapper ${cls}" id="swapper-wrap-${type}">
+    <div class="module-swapper ${cls}" id="swapper-wrap-${uid}" data-ctx="${ctx||''}">
       <div class="swapper-header">
         <span class="swapper-label">${label}</span>
         <div class="swapper-controls">
-          <div class="swapper-indicator" id="swapper-dots-${type}">${dots}</div>
-          <span class="swapper-variant-title" id="swapper-title-${type}">${m.label}</span>
-          <button class="swapper-btn" id="swapper-prev-${type}" onclick="swapModule('${type}',-1)" ${idx===0?'disabled':''}>‹</button>
-          <button class="swapper-btn" id="swapper-next-${type}" onclick="swapModule('${type}',1)" ${idx===order.length-1?'disabled':''}>›</button>
+          <div class="swapper-indicator" id="swapper-dots-${uid}">${dots}</div>
+          <span class="swapper-variant-title" id="swapper-title-${uid}">${m.label}</span>
+          <button class="swapper-btn" id="swapper-prev-${uid}" onclick="swapModule('${type}',-1,'${ctx||''}')" ${idx===0?'disabled':''}>‹</button>
+          <button class="swapper-btn" id="swapper-next-${uid}" onclick="swapModule('${type}',1,'${ctx||''}')" ${idx===order.length-1?'disabled':''}>›</button>
         </div>
       </div>
       <div class="swapper-body">
-        <div class="swapper-content" id="swapper-content-${type}">${getSwapperBody(type,key)}</div>
+        <div class="swapper-content" id="swapper-content-${uid}">${getSwapperBodyCtx(type,key,ctx||'')}</div>
       </div>
     </div>
   `;
 }
 
-function getSwapperBody(type, key){
+function getSwapperBodyCtx(type, key, ctx){
+  // Temporarily set context on a known element so getSwapperBody can read it
+  const fakeWrap = {dataset:{ctx:ctx}};
+  window._swapCtx = ctx;
+  const result = getSwapperBodyWithCtx(type, key, ctx);
+  return result;
+}
+
+function getSwapperBodyWithCtx(type, key, ctx){
+
+  // ── CAG: STAKEHOLDER MAP + CHANNEL STRATEGY + SALES MOTION ─────────────
   if(type==='cag'){
-    const m = MODULES.cag[key];
-    return `
-      <div class="doc-label">Entry Motion</div>
-      <div class="doc-p">${m.entry}</div>
-      <div class="doc-label">Buyer Persona</div>
-      <div class="doc-p">${m.buyer}</div>
-      <div class="doc-label">Outreach Sequence</div>
-      <div class="doc-p">${m.outreach}</div>
-      <div class="doc-label">Deal Cycle</div>
-      <div class="doc-p">${m.cycle}</div>
-      <div class="doc-label">Pilot Design</div>
-      <div class="doc-p">${m.pilot}</div>
-      <div class="doc-label">Expansion Path</div>
-      <div class="doc-p">${m.expansion}</div>
-      <div class="doc-label">Key Risk</div>
-      <div class="doc-p">${m.risk}</div>
-      <div class="doc-label">Rep Investment</div>
-      <div class="doc-p" style="margin-bottom:14px">${m.rep}</div>
-    `;
+    const m = MODULES.cbg[key] || MODULES.cbg['cen'];
+    if(m?._blocks) return renderModuleBlocks(m._blocks)+'<div style="height:14px"></div>';
+
+    // Stakeholder map content (used in both contexts)
+    const stakeholderCen = `
+      <div class="doc-label">Stakeholder Map — Centralized</div>
+      <table class="doc-table">
+        <thead><tr><th>Role</th><th>Needs</th><th>Pain</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Global VP/Director of Benefits</strong></td><td>Enterprise business case, peer benchmarking, consolidated vendor narrative, Finance-ready ROI</td><td>Fragmented vendors, inconsistent employee experience, no unified data</td></tr>
+          <tr><td><strong>Global Procurement / Legal</strong></td><td>Compliance answers, data security posture, GDPR and cross-border transfer evidence, vendor standardization alignment</td><td>—</td></tr>
+          <tr><td><strong>CHRO</strong></td><td>Visibility into strategic impact, employee experience consistency, enterprise adoption progress</td><td>—</td></tr>
+          <tr><td><strong>Global CFO</strong></td><td>ROI proof, cost efficiency, vendor consolidation value, measurable enterprise outcomes</td><td>—</td></tr>
+        </tbody>
+      </table>`;
+    const stakeholderDec = `
+      <div class="doc-label">Stakeholder Map — Decentralized</div>
+      <table class="doc-table">
+        <thead><tr><th>Role</th><th>Needs</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Regional / Country Benefits Lead</strong></td><td>Outcome evidence + business case</td></tr>
+          <tr><td><strong>Regional CFO / Finance Controller</strong></td><td>ROI proof, absenteeism reduction, productivity recovered, lower healthcare claims</td></tr>
+          <tr><td><strong>HR Partner</strong></td><td>Easy launch + clear member journey</td></tr>
+          <tr><td><strong>Regulatory Gatekeepers</strong></td><td>Compliance answers</td></tr>
+          <tr><td><strong>HQ Escalation Contact</strong></td><td>Visibility into regional progress before expansion conversion</td></tr>
+        </tbody>
+      </table>`;
+
+    // §01 Stakeholder Mapping — map only
+    if(ctx === 'stakeholders'){
+      return (key==='cen' ? stakeholderCen : stakeholderDec) + '<div style="height:14px"></div>';
+    }
+
+    // §06 GTM Motion — full 6A + 6B
+    if(key==='cen'){
+      return `
+        <div class="doc-label" style="margin-top:1.25rem">6A — Channel Strategy</div>
+        <div class="doc-p">Direct enterprise sale. Field team engages the global buyer directly. Single contract covering the full deployment scope. No country-by-country selling; no broker intermediary required at the primary contact stage.</div>
+
+        <div class="doc-label" style="margin-top:1.25rem">6B — Sales Motion (Full Cycle: 6–12 months)</div>
+        <div class="doc-p">The centralized motion is an enterprise direct sale. The centralized governance structure is the primary asset: the global buyer has mandate and budget to make an enterprise-wide decision without country-by-country approval. A pilot may not be required — where the commercial case is strong and the sponsor has unambiguous authority, Sword can move directly to a global enterprise agreement. Where a pilot is run, it is scoped from Day 1 as Phase 1 of the global rollout.</div>
+
+        <div class="doc-label" style="margin-top:1rem">Phase 1 — Discovery, Solution Design & Procurement (3–6 months)</div>
+        <div class="doc-highlight"><p><strong>Exit Criteria:</strong> Sponsor authority confirmed · Procurement and Legal engaged · Enterprise business case drafted · Qualified enterprise ACV · Global deployment scope agreed in writing · Expansion pathway documented and counter-signed · Data security and cross-border compliance passed · Contract executed.</p></div>
+        <div class="doc-label">Discovery Questionnaire — 5 Areas</div>
+        <ul class="doc-bullets">
+          <li><strong>Population & workforce:</strong> Global eligible employee count by region; workforce demographics; known regional health concerns</li>
+          <li><strong>Current state of benefits:</strong> Existing MSK and MH vendors by region (related to EDHB); current vendor contract end dates; pain points with current fragmented global setup</li>
+          <li><strong>Decision structure:</strong> Confirmation of sponsor authority for global agreement; Procurement and Legal process and timeline; HQ approval thresholds</li>
+          <li><strong>Strategic context:</strong> Top 3 benefit priorities for next 12 months; CHRO or CFO-level mandates relevant to benefits consolidation; recent workforce health incidents that elevated MSK or MH visibility</li>
+          <li><strong>Pilot readiness (if applicable):</strong> Preferred Phase 1 region or BU; data access for ROI measurement; metrics the buyer considers credible at enterprise level</li>
+        </ul>
+
+        <div class="doc-label" style="margin-top:1rem">Phase 2 — Pilot / Phase 1 Rollout (3–6 months)</div>
+        <div class="doc-highlight"><p><strong>Exit Criteria:</strong> Phase 1 population enrolled · Outcome data collected for both Thrive and Mind · Enterprise ROI report drafted.</p></div>
+        <div class="doc-p">Single BU or priority country, 1,000–5,000 employees, scoped as Phase 1 of the global rollout. Expansion pathway pre-negotiated and counter-signed before Phase 1 closes.</div>
+        <div class="doc-label">Phase 1 Region/BU Selection</div>
+        <div class="doc-p" style="font-family:monospace;background:var(--surface2);padding:10px 14px;border-radius:var(--radius);border:1px solid var(--border);font-size:12px">(Headcount concentration × 30%) + (MSK/MH risk profile × 25%) + (Sword existing footprint × 25%) + (Regulatory friction, negative × 15%) + (Reference availability × 5%)</div>
+
+        <div class="doc-label" style="margin-top:1rem">Phase 3 — Global Rollout & Expansion (Ongoing)</div>
+        <div class="doc-highlight"><p><strong>Exit Criteria:</strong> Each contracted region activated per rollout sequence · Enterprise ROI report delivered · Next region or second product activated under existing contract.</p></div>
+
+        <div class="doc-label" style="margin-top:1rem">KPIs — Centralized-Specific</div>
+        <ul class="doc-bullets">
+          <li>Finance-ready ROI calculation: claims-based actuarial framework, propensity matching, difference-in-difference analysis</li>
+          <li>Absenteeism cost reduction — days recovered per enrolled member</li>
+          <li>Surgery avoidance rate</li>
+          <li>Employer savings per member per year — Sword benchmark: <strong>$3,177/member/year</strong></li>
+          <li>Region activation rate — % of contracted regions activated within 24 months. Target: ≥80%</li>
+        </ul>
+        <div style="height:14px"></div>
+      `;
+    } else {
+      return `
+        <div class="doc-label" style="margin-top:1.25rem">6A — Channel Strategy</div>
+        <div class="doc-p">Targeted direct selling with broker awareness. Pilots as the international entry mechanism.</div>
+
+        <div class="doc-label" style="margin-top:1.25rem">6B — Sales Motion (Full Cycle: 10–23 months)</div>
+        <div class="doc-p">The decentralized motion is a land-and-expand sale. The "land" (always with the bundle) is a single BU or region of a multinational; the "expand" is geographic + population expansion. A pilot project may be required.</div>
+
+        <div class="doc-label" style="margin-top:1rem">Phase 1 — First Contact, Pilot Proposal & Procurement (4–10 months)</div>
+        <div class="doc-highlight"><p><strong>Exit Criteria:</strong> Stakeholder map complete · GTM data collected · Primary business case drafted · Qualified bundle ACV · Bundle pilot scope agreed in writing · Expansion triggers documented and counter-signed · Vendor onboarding complete · Data security and works council passed · Contract executed.</p></div>
+        <div class="doc-label">Beachhead Questionnaire — 5 Areas</div>
+        <ul class="doc-bullets">
+          <li><strong>Population & workforce:</strong> Eligible employee count by region/country; workforce demographics; known regional health concerns</li>
+          <li><strong>Current state of benefits:</strong> Existing MSK and MH vendors by region (related to EDHB); current vendor contract end dates; pain points with current setup</li>
+          <li><strong>Decision structure:</strong> Who has signing authority for a regional pilot; what is the regional procurement process</li>
+          <li><strong>Strategic context:</strong> Top 3 benefit priorities for next 12 months; recent workforce health incidents related to MSK or MH</li>
+          <li><strong>Pilot readiness:</strong> Data access for ROI measurement; preferred pilot timing; metrics the buyer would consider credible</li>
+        </ul>
+
+        <div class="doc-label" style="margin-top:1rem">Phase 2 — Pilot (3–6 months)</div>
+        <div class="doc-highlight"><p><strong>Exit Criteria:</strong> Pilot population enrolled · Outcome data collected for both Thrive and Mind.</p></div>
+        <div class="doc-p">The 3-month floor allows Thrive and Mind to demonstrate outcomes and engagement curves to stabilize. Beyond 6 months it becomes a contract.</div>
+        <div class="doc-label">Region / Country / BU Selection</div>
+        <div class="doc-p" style="font-family:monospace;background:var(--surface2);padding:10px 14px;border-radius:var(--radius);border:1px solid var(--border);font-size:12px">(Headcount concentration × 30%) + (MSK/MH risk profile × 25%) + (Sword existing footprint × 25%) + (Regulatory friction, negative × 15%) + (Reference availability × 5%)</div>
+
+        <div class="doc-label" style="margin-top:1rem">Phase 3 — ROI Validation & Expansion (6 months–1 year)</div>
+        <div class="doc-highlight"><p><strong>Exit Criteria:</strong> Bundle ROI report delivered · HQ briefing completed · Expanded population or next region contract signed.</p></div>
+
+        <div class="doc-label" style="margin-top:1rem">Pilot KPIs</div>
+        <ul class="doc-bullets">
+          <li><strong>Enrolment rate</strong> — Industry benchmark: 5–10%; leading solutions: 20–30%; Sword target: >75%</li>
+          <li><strong>Engagement rate</strong> — Thrive Global, Mind Global and Dual-Product; weekly active users at 30 days, mid-pilot and end of pilot</li>
+          <li><strong>Sustained engagement</strong> — measured at end of pilot as % of total employees enrolled</li>
+          <li><strong>Retention rates</strong> — measured at 30 days, mid-pilot and end of pilot</li>
+          <li><strong>Clinical outcomes</strong> — measured mid-pilot and sustained outcomes at end</li>
+          <li><strong>Self-reported productivity recovery</strong> — measured at end of pilot</li>
+          <li><strong>Net Promoter Score (NPS)</strong></li>
+        </ul>
+        <div style="height:14px"></div>
+      `;
+    }
   }
-  if(type==='msk'){
-    const m = MODULES.msk[key];
-    return `
-      <div class="doc-highlight"><p>${m.headline}</p></div>
-      <div class="doc-label">Primary Pain</div>
-      <div class="doc-p">${m.pain}</div>
-      <div class="doc-label">Narrative Angle</div>
-      <div class="doc-p">${m.narrative}</div>
-      <div class="doc-label">Proof Points</div>
-      <ul class="doc-bullets" style="margin-bottom:14px">${m.proofpoints.map(p=>`<li>${p}</li>`).join('')}</ul>
-      <div class="doc-label">CHRO Message</div>
-      <div class="doc-p">${m.chro}</div>
-      <div class="doc-label">CFO Message</div>
-      <div class="doc-p" style="margin-bottom:14px">${m.cfo}</div>
-    `;
-  }
+
+    // ── EDB: COMPETITIVE LANDSCAPE + MESSAGING OPENING ─────────────────────
   if(type==='edb'){
     const m = MODULES.edb[key];
+    if(m?._blocks) return renderModuleBlocks(m._blocks)+'<div style="height:14px"></div>';
+
+    // Determine which section is being rendered (competitive vs messaging)
+    // We use a data attribute on the swapper wrapper to distinguish context
+    // ctx passed as parameter
+
+    if(ctx === 'messaging'){
+      // 4b — Pre-written openings by EDB
+      const openings = {
+        '-1': {
+          label:'EDB –1 — Competitor Installed',
+          text:'You already have a digital MSK solution. The question is whether it\'s delivering strong enough outcomes. Industry completion rates are 30–50% versus Sword\'s 81%, with care starting in 6.3 days.'
+        },
+        '0': {
+          label:'EDB 0 — Greenfield',
+          text:'MSK is the leading cause of disability, but most employers still rely on slow, fragmented care. Traditional PT often takes 2–4 weeks to start, has 30–50% completion rates, and is usually too late to prevent escalation. Sword delivers MSK care in 6.3 days with 81% completion, driving ~$3,177 per member per year in savings. It directly targets one of the highest-cost claims categories.'
+        },
+        '+1': {
+          label:'EDB +1 — Adjacent',
+          text:'You already invest in digital health, so the infrastructure and buy-in are in place. The gap is MSK-specific clinical depth. Most platforms focus on general wellbeing, not the high-cost MSK conditions driving claims and absence. Sword adds a dedicated MSK layer with fast integration via HRIS and SSO.'
+        }
+      };
+      const o = openings[key] || openings['0'];
+      return `
+        <div class="doc-highlight"><p><strong>${o.label}</strong><br>${o.text}</p></div>
+        <div style="height:14px"></div>
+      `;
+    }
+
+    // Default context: §02 Competitive Landscape
+    const texts = {
+      '-1': '[Company Name] has at least one employer-sponsored digital health benefit confirmed, and the identified solution is a direct MSK and/or Mental Health competitor: [Competitor\'s Name]. This account requires a displacement conversation.',
+      '0':  '[Company Name] has no confirmed digital health benefit in place. This is a category creation conversation — the priority is educating the buyer on MSK and Mental Health as a cost driver and building the business case for Thrive Global and Mind from scratch.',
+      '+1': '[Company Name] has a confirmed digital health benefit in place, but no direct MSK and Mental Health competitor has been identified. Position Thrive Global and Mind as the natural extension of their existing wellbeing stack, not a displacement.'
+    };
+    const labels = {'-1':'EDB –1 — Competitor', '0':'EDB 0 — Greenfield', '+1':'EDB +1 — Adjacent'};
     return `
-      <div class="doc-label">Situation</div>
-      <div class="doc-p">${m.context}</div>
-      <div class="doc-label">Strategic Framing</div>
-      <div class="doc-p">${m.framing}</div>
-      <div class="doc-label">Entry Angle</div>
-      <div class="doc-p">${m.entry}</div>
-      <div class="doc-label">Key Messages</div>
-      <ul class="doc-bullets">${m.messages.map(p=>`<li>${p}</li>`).join('')}</ul>
-      <div class="doc-label">Objection Handling</div>
-      ${m.objections.map(o=>`<div class="doc-objection"><div class="doc-objection-q">"${o.q}"</div><div class="doc-objection-a">${o.a}</div></div>`).join('')}
+      <div class="doc-p"><strong>${labels[key] || 'EDB'}</strong></div>
+      <div class="doc-highlight"><p>${texts[key] || ''}</p></div>
       <div style="height:14px"></div>
     `;
   }
+
+  // ── MSK: POSITIONING (4a) + STATEMENTS (4b) ────────────────────────────
+  if(type==='msk'){
+    const m = MODULES.msk[key];
+    if(m?._blocks) return renderModuleBlocks(m._blocks)+'<div style="height:14px"></div>';
+
+    // Check context: positioning (4a) vs statements (4b)
+    // ctx passed as parameter
+
+    if(ctx === 'statements'){
+      // 4b — Statements 1/2/3 by MSK
+      if(key==='high'){
+        return `
+          <div class="doc-label">Statement 1 — Standard Opening</div>
+          <div class="doc-p">MSK affects 1.71B people and is the leading cause of global disability. In [industry] workforces like [Company Name], it drives claims, surgeries, and delayed recovery. Sword Thrive delivers AI-powered digital PT in 6.3 days with 81% completion (vs 30–50%), generating ~$3,177 per member per year in savings.</div>
+          <div class="doc-label" style="margin-top:1rem">Statement 2 — Finance-First Language</div>
+          <div class="doc-p">MSK is the largest healthcare cost driver in physically demanding workforces, concentrated in a small number of high-cost claimants across surgery, treatment, medication, and productivity loss. Sword reduces MSK spend by ~$3,177 per member per year (2,700+ member study), delivering 3.2× ROI. For [Company Name], this equals ~$[X] annual impact, validated in a 12-week pilot.</div>
+          <div class="doc-label" style="margin-top:1rem">Statement 3 — Operations-First Language</div>
+          <div class="doc-p" style="margin-bottom:14px">In [industry], MSK is a workforce capacity constraint. Each injury removes skilled labour and creates operational gaps. Sword reduces time to care to 6.3 days (vs 2–4 weeks), achieves 81% completion, and drives ~$2,916 per member per year in productivity gains. Predict identifies 73% of MSK surgeries 6+ months in advance.</div>
+        `;
+      } else {
+        return `
+          <div class="doc-label">Statement 1 — Standard Opening</div>
+          <div class="doc-p">Back and joint discomfort is the world's most common health complaint, affecting ~2 billion people — including desk-based workforces like [Company Name]'s, where it quietly drains energy, focus, and engagement. Thrive Global delivers AI-guided movement support through each employee's own smartphone, consistently across 150+ countries, helping people avert physical strain before it affects their work.</div>
+          <div class="doc-label" style="margin-top:1rem">Statement 2 — People-First Language</div>
+          <div class="doc-p">For [Company Name], wellbeing is a retention and talent story. Employees increasingly expect tangible, daily support — not a once-a-year perk. Thrive Global gives every employee, in every country, the same AI-personalised movement experience: visible care that strengthens the employee value proposition, supports engagement, and protects long-term retention.</div>
+          <div class="doc-label" style="margin-top:1rem">Statement 3 — Productivity-First Language</div>
+          <div class="doc-p" style="margin-bottom:14px">In sedentary and hybrid workforces, MSK discomfort shows up as presenteeism — people at their desks but below capacity — and as 14 working days per employee lost globally each year to MSK-related absence. Thrive Global helps employees address strain proactively through expert-designed movement with real-time feedback, protecting focus, energy, and output at an expected 3.2× ROI.</div>
+        `;
+      }
+    }
+
+    // Default context: §03 4a — Positioning by MSK (no CHRO/CFO messaging)
+    if(key==='high'){
+      return `
+        <div class="doc-label">Target Industries</div>
+        <div class="doc-p">Logistics · Manufacturing · Retail · Construction · Healthcare · Food Processing · Mining · Transportation · Automotive · Industrial</div>
+        <div class="doc-label" style="margin-top:1rem">Primary Pain</div>
+        <div class="doc-p">Measurable, material absenteeism and productivity loss from MSK conditions. This workforce lifts, bends, stands, drives, and operates machinery. MSK is not a background risk — it is a line item in HR reporting, a driver of insurance claims, and a known contributor to workforce attrition in roles that are expensive to replace. The pain is quantifiable and the cost of inaction is visible.</div>
+        <div class="doc-label" style="margin-top:1rem">Narrative Angle</div>
+        <div class="doc-p">Sword Health delivers the clinical outcomes that make the MSK cost problem go away. Not lower. Away. With independently validated ROI of 3–5× and measurable reductions in surgery intent, absenteeism, and disability claims, the business case is not aspirational — it is actuarial. For a company carrying a large operational workforce, the math is not close.</div>
+        <div class="doc-highlight"><p><strong>Headline Message</strong><br>Your workforce's most expensive health problem is also its most preventable. Sword Health has the clinical evidence to prove it.</p></div>
+        <div class="doc-label">Proof Points</div>
+        <ul class="doc-bullets" style="margin-bottom:14px">
+          <li>MSK conditions are the leading driver of healthcare claims and disability costs in physical workforces — typically 30–40% of total healthcare spend</li>
+          <li>Surgery avoidance alone generates measurable ROI — the average knee or back surgery avoided saves $25,000–$50,000 in direct and indirect costs</li>
+          <li>Absenteeism reduction is measurable at the cohort level within 90 days of program activation</li>
+          <li>A physical workforce with high MSK burden has a hidden presenteeism problem that dwarfs the absenteeism data — Sword Health addresses both</li>
+        </ul>
+      `;
+    } else {
+      return `
+        <div class="doc-label">Target Industries</div>
+        <div class="doc-p">Banking · Financial Services · Software · Technology · Consulting · Insurance · Legal · Professional Services</div>
+        <div class="doc-label" style="margin-top:1rem">Primary Pain</div>
+        <div class="doc-p">Talent competition, employer brand differentiation, and the invisible productivity drag of presenteeism in high-value knowledge workers. The MSK burden is lower in absolute terms but the cost-per-affected-employee is disproportionately high — a knowledge worker in pain or at reduced cognitive capacity represents significant lost value that never appears in an absenteeism report.</div>
+        <div class="doc-label" style="margin-top:1rem">Narrative Angle</div>
+        <div class="doc-p">Sword Health is not a factory floor solution. It is a workforce performance platform for the employees your competitors are trying to hire. In a talent market where benefits are a differentiator, offering clinically validated MSK and mental health support is a statement about the kind of employer you are.</div>
+        <div class="doc-highlight"><p><strong>Headline Message</strong><br>Your best people are working through pain you cannot see. Sword Health makes that visible — and fixable.</p></div>
+        <div class="doc-label">Proof Points</div>
+        <ul class="doc-bullets" style="margin-bottom:14px">
+          <li>MSK conditions are the leading cause of disability and productivity loss even in office populations — sedentary work creates its own strain pattern</li>
+          <li>Mental health and physical health are co-morbid — treating one without the other leaves the majority of the burden unaddressed</li>
+          <li>Benefits sophistication is now a talent acquisition signal — candidates evaluate health support as a proxy for how much the company values them</li>
+          <li>EAP and mental health apps alone leave physical health unaddressed — a fragmented approach produces fragmented results</li>
+        </ul>
+      `;
+    }
+  }
+
   return '';
 }
 
 function getBuilderSections(){
   return [
+
+    // ── 01 STAKEHOLDER MAPPING ────────────────────────────────────────────
     {
-      id:'target', num:'01', title:'Target Customer Profile', modular:false,
+      id:'stakeholders', num:'01', title:'Stakeholder Mapping', modular:true,
+      content: buildSwapper('cag','CBG — Centralized vs. Decentralized stakeholder map','stakeholders')
+    },
+
+    // ── 02 COMPETITIVE LANDSCAPE ─────────────────────────────────────────
+    {
+      id:'competitive', num:'02', title:'Competitive Landscape', modular:true,
+      content: buildSwapper('edb','EDB — Greenfield · Adjacent · Competitor')
+    },
+
+    // ── 03 POSITIONING ───────────────────────────────────────────────────
+    {
+      id:'positioning', num:'03', title:'Positioning', modular:true,
       content:`
-        <div class="doc-p">Sword Health's Thrive Global product targets large multinationals — companies with 80,000+ employees, multi-country operations, and an existing or developing mandate to invest in workforce health at scale. The product is priced at <strong>$1 per member per month</strong>, making workforce size the primary revenue driver and the primary qualification criterion.</div>
-        <div class="doc-grid-3">
-          <div class="doc-card"><div class="doc-card-label">Workforce Size</div><div class="doc-card-title">80,000+ employees</div><div class="doc-card-body">Strong fit at 150,000+. Revenue opportunity scales linearly with headcount at $1 PMPM.</div></div>
-          <div class="doc-card"><div class="doc-card-label">Geography</div><div class="doc-card-title">Multi-country operations</div><div class="doc-card-body">Minimum 3 countries. Strongest fit where at least one region has centralized benefits governance.</div></div>
-          <div class="doc-card"><div class="doc-card-label">Benefits Maturity</div><div class="doc-card-title">Active wellbeing spend</div><div class="doc-card-body">Existing employer-sponsored health investment signals buying behavior — not friction.</div></div>
-          <div class="doc-card"><div class="doc-card-label">MSK Exposure</div><div class="doc-card-title">Physical or hybrid workforce</div><div class="doc-card-body">Operational, manufacturing, logistics, or retail populations carry the highest MSK burden and strongest ROI case.</div></div>
-          <div class="doc-card"><div class="doc-card-label">Digital Readiness</div><div class="doc-card-title">HR tech stack in place</div><div class="doc-card-body">SSO-capable preferred. Existing digital benefits infrastructure accelerates deployment and enrollment.</div></div>
-          <div class="doc-card"><div class="doc-card-label">Procurement Model</div><div class="doc-card-title">Structured but not obstructive</div><div class="doc-card-body">RFP-capable with defined vendor onboarding pathways. Annual benefits renewal cycles are ideal entry windows.</div></div>
-        </div>
-        <div class="doc-label">Industries — Highest Fit</div>
-        <div class="doc-p">Logistics · Manufacturing · Retail · Healthcare · Food Processing · Construction · Automotive · Industrial · Aerospace & Defense · Pharmaceuticals</div>
-        <div class="doc-label">Industries — Secondary Fit</div>
-        <div class="doc-p">Banking & Financial Services · Technology · Consumer Goods · Telecommunications · Energy — lower MSK burden but talent competition and employer brand narrative applies.</div>
+        <div class="doc-label" style="margin-bottom:8px">Value Proposition by MSK Profile</div>
+        ${buildSwapper('msk','MSK Risk — High (2–3) vs. Low (0–1)','')}
       `
     },
+
+    // ── 04 MESSAGING ─────────────────────────────────────────────────────
     {
-      id:'problem', num:'02', title:'Problem Statement', modular:false,
+      id:'messaging', num:'04', title:'Messaging', modular:true,
       content:`
-        <div class="doc-highlight"><p>MSK conditions are the leading cause of workforce disability, absenteeism, and productivity loss globally — and the majority of enterprise benefits portfolios leave them either unaddressed or covered by low-engagement, clinically unvalidated solutions.</p></div>
-        <div class="doc-label">The Core Problem</div>
-        <div class="doc-p">Large employers carry a significant and measurable MSK burden. In physical workforces, MSK conditions account for 30–40% of total healthcare claims and drive the majority of disability days and lost productivity. In knowledge workforces, the same conditions manifest as presenteeism — employees working at reduced capacity — a cost that never appears in absenteeism data but is quantifiably larger.</div>
-        <div class="doc-label">Why It Persists</div>
-        <div class="doc-p">The current vendor landscape is fragmented. Physical health, mental health, and general wellness are handled by separate point solutions with low utilization, no unified data, and no clinically validated outcomes. EAP programs sit at 3–6% access rates. Gym subsidies don't address the clinical condition. Regional vendors deliver inconsistent experiences across geographies. The result is significant benefits spend with minimal measurable health impact.</div>
-        <div class="doc-label">The Cost of Inaction</div>
-        <div class="doc-p">For a 100,000-person workforce with typical MSK prevalence, the annual cost of untreated musculoskeletal conditions — in absenteeism, disability claims, surgery, and reduced productivity — is material enough to appear as a line item in CFO reporting. The problem does not require discovery; it requires a solution the buyer can defend to Finance.</div>
+        <div class="doc-label" style="margin-bottom:8px">4b — Pre-Written Opening by Competitive Situation (EDB)</div>
+        ${buildSwapper('edb','EDB — Opening Message','messaging')}
+        <div class="doc-label" style="margin-top:1.25rem;margin-bottom:8px">4b — Messaging Statements by MSK Profile</div>
+        <div style="margin-top:4px">${buildSwapper('msk','MSK Risk — Statements 1 / 2 / 3','statements')}</div>
       `
     },
+
+    // ── 05 PRICING ───────────────────────────────────────────────────────
     {
-      id:'positioning', num:'03', title:'Brand & Product Positioning', modular:false,
+      id:'pricing', num:'05', title:'Pricing & Commercial Structure', modular:false,
       content:`
-        <div class="doc-label">Brand-Level Positioning</div>
-        <div class="doc-p"><strong>Audience:</strong> CHRO, CFO, Executive Leadership</div>
-        <div class="doc-highlight"><p>Sword Health is the world's leading digital musculoskeletal health company — the only platform that predicts, prevents, and treats physical and mental health conditions at global enterprise scale, replacing fragmented point solutions with a single, outcomes-proven system.</p></div>
-        <div class="doc-label">Product-Level Positioning — Thrive Global</div>
-        <div class="doc-p"><strong>Audience:</strong> Global Benefits, Total Rewards, HR Operations, Procurement</div>
-        <div class="doc-highlight"><p>Thrive Global is a unified digital health platform delivering clinically validated MSK support and always-on mental health care to employees in any country — one contract, one integration, one measurable outcome.</p></div>
-        <div class="doc-grid-3">
-          <div class="doc-card"><div class="doc-card-label">Pillar 1</div><div class="doc-card-title">Proven ROI at scale</div><div class="doc-card-body">Independently validated 3–5× ROI. A CFO-ready business case that withstands procurement scrutiny.</div></div>
-          <div class="doc-card"><div class="doc-card-label">Pillar 2</div><div class="doc-card-title">Workforce productivity</div><div class="doc-card-body">Measurable absenteeism reduction and presenteeism recovery. Clinical outcomes, not engagement theater.</div></div>
-          <div class="doc-card"><div class="doc-card-label">Pillar 3</div><div class="doc-card-title">Global simplification</div><div class="doc-card-body">One vendor. One contract. Multi-country deployment. Replaces 3–6 fragmented regional vendors.</div></div>
-        </div>
-      `
-    },
-    {
-      id:'narrative', num:'04', title:'Value Proposition & Narrative', modular:true,
-      content: buildSwapper('msk','MSK Narrative — swap to preview Low (0–1) vs. High (2–3)')
-    },
-    {
-      id:'stakeholders', num:'05', title:'Stakeholder Map', modular:false,
-      content:`
-        <div class="doc-p">Sword Health deals involve three distinct stakeholders with different motivations, different pain points, and different entry triggers. All three must be engaged — but in the right sequence and with the right message.</div>
-        <table class="doc-table">
-          <thead><tr><th>Role</th><th>Typical Titles</th><th>Core Pain</th><th>Entry Trigger</th></tr></thead>
-          <tbody>
-            <tr><td>Economic Sponsor</td><td>CHRO, Chief People Officer, VP People & Culture</td><td>Workforce productivity decline; rising burnout; retention pressure; pressure to show measurable people strategy ROI to board</td><td>Board pressure on people metrics; ESG reporting requirements; talent retention worsening</td></tr>
-            <tr><td>Primary Buyer</td><td>Head of Global Benefits, Total Rewards Director, VP Global Benefits</td><td>Low utilization in existing portfolio; vendor fragmentation; rising per-employee cost without outcome evidence; difficulty demonstrating ROI</td><td>Annual benefits renewal; mandate to consolidate vendors; new global benefits strategy rollout</td></tr>
-            <tr><td>Gatekeeper</td><td>Procurement Director, Finance BP, VP Finance</td><td>No credible third-party ROI benchmarks; fragmented pricing; difficult vendor comparison; global contract complexity</td><td>Cost reduction mandates; contract renewal windows; global procurement standardization</td></tr>
-          </tbody>
-        </table>
-        <div class="doc-highlight"><p>The internal champion is almost always in Benefits or Total Rewards — not the CHRO. The CHRO is the economic sponsor who unlocks budget. The Benefits Lead is the person who feels the day-to-day pain, runs the evaluation, and drives the business case upward. Identify and invest in this person first.</p></div>
-      `
-    },
-    {
-      id:'entry', num:'06', title:'Entry Motion & Sales Play', modular:true,
-      content: buildSwapper('cag','CAG Play — swap between Land & Expand · Regional Entry · Enterprise Direct')
-    },
-    {
-      id:'competitive', num:'07', title:'Competitive Framing', modular:true,
-      content: buildSwapper('edb','EDB Frame — swap between Competitor (–1) · Greenfield (0) · Adjacent (+1)')
-    },
-    {
-      id:'discovery', num:'08', title:'Discovery Framework', modular:false,
-      content:`
-        <div class="doc-p">Discovery has two objectives: confirm the MSK and mental health burden is real and quantifiable, and map the governance structure to validate the CAG score from research. Both must be confirmed before a pilot proposal is made.</div>
-        <div class="doc-label">Opening Questions</div>
+        <div class="doc-label">5A — Pricing Model & Rates</div>
+        <div class="doc-p">The bundle is priced at <strong>$2 PEPM</strong> at a single global rate — Thrive AI (MSK Specialist) + Mind AI (curated content). USD for all contracts. The employer's finance team handles internal FX allocation to regional entities.</div>
         <ul class="doc-bullets">
-          <li>How do you currently measure MSK and physical health burden across your workforce? What does your absenteeism data show about musculoskeletal conditions?</li>
-          <li>What does your current benefits portfolio look like for physical health? How confident are you in the utilization and clinical outcomes of those solutions?</li>
-          <li>When you think about your benefits strategy for the next 2–3 years, where are the gaps you most want to close?</li>
-          <li>How are benefits decisions made across your geographies? Is there a central mandate or does each region buy independently?</li>
-          <li>What would a successful outcome look like for you personally — what would you want to be able to show your CHRO or CFO at the end of the first year?</li>
+          <li>Employer charged on total eligible employees with a <strong>floor of 50% of total employees</strong> within the contract scope (BU, region, country or full company)</li>
+          <li>Pilots priced at full $2 PEPM applied to pilot population only. If pilot converts, pilot fees become a credit toward Year 1 and price is recalculated per volume tier and contract duration. If pilot does not convert, Sword keeps pilot revenue.</li>
+          <li>If a decentralized deal starts in one region and expands, price is recalculated according to new volume tier and contract duration.</li>
         </ul>
-        <div class="doc-label">Qualification Signal Map</div>
-        <div class="doc-grid-3">
-          <div class="doc-card" style="border-color:var(--teal-dim)"><div class="doc-card-label" style="color:var(--teal)">Green — Proceed</div><div class="doc-card-body">Can quote absenteeism costs · Named benefits renewal cycle · Buyer has budget authority · MSK or wellbeing explicitly in strategy · Governance confirms CAG score</div></div>
-          <div class="doc-card" style="border-color:var(--amber-dim)"><div class="doc-card-label" style="color:var(--amber)">Yellow — Qualify Deeper</div><div class="doc-card-body">Feels the pain but hasn't quantified it · Governance less centralized than research suggested · Budget exists but owner is unclear · Competing priorities in current cycle</div></div>
-          <div class="doc-card" style="border-color:var(--red-dim)"><div class="doc-card-label" style="color:var(--red)">Red — Pause</div><div class="doc-card-body">No internal champion identified · No budget conversation possible · Active procurement freeze · Recent CHRO or Benefits Lead departure · Ongoing M&A disruption</div></div>
-        </div>
-      `
-    },
-    {
-      id:'pricing', num:'09', title:'Pricing & Commercial Structure', modular:false,
-      content:`
-        <div class="doc-p">Thrive Global is priced at <strong>$1 per member per month</strong> — a simple, predictable, outcomes-aligned model that positions the product as an infrastructure investment, not a variable spend.</div>
-        <table class="doc-table">
-          <thead><tr><th>Phase</th><th>Scope</th><th>Commercial Logic</th></tr></thead>
+        <div class="doc-label" style="margin-top:1.25rem">5B — Discount Structure</div>
+        <ul class="doc-bullets">
+          <li>5% discount per additional contract year (additive, not compounding) — capped at 10% (3-year max)</li>
+          <li>Additional 5% discount if employer covers >80% of total employee count, layered on top of contract-period discount</li>
+        </ul>
+        <table class="doc-table" style="margin-top:10px">
+          <thead><tr><th>Contract Length</th><th>Coverage</th><th>Bundle Price (PEPM)</th><th>Effective Discount</th></tr></thead>
           <tbody>
-            <tr><td>Pilot</td><td>1 BU or priority country · 1,000–5,000 employees</td><td>Contained proof of value. Pilot agreement should include pre-negotiated expansion pathway.</td></tr>
-            <tr><td>Country Rollout</td><td>Full home-country workforce</td><td>Pilot ROI data drives the internal business case. A results-backed expansion, not a new vendor decision.</td></tr>
-            <tr><td>Regional Expansion</td><td>2–4 priority regions (EU, APAC, LATAM)</td><td>Centralized governance enables multi-country activation. Single contract amendment.</td></tr>
-            <tr><td>Global Agreement</td><td>Full enterprise workforce</td><td>Enterprise license. One SLA, one KPI framework, one renewal cycle.</td></tr>
+            <tr><td>1 year</td><td>Standard (≥50% floor)</td><td><strong>$2.00</strong></td><td>0%</td></tr>
+            <tr><td>2 years</td><td>Standard (≥50% floor)</td><td><strong>$1.90</strong></td><td>5%</td></tr>
+            <tr><td>3 years</td><td>Standard (≥50% floor)</td><td><strong>$1.80</strong></td><td>10%</td></tr>
+            <tr><td>3 years</td><td>>80% of employees</td><td><strong>$1.70</strong></td><td>15%</td></tr>
           </tbody>
         </table>
-        <div class="doc-grid-3">
-          <div class="doc-card"><div class="doc-card-label">100K employees</div><div class="doc-card-title">$1.2M / year</div><div class="doc-card-body">Full deployment at enterprise scale</div></div>
-          <div class="doc-card"><div class="doc-card-label">300K employees</div><div class="doc-card-title">$3.6M / year</div><div class="doc-card-body">Tier 1 logistics / retail account</div></div>
-          <div class="doc-card"><div class="doc-card-label">1M+ employees</div><div class="doc-card-title">$12M+ / year</div><div class="doc-card-body">Walmart / Amazon tier</div></div>
+        <div class="doc-grid-3" style="margin-top:10px">
+          <div class="doc-card" style="border-color:var(--teal-dim)"><div class="doc-card-label" style="color:var(--teal-text)">Rep Authority</div><div class="doc-card-body">Up to 20% discount off $2.00 (max $1.60 PEPM). Discounts between 15–20% require Sales Manager approval.</div></div>
+          <div class="doc-card" style="border-color:var(--amber-dim)"><div class="doc-card-label" style="color:var(--amber-text)">VP / C-Level Required</div><div class="doc-card-body">Discounts above 20%. Only approved for strategic accounts with >100K employees.</div></div>
+          <div class="doc-card" style="border-color:var(--red-dim)"><div class="doc-card-label" style="color:var(--red-text)">Exception Rationale</div><div class="doc-card-body">Competitive pressure (EDB –1) or no existing infrastructure (EDB 0) are accepted strategic rationales.</div></div>
         </div>
+        <div class="doc-label" style="margin-top:1.25rem">5C — Contract Terms & Negotiation Guardrails</div>
+        <ul class="doc-bullets">
+          <li><strong>Standard duration:</strong> 1 year with auto-renewal (5% annual escalator; rate only locked in multi-year contracts) and 90-day opt-out notice</li>
+          <li><strong>Billing:</strong> Upfront quarterly billing by default. Pilot programs paid upfront per total pilot duration.</li>
+          <li><strong>Contract-closing fee:</strong> Flat $8,000</li>
+        </ul>
       `
     },
+
+    // ── 06 GTM MOTION ────────────────────────────────────────────────────
     {
-      id:'pilot', num:'10', title:'Pilot Design & Success Framework', modular:false,
-      content:`
-        <div class="doc-p">The pilot is not a trial — it is Phase 1 of a global rollout, scoped from Day 1 with enterprise expansion as the designed outcome.</div>
-        <div class="doc-grid-2">
-          <div class="doc-card"><div class="doc-card-label">Duration</div><div class="doc-card-title">3–6 months</div><div class="doc-card-body">Long enough to produce clinical outcomes data. Short enough to maintain executive momentum.</div></div>
-          <div class="doc-card"><div class="doc-card-label">Population</div><div class="doc-card-title">1,000–5,000 employees</div><div class="doc-card-body">Single BU or priority country. High MSK-burden cohort preferred.</div></div>
-        </div>
-        <table class="doc-table">
-          <thead><tr><th>Category</th><th>Metric</th><th>Target</th></tr></thead>
-          <tbody>
-            <tr><td>Activation</td><td>Employee enrollment rate</td><td>≥30% within first 60 days</td></tr>
-            <tr><td>Clinical</td><td>Pain score improvement (NRS)</td><td>Measurable reduction by month 3</td></tr>
-            <tr><td>Clinical</td><td>Surgery intent reduction</td><td>Visible vs. baseline</td></tr>
-            <tr><td>Business</td><td>MSK-related absenteeism reduction</td><td>≥10% in enrolled population</td></tr>
-            <tr><td>Business</td><td>ROI multiple</td><td>≥3× within pilot period</td></tr>
-            <tr><td>Engagement</td><td>Member NPS</td><td>≥50</td></tr>
-          </tbody>
-        </table>
-        <div class="doc-p" style="margin-top:1rem">Monthly executive dashboards — not quarterly. Benefits leads get self-serve access to the live KPI dashboard between formal updates.</div>
-      `
+      id:'entry', num:'06', title:'GTM Motion & Sales Stages', modular:true,
+      content: buildSwapper('cag','CBG — Centralized vs. Decentralized sales motion','motion')
     },
+
+    // ── 07 EXPANSION STRATEGY ────────────────────────────────────────────
     {
-      id:'metrics', num:'11', title:'Success Metrics — GTM', modular:false,
+      id:'expansion', num:'07', title:'Expansion Strategy', modular:false,
       content:`
-        <div class="doc-grid-3">
-          <div class="doc-card"><div class="doc-card-label">Pipeline</div><div class="doc-card-title">Qualified accounts</div><div class="doc-card-body">Confirmed champion + pain + governance qualification in discovery</div></div>
-          <div class="doc-card"><div class="doc-card-label">Pipeline</div><div class="doc-card-title">Pilot conversion rate</div><div class="doc-card-body">% of qualified accounts converting to signed pilot agreement</div></div>
-          <div class="doc-card"><div class="doc-card-label">Pipeline</div><div class="doc-card-title">Pilot-to-global rate</div><div class="doc-card-body">% of completed pilots converting to regional or global agreements</div></div>
-          <div class="doc-card"><div class="doc-card-label">Revenue</div><div class="doc-card-title">CAC by CAG band</div><div class="doc-card-body">Cost of acquisition benchmarked separately for CAG 1, 2, and 3</div></div>
-          <div class="doc-card"><div class="doc-card-label">Revenue</div><div class="doc-card-title">Expansion ARR</div><div class="doc-card-body">ARR added through pilot-to-global expansions vs. new account origination</div></div>
-          <div class="doc-card"><div class="doc-card-label">Health</div><div class="doc-card-title">Member outcomes</div><div class="doc-card-body">Aggregated clinical outcomes — the proof base for all subsequent GTM conversations</div></div>
+        <div class="doc-highlight"><p>Expansion follows a sequential two-phase path: (1) account growth — population expansion in the pilot region; (2) geographic expansion or shift to centralized HQ.</p></div>
+        <div class="doc-label">Expansion Triggers</div>
+        <div class="doc-p">Expansion triggers should be documented and counter-signed at pilot agreement. Trigger metrics may include enrolment rates, clinical outcome thresholds, and ROI projections.</div>
+        <div class="doc-label">Expected Expansion Sequence</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);margin:8px 0">
+          <span style="font-size:12px;font-weight:500;color:var(--text)">Pilot Region / BU</span>
+          <span style="color:var(--accent);font-size:16px">→</span>
+          <span style="font-size:12px;font-weight:500;color:var(--text)">Next Region(s)</span>
+          <span style="color:var(--accent);font-size:16px">→</span>
+          <span style="font-size:12px;font-weight:500;color:var(--text)">HQ-Level Global Contract</span>
         </div>
-      `
-    },
-    {
-      id:'triggers', num:'12', title:'Demand Triggers', modular:false,
-      content:`
-        <div class="doc-grid-2">
-          <div>
-            <div class="doc-label">Organizational Triggers</div>
-            <ul class="doc-bullets">
-              <li>New CHRO or Head of Benefits appointed in the last 12 months</li>
-              <li>HR transformation or Future of Work initiative announced publicly</li>
-              <li>Benefits consolidation or vendor rationalization program underway</li>
-              <li>ESG or wellbeing strategy refresh cycle</li>
-              <li>Post-merger workforce integration requiring benefits alignment</li>
-              <li>Announced expansion into new countries</li>
-            </ul>
-          </div>
-          <div>
-            <div class="doc-label">Data & Market Triggers</div>
-            <ul class="doc-bullets">
-              <li>Rising absenteeism or disability rates in public filings or earnings calls</li>
-              <li>Workforce surveys showing declining wellbeing or engagement scores</li>
-              <li>Peer competitor adopting an enterprise digital health solution</li>
-              <li>Renewal cycle approaching for a current wellness or EAP vendor</li>
-              <li>ESG reporting requirement added that includes health KPIs</li>
-              <li>Industry-level MSK burden data published — use as outreach hook</li>
-            </ul>
-          </div>
-        </div>
+        <div class="doc-p" style="font-size:12px;color:var(--text3)">Each step re-priced according to new volume tier and contract duration per Section 5.</div>
       `
     }
+
   ];
 }
 
 // Init builder on first load
 document.addEventListener('DOMContentLoaded', initBuilder);
+
+function toggleCriterion(el){
+  el.classList.toggle('open');
+}
 </script>
+<!-- PAGE 5: HOW TO READ -->
+<div id="page-guide" class="page">
+  <div class="page-header">
+    <div class="page-title">How to Read This Platform</div>
+    <div class="page-sub">A reference guide to the scoring criteria, hard filters, MSK industry risk table, and color system used throughout the platform.</div>
+  </div>
+
+  <!-- HARD FILTERS -->
+  <div class="guide-section">
+    <div class="guide-section-title">Hard Filters — Applied Before Scoring</div>
+    <div class="guide-section-sub">Every company must pass all four filters to appear in the ranked list. Failure on any single filter is an automatic exclusion.</div>
+    <div class="guide-grid-4">
+      <div class="guide-card guide-card-neutral">
+        <div class="guide-card-label">Public Company</div>
+        <div class="guide-card-body">Company must be publicly listed or have verifiable public disclosures. Private companies with no public presence are excluded.</div>
+        <div class="guide-card-tag">Pass / Fail</div>
+      </div>
+      <div class="guide-card guide-card-neutral">
+        <div class="guide-card-label">Workforce Scale</div>
+        <div class="guide-card-body">≥50,000 employees globally. Below this threshold, the revenue opportunity at $2 PEPM is insufficient for enterprise sales investment.</div>
+        <div class="guide-card-tag">Pass / Fail</div>
+      </div>
+      <div class="guide-card guide-card-neutral">
+        <div class="guide-card-label">Global Footprint</div>
+        <div class="guide-card-body">Workforce present in ≥2 countries. Sword's Thrive Global product is a multinational solution — single-country companies are out of scope.</div>
+        <div class="guide-card-tag">Pass / Fail</div>
+      </div>
+      <div class="guide-card guide-card-neutral">
+        <div class="guide-card-label">Geography & Industry</div>
+        <div class="guide-card-body">Not headquartered in China. Not an insurance company. Both exclusions are structural — not addressable through the GTM motion.</div>
+        <div class="guide-card-tag">Pass / Fail</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCORING CRITERIA -->
+  <div class="guide-section">
+    <div class="guide-section-title">Scoring Criteria — The Five Dimensions</div>
+    <div class="guide-section-sub">Each company is scored across five criteria. Scores combine into a weighted total that drives account prioritisation.</div>
+
+    <div class="guide-criterion">
+      <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--orange-bg);border-color:var(--orange-dim)">
+        <div>
+          <div class="guide-criterion-name" style="color:var(--orange-text)">MSK Exposure Relevance</div>
+          <div class="guide-criterion-meta">Weight ~22% · Umbrella: Attractiveness / Willingness to Pay · Scored 0–3</div>
+        </div>
+        <div class="guide-criterion-desc">How significant is the workforce's physical health and MSK burden? Derived from industry classification using the MSK Industry Risk Reference below.</div>
+      <span class="guide-criterion-chevron">▾</span>
+      </div>
+      <div class="guide-bands">
+        <div class="guide-band"><div class="guide-band-score guide-band-0">0</div><div class="guide-band-text">Unverifiable or no information</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-1">1</div><div class="guide-band-text">Low MSK exposure — knowledge workforce, primarily sedentary (banking, software, media)</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-2">2</div><div class="guide-band-text">Mixed to moderate — mixed workforce with some physical roles (retail, pharma, aviation)</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-3">3</div><div class="guide-band-text">High to very high — physical or industrial workforce (logistics, manufacturing, mining, oil &amp; gas)</div></div>
+      </div>
+    </div>
+
+    <div class="guide-criterion">
+      <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--blue-bg);border-color:var(--blue-dim)">
+        <div>
+          <div class="guide-criterion-name" style="color:var(--blue-text)">Employee Headcount</div>
+          <div class="guide-criterion-meta">Weight ~27% · Umbrella: Added Value · Scored 0–3</div>
+        </div>
+        <div class="guide-criterion-desc">How large is the addressable employee population? The single highest-weighted criterion — headcount is the primary revenue driver at $2 PEPM.</div>
+      <span class="guide-criterion-chevron">▾</span>
+      </div>
+      <div class="guide-bands">
+        <div class="guide-band"><div class="guide-band-score guide-band-0">0</div><div class="guide-band-text">Unverifiable or no information</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-1">1</div><div class="guide-band-text">50,000–99,999 employees</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-2">2</div><div class="guide-band-text">100,000–149,999 employees</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-3">3</div><div class="guide-band-text">150,000+ employees</div></div>
+      </div>
+    </div>
+
+    <div class="guide-criterion">
+      <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--amber-bg);border-color:var(--amber-dim)">
+        <div>
+          <div class="guide-criterion-name" style="color:var(--amber-text)">Benefits Investment Signal (BIS)</div>
+          <div class="guide-criterion-meta">Weight ~21% · Umbrella: Accessibility / Willingness to Pay · Scored 0–3</div>
+        </div>
+        <div class="guide-criterion-desc">How publicly and specifically does the company signal investment in employee wellbeing? Named programs, ESG disclosure depth, and GPTW certification are the key signals.</div>
+      <span class="guide-criterion-chevron">▾</span>
+      </div>
+      <div class="guide-bands">
+        <div class="guide-band"><div class="guide-band-score guide-band-0">0</div><div class="guide-band-text">Unverifiable or no information found</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-1">1</div><div class="guide-band-text">Generic mention of wellbeing but no specific program in ESG or sustainability report</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-2">2</div><div class="guide-band-text">Specific, named wellbeing program documented in ESG or sustainability report</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-3">3</div><div class="guide-band-text">Named program AND confirmed Great Place to Work certification at parent entity level</div></div>
+      </div>
+    </div>
+
+    <div class="guide-criterion">
+      <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--purple-bg);border-color:var(--purple-dim)">
+        <div>
+          <div class="guide-criterion-name" style="color:var(--purple-text)">Centralized Benefits Governance (CBG)</div>
+          <div class="guide-criterion-meta">Weight ~18% · Umbrella: Ease to Close Deal · Scored 0–3</div>
+        </div>
+        <div class="guide-criterion-desc">How centralized is the company's benefits decision-making? High CBG = one global buyer with mandate. Low CBG = fragmented, country-by-country structure requiring land-and-expand.</div>
+      <span class="guide-criterion-chevron">▾</span>
+      </div>
+      <div class="guide-bands">
+        <div class="guide-band"><div class="guide-band-score guide-band-0">0</div><div class="guide-band-text">Unverifiable or no information — company is private with no public presence</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-1">1</div><div class="guide-band-text">Benefits responsibilities appear only in country-specific HR roles — no regional or global scope</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-2">2</div><div class="guide-band-text">At least one role combining a regional label with a benefits or total rewards keyword (e.g. EMEA Benefits Manager)</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-3">3</div><div class="guide-band-text">At least one director-level or above with a global-scope benefits or total rewards title (e.g. VP Global Benefits)</div></div>
+      </div>
+    </div>
+
+    <div class="guide-criterion">
+      <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--teal-bg);border-color:var(--teal-dim)">
+        <div>
+          <div class="guide-criterion-name" style="color:var(--teal-text)">Existing Digital Benefits Adoption (EDBA)</div>
+          <div class="guide-criterion-meta">Weight ~11% · Umbrella: Ease of Substitution · Scored –1 / 0 / +1</div>
+        </div>
+        <div class="guide-criterion-desc">Does the company already offer digital health benefits? A proxy for benefits tech receptivity, existing vendor relationships, and the selling motion required.</div>
+      <span class="guide-criterion-chevron">▾</span>
+      </div>
+      <div class="guide-bands">
+        <div class="guide-band"><div class="guide-band-score guide-band-neg">–1</div><div class="guide-band-text"><strong>Competitor</strong> — A direct Sword Health competitor is installed (Hinge Health, Kaia, Omada for MSK; Lyra, Spring Health, Headspace for MH). Displacement conversation required.</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-0">0</div><div class="guide-band-text"><strong>Greenfield</strong> — No confirmed digital health benefit. Category creation required — educate on MSK/MH as a cost driver before introducing Sword.</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-pos">+1</div><div class="guide-band-text"><strong>Adjacent</strong> — Digital health tools in place (EAP, telemedicine, fitness apps) but no direct competitor. Category validated, budget exists — warm entry.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MSK INDUSTRY REFERENCE -->
+  <div class="guide-section">
+    <div class="guide-section-title">MSK Industry Risk Reference</div>
+    <div class="guide-section-sub">Every company is mapped to a NAICS-style industry classification. Each industry is assigned a score 0–3 based on BLS-type metrics reflecting physical injury rates, absenteeism, and MSK prevalence.</div>
+    <div class="guide-msk-grid">
+      <div class="guide-msk-col">
+        <div class="guide-msk-header" style="background:var(--orange-bg);border-color:var(--orange-dim);color:var(--orange-text)">
+          <span class="guide-msk-score">3</span> High — Physical / Industrial
+        </div>
+        <div class="guide-msk-list">Agribusiness · Automotive &amp; Heavy Vehicles · Food Processing · Healthcare · Healthcare &amp; Medical Devices · Heavy Equipment · Heavy Industry · Industrial Gases · Industrial Manufacturing · Logistics · Medical Devices · Mining · Mining &amp; Commodities Trading · Oil &amp; Gas · Rail Transport · Shipping &amp; Logistics · Steel</div>
+      </div>
+      <div class="guide-msk-col">
+        <div class="guide-msk-header" style="background:var(--amber-bg);border-color:var(--amber-dim);color:var(--amber-text)">
+          <span class="guide-msk-score">2</span> Mixed — Physical &amp; Office
+        </div>
+        <div class="guide-msk-list">Aerospace · Aerospace &amp; Defense · Agricultural Equipment · Airlines · Automotive · Automotive &amp; Energy · Automotive Components · Aviation · Building Materials · Chemicals · Commercial Vehicles · Conglomerate &amp; Defense · Conglomerate &amp; Energy · Construction · Construction &amp; Infrastructure · Construction &amp; Real Estate · Construction &amp; Telecom · Discount Retail · Energy Management · Energy Technology · Engines &amp; Power Systems · Environmental Services · Food Distribution · Food Services · Grocery Retail · Healthcare &amp; Pharmacy · Home Improvement Retail · Industrial Engineering &amp; Electronics · Oilfield Services · Pharmaceuticals · Pharmaceuticals &amp; Chemicals · Pharmaceuticals &amp; Healthcare · Pharmacy Retail · Postal &amp; Logistics · Retail · Retail &amp; Distribution · Retail &amp; Grocery · Tobacco · Trading &amp; Conglomerate · Utilities · Utilities &amp; Energy · Wholesale Retail</div>
+      </div>
+      <div class="guide-msk-col">
+        <div class="guide-msk-header" style="background:var(--blue-bg);border-color:var(--blue-dim);color:var(--blue-text)">
+          <span class="guide-msk-score">1</span> Low — Mixed / Light Physical
+        </div>
+        <div class="guide-msk-list">Apparel &amp; Footwear · Beverage · Coffeehouse &amp; Retail · Conglomerate · Consumer Goods · Convenience Retail · Electronics · Electronics &amp; Semiconductors · Electronics Retail · Fashion Retail · Food &amp; Beverage · Food Retail &amp; Consumer Goods · Industrial &amp; Technology · Industrial Automation · Industrial Technology · Postal &amp; Financial Services · Postal Services · Scientific Instruments · Technology Hardware · Trading Company</div>
+      </div>
+      <div class="guide-msk-col">
+        <div class="guide-msk-header" style="background:var(--surface2);border-color:var(--border);color:var(--text2)">
+          <span class="guide-msk-score" style="background:var(--surface3);color:var(--text2);border-color:var(--border)">0</span> Sedentary — Knowledge Workforce
+        </div>
+        <div class="guide-msk-list">Asset Management · Banking · Banking &amp; Asset Services · Banking &amp; Financial Services · Banking &amp; Wealth Management · Cloud Software · Cosmetics · E-commerce &amp; Cloud Computing · Electronics &amp; Entertainment · Enterprise Software · Entertainment &amp; Media · Financial Services · Information Technology Consulting · Investment Banking · Luxury Goods · Media &amp; Telecommunications · Networking Technology · Real Estate Services · Social Media &amp; Technology · Software &amp; Cloud Computing · Technology &amp; Consumer Electronics · Technology &amp; Consulting · Technology &amp; Internet Services · Technology &amp; Software · Telecommunications · Telecommunications &amp; Investment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLOR LEGEND -->
+  <div class="guide-section">
+    <div class="guide-section-title">Color System</div>
+    <div class="guide-section-sub">Every color in the platform maps consistently to a specific dimension. Use this as a key when reading score tags, filter pills, and module cards.</div>
+    <div style="display:flex;flex-direction:column;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)">
+      <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--purple-bg);border-color:var(--purple-dim);color:var(--purple-text)">CBG 3 · Centralized</div><div class="guide-color-label">Enterprise Direct play — global buyer, single contract, compressed cycle</div></div>
+      <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--amber-bg);border-color:var(--amber-dim);color:var(--amber-text)">CBG 1–2 · Decentralized</div><div class="guide-color-label">Land &amp; Expand — country or regional entry, earned expansion</div></div>
+      <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--orange-bg);border-color:var(--orange-dim);color:var(--orange-text)">MSK High (2–3)</div><div class="guide-color-label">Physical workforce — absenteeism, ROI, surgery avoidance narrative</div></div>
+      <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--blue-bg);border-color:var(--blue-dim);color:var(--blue-text)">MSK Low (0–1)</div><div class="guide-color-label">Knowledge workforce — talent, productivity, employer brand narrative</div></div>
+      <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--red-bg);border-color:var(--red-dim);color:var(--red-text)">EDB –1 · Competitor</div><div class="guide-color-label">Direct competitor installed — displacement sale required</div></div>
+      <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--surface2);border-color:var(--border);color:var(--text2)">EDB 0 · Greenfield</div><div class="guide-color-label">No digital health benefits — category creation conversation</div></div>
+      <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--teal-bg);border-color:var(--teal-dim);color:var(--teal-text)">EDB +1 · Adjacent</div><div class="guide-color-label">Digital health present, no direct competitor — warm entry</div></div>
+      <div class="guide-color-row" style="border-bottom:none"><div class="guide-color-chip" style="background:var(--amber-bg);border-color:var(--amber-dim);color:var(--amber-text)">BIS 0–3</div><div class="guide-color-label">Benefits investment signal — how publicly a company signals wellbeing spend</div></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.guide-section{margin-bottom:3rem}
+.guide-section-title{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:var(--text);margin-bottom:6px;letter-spacing:-0.02em}
+.guide-section-sub{font-size:13px;color:var(--text2);margin-bottom:1.5rem;line-height:1.65;max-width:700px}
+.guide-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.guide-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.125rem;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.guide-card-neutral{border-top:3px solid var(--border2)}
+.guide-card-label{font-size:12px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.guide-card-body{font-size:12px;color:var(--text2);line-height:1.6;flex:1}
+.guide-card-tag{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text3);padding:3px 8px;background:var(--surface2);border-radius:20px;align-self:flex-start;border:1px solid var(--border)}
+.guide-criterion{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:12px;box-shadow:var(--shadow)}
+.guide-criterion-header{padding:1rem 1.25rem;display:flex;gap:1.5rem;align-items:flex-start;border-bottom:1px solid transparent;cursor:pointer;transition:background 0.15s}
+.guide-criterion-header:hover{filter:brightness(0.97)}
+.guide-criterion.open .guide-criterion-header{border-bottom-color:var(--border)}
+.guide-criterion-name{font-size:14px;font-weight:600;letter-spacing:-0.01em;margin-bottom:3px}
+.guide-criterion-meta{font-size:11px;color:var(--text3);font-weight:500}
+.guide-criterion-desc{font-size:12px;color:var(--text2);line-height:1.6;max-width:400px;flex-shrink:0;padding-top:2px}
+.guide-criterion-chevron{margin-left:auto;flex-shrink:0;font-size:14px;color:var(--text3);transition:transform 0.2s;align-self:center}
+.guide-criterion.open .guide-criterion-chevron{transform:rotate(180deg)}
+.guide-bands{display:none;padding:0.75rem 1.25rem;flex-direction:column}
+.guide-criterion.open .guide-bands{display:flex}
+.guide-band{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)}
+.guide-band:last-child{border-bottom:none}
+.guide-band-score{min-width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:1.5px solid;flex-shrink:0}
+.guide-band-0{background:var(--surface2);color:var(--text3);border-color:var(--border2)}
+.guide-band-1{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue-dim)}
+.guide-band-2{background:var(--amber-bg);color:var(--amber-text);border-color:var(--amber-dim)}
+.guide-band-3{background:var(--orange-bg);color:var(--orange-text);border-color:var(--orange-dim)}
+.guide-band-neg{background:var(--red-bg);color:var(--red-text);border-color:var(--red-dim)}
+.guide-band-pos{background:var(--teal-bg);color:var(--teal-text);border-color:var(--teal-dim)}
+.guide-band-text{font-size:12px;color:var(--text2);line-height:1.55;padding-top:6px}
+.guide-msk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.guide-msk-col{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+.guide-msk-header{padding:10px 14px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;border-bottom:1px solid;letter-spacing:-0.01em}
+.guide-msk-score{width:24px;height:24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:1.5px solid currentColor;flex-shrink:0}
+.guide-msk-list{padding:12px 14px;font-size:11px;color:var(--text2);line-height:2}
+.guide-color-row{display:flex;align-items:center;gap:14px;padding:10px 14px;border-bottom:1px solid var(--border)}
+.guide-color-chip{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:1px solid;white-space:nowrap;min-width:170px;text-align:center;flex-shrink:0}
+.guide-color-label{font-size:12px;color:var(--text2);line-height:1.5}
+</style>
+
 </body>
