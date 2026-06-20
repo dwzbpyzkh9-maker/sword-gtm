@@ -231,11 +231,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
     <span class="nav-brand-text">sword <span>gtm</span></span>
   </div>
   <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showPage('modules')">Module Library</button>
-    <button class="nav-tab" onclick="showPage('explorer')">Company Explorer</button>
+    <button class="nav-tab active" onclick="showPage('explorer')">Company Explorer</button>
+    <button class="nav-tab" onclick="showPage('modules')">Module Library</button>
     <button class="nav-tab" onclick="showPage('playbook')" id="tab-playbook" style="display:none">Playbook</button>
     <button class="nav-tab" onclick="showPage('builder')">GTM Builder</button>
     <button class="nav-tab" onclick="showPage('guide')">How to Read</button>
+    <button class="nav-tab" onclick="showPage('howtouse')">How to Use</button>
   </div>
   <div class="nav-right">
     <span class="badge-internal">Internal Use Only</span>
@@ -316,7 +317,7 @@ async function loadContent(){
 </script>
 
 <!-- PAGE 1: MODULE LIBRARY -->
-<div id="page-modules" class="page active">
+<div id="page-modules" class="page">
   <div class="page-header">
     <div class="page-title">Module Library</div>
     <div class="page-sub">Eight interchangeable content modules that assemble into company-specific playbooks. Each module has 2–3 variants driven by CBG, MSK, and EDB scores.<br>Click any module to expand its full content.</div>
@@ -339,7 +340,7 @@ async function loadContent(){
 </div>
 
 <!-- PAGE 2: COMPANY EXPLORER -->
-<div id="page-explorer" class="page">
+<div id="page-explorer" class="page active">
   <div class="page-header">
     <div class="page-title">Company Explorer</div>
     <div class="page-sub">Browse all 50 accounts by module combination. Filter by any score to see which companies share the same playbook DNA. Click any company to open their assembled playbook.</div>
@@ -975,11 +976,12 @@ function showPage(p){
   document.querySelectorAll('.nav-tab').forEach(el=>el.classList.remove('active'));
   document.getElementById('page-'+p).classList.add('active');
   const tabs = document.querySelectorAll('.nav-tab');
-  if(p==='modules') tabs[0].classList.add('active');
-  else if(p==='explorer') tabs[1].classList.add('active');
+  if(p==='explorer') tabs[0].classList.add('active');
+  else if(p==='modules') tabs[1].classList.add('active');
   else if(p==='playbook') tabs[2].classList.add('active');
   else if(p==='builder') tabs[3].classList.add('active');
   else if(p==='guide') tabs[4].classList.add('active');
+  else if(p==='howtouse') tabs[5].classList.add('active');
   if(p!=='playbook') document.getElementById('tab-playbook').style.display='none';
 }
 
@@ -1309,6 +1311,100 @@ function renderSources(raw) {
   return rows.length ? rows.join('') : '<span style="color:var(--text3);font-size:12px">Not available</span>';
 }
 
+// ── OBJECTION HANDLING DATA ──────────────────────────────────────────────────
+const OBJ = {
+  centralized: {
+    structural: [
+      { q: '"We have data security requirements that a vendor must meet before we can proceed."', s: 'Procurement is raising a compliance checkpoint early — process-driven, not a signal of disqualification.', r: 'Lead with Sword\'s data architecture, compliance certifications, and enterprise security posture before the first Procurement conversation. Frame proactively: "We have deployed across 150+ countries and 15+ languages. Our standard onboarding package includes the full security and compliance documentation your team will need."', note: 'Do not treat this as a late-stage checkbox — surface it early and own it.' },
+      { q: '"We have cross-border data compliance requirements. Can Sword operate across all our regions?"', s: 'Legal or Procurement is stress-testing global deployment viability — particularly GDPR and local health data law.', r: 'Prepare a country-by-country compliance brief covering GDPR, local labour law, health data regulations, and cross-border transfer mechanisms. Engage Legal early. Where a region presents a regulatory cliff, flag it proactively and present a sequencing rationale: activate compliant regions in Phase 1, sequence the constrained region to Phase 2.' },
+      { q: '"We are rationalising our vendor landscape. Adding a new vendor is difficult."', s: 'Procurement or Finance is operating under a vendor consolidation mandate — structural objection, not resistance to the solution.', r: 'Position Sword as the consolidation play, not an addition. "You currently have [X] regional MSK and EAP vendors. Sword replaces the MSK stack and augments the mental health layer with one contract, one member experience, and one global ROI report." Quantify the fragmentation cost: vendor management overhead, inconsistent employee experience, no unified outcome data.' }
+    ],
+    product: [
+      { q: '"Our employees are not asking for MSK support."', s: 'The buyer conflates employee self-reporting with actual burden. MSK conditions are systematically underreported until they become acute.', r: 'MSK is the leading cause of workplace disability globally. Lead with hidden burden data: absenteeism, presenteeism, and the downstream cost of surgical intervention. Quantify the cost of inaction: $40.51 PMPM in MSK-related spend (UnitedHealthcare benchmark). The question is not whether employees are asking — it is whether the employer can afford the cost of inaction at enterprise scale.' },
+      { q: '"We already have an EAP; we don\'t need Mind."', s: 'The buyer conflates EAP access with mental health coverage and assumes existing provision is sufficient.', r: '"Mind is not a replacement for your EAP. EAPs reach the 3–5% of employees in acute crisis. Mind is a continuous, always-on layer that reaches the 95% who never call an EAP." Mind is included in the Thrive bundle — no incremental procurement decision, no additional vendor, no additional contract. Reinforce Mind\'s clinical positioning: preventive and sub-clinical to mild-clinical.' },
+      { q: '"We already have Hinge Health / Lyra / Spring / another MSK or MH vendor globally."', s: 'A competitor is installed or under evaluation. The buyer is anchoring on incumbent investment and switching cost.', r: 'Lead with three points: (1) The bundle — one vendor, one member experience, one contract. No bundle competitors exist. (2) ROI methodology rigour — claims-based actuarial framework, propensity matching, difference-in-difference analysis. (3) Global footprint — 150+ countries, 15+ languages. For a centralised buyer, global coverage is a baseline requirement.' },
+      { q: '"This is a large commitment. We would want to run a pilot before we agree to a global rollout."', s: 'The buyer wants to de-risk the decision. This is a healthy instinct — the objection is about structure, not intent.', r: 'Validate the instinct, then reframe: "A phased rollout makes sense. The question is whether Phase 1 is a standalone pilot or the first activation of a global agreement." A standalone pilot introduces re-selling risk at Phase 2. Frame Phase 1 as the proof point: success metrics defined at enterprise level from Day 1, expansion pathway documented before Phase 1 closes.' }
+    ]
+  },
+  decentralized: [
+    { q: '"We\'ve tried digital health solutions before and nobody used them. How do I know this one will be different?"', s: 'The buyer has been burned by low-adoption tools and is projecting past failure onto Sword.', r: 'Validate — don\'t dismiss. Quantify the gap: industry enrolment benchmark 5–10%; leading programmes 20–30%; Sword target >75%. Explain the mechanism: "Members get paired with an AI care agent and an MSK specialist, not a self-guided app."' },
+    { q: '"ROI claims aren\'t believable. Every digital health company shows a similar ROI. How is yours different?"', s: 'The buyer is sceptical of vendor-produced ROI and has seen inflated figures from others.', r: 'Walk through Sword\'s ROI methodology explicitly: claims-based actuarial framework, propensity matching, difference-in-difference analysis. Reference the $3,177 per member per year in employer savings and 68% of members regaining lost productivity. For high-risk groups: ROI of up to 4.4×.' },
+    { q: '"How do I know this will work in my country / region / BU?"', s: 'The buyer lacks local proof and is uncertain about geographic fit.', r: 'Cite Sword\'s footprint: 22 million patients worldwide. Name the closest geographical reference customer in the buyer\'s industry. When no in-region reference exists: acknowledge the gap, offer the closest analogous reference (same industry, adjacent region), and frame the pilot as the buyer\'s opportunity to become a regional reference customer.' },
+    { q: '"We need HQ approval before we can proceed."', s: 'The local or regional buyer lacks autonomous signing authority — not resistant, just constrained by governance.', r: '"The pilot is designed specifically so you don\'t need HQ approval. It\'s regional in scope and sized under your signing threshold. We deliver the ROI report you\'ll use to build the HQ business case for expansion, but the pilot itself stays at your level."', note: 'Build the narrative from the stakeholder questionnaire completed in Phase 1.' },
+    { q: '"MSK is not a priority for our region."', s: 'The buyer does not see MSK as a cost driver or strategic priority — may reflect genuine regional context or a framing problem.', r: 'Quantify the cost of inaction: $40.51 PMPM (UnitedHealthcare). Use an ROI calculator to produce a workforce-specific calculation. Anchor against Sword\'s productivity recovery data. If MSK genuinely is not a priority, reroute: frame toward Mind (if high MH need) or position as a talent attraction and retention benefit.', note: 'Reroute signal: if MSK is not a priority, pivot to Mind or employer brand framing rather than continuing to push the MSK narrative.' },
+    { q: '"We already have an EAP; we don\'t need Mind."', s: 'The buyer conflates EAP access with mental health coverage.', r: '"Mind isn\'t a replacement for your EAP. EAPs reach the 3–5% of employees in acute crisis. Mind is a continuous, always-on layer that reaches the 95% who never call an EAP. And Mind is included in the Thrive bundle — there is no incremental procurement decision to make."' },
+    { q: '"We already have Hinge Health / Lyra / Spring / etc."', s: 'A competitor is installed or under evaluation. The buyer is anchoring on incumbent investment.', r: 'Three points regardless of which competitor is named: (1) The bundle — one vendor, one member experience, one contract. No bundle competitors exist. (2) ROI methodology rigour — claims-based actuarial framework, propensity matching, difference-in-difference analysis. (3) Global footprint — 150+ countries, 15+ languages.' }
+  ],
+  highMSK: [
+    { q: 'Employees aren\'t asking for MSK support', s: 'Buyer conflates self-reporting with actual burden. MSK is silent until it escalates.', r: 'MSK often goes unreported until it becomes a claim. In [industry], costs show up in claims, absence, and surgeries. Sword Predict flags risk early — before self-reporting.' },
+    { q: 'MSK isn\'t a priority / budget is tight', s: 'Buyer has not quantified the existing cost and frames MSK as optional spend.', r: 'MSK is a top-3 claims driver in physically demanding workforces. The cost already exists. Sword delivers ~$3,177 per member per year in savings (RSC 2024), often paying back within Year 1.' },
+    { q: 'We tried digital health but engagement was low', s: 'Past experience with generic wellness apps has eroded trust in the category.', r: 'Most tools are generic apps. Sword delivers clinician-led MSK care with a structured 12-week programme, achieving 81% completion (vs 30–50% for traditional PT).' },
+    { q: 'We already have a PT network', s: 'Buyer sees Sword as competing with existing physiotherapy provision rather than complementing it.', r: 'Sword complements in-person PT by intervening earlier. Care starts in 6.3 days vs 2–4 week waits, reducing escalation into specialist care and claims.' },
+    { q: 'MSK doesn\'t show up as a top cost in our data', s: 'MSK spend is fragmented across cost categories and invisible in aggregated data views.', r: 'MSK spend is often split across surgery, imaging, prescriptions, and PT. A combined view typically reveals a much larger hidden cost base.' },
+    { q: 'ROI takes too long', s: 'Buyer expects a multi-year payback cycle and has not seen evidence of near-term returns.', r: 'Sword delivers ~$3,177 per member per year in validated Year 1 savings, with measurable impact within a 12-week pilot.' },
+    { q: 'Data security / compliance concerns', s: 'Procurement or Legal is raising compliance as a gate before evaluation can proceed.', r: 'Sword is HIPAA, GDPR, and SOC 2 Type II compliant, with global deployments across the US, EU, and AU.' },
+    { q: 'We already have workers\' comp / RTW programmes', s: 'Buyer conflates reactive injury management with proactive MSK prevention.', r: 'Unlike workers\' comp or RTW programmes, Sword reduces cases before escalation. Predict identifies 73% of MSK surgeries 6+ months early.' },
+    { q: 'How is this different from telehealth / digital PT?', s: 'Buyer treats Sword as an episodic telehealth product rather than a full clinical programme.', r: 'Telehealth is episodic advice. Sword is a full 12-week clinical programme with continuous outcomes tracking and validated savings.' },
+    { q: 'Implementation is too complex', s: 'Buyer anticipates high-friction integration and is concerned about internal resource requirements.', r: 'Sword integrates via HRIS and SSO — no hardware, no local vendors. Smartphone-only delivery means the same experience in every country from day one.' }
+  ],
+  lowMSK: [
+    { q: 'Employees aren\'t asking for MSK support', s: 'Buyer conflates the absence of complaints with the absence of physical strain burden.', r: 'Ergonomic strain is silent — it shows up as lost energy, reduced focus, and gradual disengagement. Thrive Global lets employees address discomfort proactively, before it costs the business anything.' },
+    { q: 'We\'re a desk-based company — MSK isn\'t relevant', s: 'Buyer associates MSK exclusively with manual labour and has not considered sedentary strain patterns.', r: 'Sedentary work is itself a driver. Back and joint pain is the #1 complaint affecting quality of life globally, and prolonged sitting and poor ergonomics are leading causes in office workforces.' },
+    { q: 'We already offer a wellness app / gym benefit', s: 'Buyer views Sword as duplicating existing general wellness provision.', r: 'Generic perks rely on employee initiative and engagement typically fades within weeks. Thrive Global is expert-designed, AI-personalised movement with real-time corrective feedback — structured support, not a content library.' },
+    { q: 'Wellbeing budgets are tight', s: 'Buyer is operating under a cost constraint and frames Sword as optional spend.', r: 'Thrive Global is priced for global scale and delivers an expected 3.2× ROI through productivity, engagement, and retention. One of the lowest-cost ways to put a visible, daily benefit in every employee\'s hands.' },
+    { q: 'Engagement will drop off', s: 'Buyer has experienced engagement decay with past wellness tools and is projecting that pattern.', r: 'AI personalisation adapts every session to the member\'s progress, and phone-based motion tracking makes sessions interactive rather than passive — engagement behaviour far closer to structured programmes than to typical wellness apps.' },
+    { q: 'Our regions all have different needs — global rollout is complex', s: 'Buyer anticipates regional variation in delivery requirements and sees global rollout as operationally difficult.', r: 'One contract covers 150+ countries. Smartphone-only delivery means no hardware, no local vendors, no dependency on local healthcare systems — the same experience everywhere from day one.' },
+    { q: 'Is this a medical product? We\'re worried about regulation', s: 'Buyer is concerned about clinical regulatory classification and the compliance overhead it implies.', r: 'No. Thrive Global is a non-clinical wellbeing movement solution, avoiding clinical regulatory hurdles and simplifying global deployment. MSK Specialists are involved for safety escalation and guidance only.' },
+    { q: 'Data privacy concerns', s: 'Legal or HR is raising data protection as a prerequisite before evaluation.', r: 'Sword is GDPR and SOC 2 Type II compliant, with global deployments across the US, EU, and AU.' },
+    { q: 'How do we measure success without claims data?', s: 'Buyer lacks actuarial data infrastructure and is uncertain what a credible ROI proof point looks like.', r: 'Through member-reported pain and function, enrolment, and engagement — all measurable within a single-BU pilot targeting a sedentary, hybrid, or high-turnover cohort.' }
+  ]
+};
+
+function buildObjRow(o) {
+  const noteRow = o.note ? `
+    <tr>
+      <td colspan="3" style="background:var(--amber-bg);border:1px solid var(--amber-dim);padding:8px 12px;font-size:11px;color:var(--amber-text)">
+        <strong>Note:</strong> ${o.note}
+      </td>
+    </tr>` : '';
+  return `<tr>
+    <td style="padding:10px 12px;border:1px solid var(--border);vertical-align:top;font-size:12px;color:var(--text);font-style:italic">${o.q}</td>
+    <td style="padding:10px 12px;border:1px solid var(--border);vertical-align:top;font-size:12px;color:var(--text2)">${o.s}</td>
+    <td style="padding:10px 12px;border:1px solid var(--border);vertical-align:top;font-size:12px;color:var(--text2)">${o.r}</td>
+  </tr>${noteRow}`;
+}
+
+function buildObjSection(label, rows) {
+  return `
+    <div class="pb-field-label" style="margin:1.25rem 0 8px">${label}</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <thead>
+        <tr>
+          <th style="width:28%;padding:8px 12px;background:var(--surface2);border:1px solid var(--border);text-align:left;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text3)">Objection</th>
+          <th style="width:25%;padding:8px 12px;background:var(--surface2);border:1px solid var(--border);text-align:left;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text3)">What it signals</th>
+          <th style="width:47%;padding:8px 12px;background:var(--surface2);border:1px solid var(--border);text-align:left;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text3)">Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows.map(buildObjRow).join('')}
+      </tbody>
+    </table>`;
+}
+
+function buildObjTable(cgrp, mband) {
+  const cbgRows = cgrp === 'cen'
+    ? [...OBJ.centralized.structural, ...OBJ.centralized.product]
+    : OBJ.decentralized;
+  const mskRows = mband === 'high' ? OBJ.highMSK : OBJ.lowMSK;
+  return buildObjSection(
+    cgrp === 'cen' ? 'CBG 3 — Centralized Objections' : 'CBG 1–2 — Decentralized Objections',
+    cbgRows
+  ) + buildObjSection(
+    mband === 'high' ? 'High MSK Objections' : 'Low MSK Objections',
+    mskRows
+  );
+}
+
 function openPlaybook(rank){
   const c = COMPANIES.find(x=>x.rank===rank);
   if(!c) return;
@@ -1481,7 +1577,7 @@ function openPlaybook(rank){
 
   // ── Build sections ───────────────────────────────────────────────────────
   const sections = [
-    {num:'00', title:'Company Intelligence', chips:[], open:true, content:`
+    {num:'00', title:'Company Intelligence', chips:[], open:false, content:`
       <div class="info-row">
         <div class="info-chip"><div class="info-chip-label">HQ</div><div class="info-chip-value">${c.hq}</div></div>
         <div class="info-chip"><div class="info-chip-label">Industry</div><div class="info-chip-value">${c.industry}</div></div>
@@ -1514,7 +1610,7 @@ function openPlaybook(rank){
         <div class="pb-field" style="margin-bottom:0"><div class="pb-field-label">EDB Evidence</div><div class="pb-field-value" style="font-size:12px;color:var(--text2);line-height:1.6">${c.edbEvidence || 'Not available'}</div></div>
       </div>
     `},
-    {num:'01', title:'Stakeholder Mapping',   chips:[cbgChip],  open:true,  content: stakeholderContent},
+    {num:'01', title:'Stakeholder Mapping',   chips:[cbgChip],  open:false,  content: stakeholderContent},
     {num:'02', title:'Competitive Landscape', chips:[edbChip],  open:false, content:`
       <div class="pb-highlight"><div class="pb-highlight-value">${competitiveText}</div></div>
       ${c.edb < 0 && c.competitor ? renderBattleCard(c.competitor) : ''}
@@ -1557,6 +1653,9 @@ function openPlaybook(rank){
         </div>
         <div style="font-size:12px;color:var(--text3);margin-top:6px">Each step re-priced per new volume tier and contract duration.</div>
       </div>
+    `},
+    {num:'08', title:'Objection Handling', chips:[cbgChip, mskChip], open:false, content:`
+      ${buildObjTable(cgrp, mband)}
     `}
   ];
 
@@ -1595,7 +1694,78 @@ function initDataLoader() {
     renderCompanyGrid();
     return;
   }
-  showDataLoader();
+  // Auto-fetch from GitHub Pages (same repo)
+  const explorerPage = document.getElementById('page-explorer');
+  explorerPage.innerHTML = `
+    <div class="page-header">
+      <div class="page-title">Company Explorer</div>
+      <div class="page-sub">Loading company data from fG500.xlsx…</div>
+    </div>
+    <div id="loader-status" class="loader-status loading" style="display:block;max-width:500px;margin:2rem auto">Loading account data…</div>
+  `;
+  fetch('fG500.xlsx')
+    .then(r => { if(!r.ok) throw new Error('File not found'); return r.arrayBuffer(); })
+    .then(buf => {
+      const data = new Uint8Array(buf);
+      const wb = XLSX.read(data, { type: 'array' });
+      const parsed = parseWorkbook(wb);
+      if (parsed.length === 0) throw new Error('No companies parsed from fG500.xlsx');
+      COMPANIES.length = 0;
+      parsed.forEach(c => COMPANIES.push(c));
+      buildExplorerPage();
+    })
+    .catch(err => {
+      // Fall back to manual upload if auto-fetch fails
+      document.getElementById('loader-status').style.display = 'none';
+      showDataLoader();
+    });
+}
+
+function buildExplorerPage() {
+  const explorerPage = document.getElementById('page-explorer');
+  explorerPage.innerHTML = `
+    <div class="page-header">
+      <div class="page-title">Company Explorer</div>
+      <div class="page-sub">Browse all ${COMPANIES.length} accounts by module combination. Filter by any score to see which companies share the same playbook DNA. Click any company to open their assembled playbook.</div>
+    </div>
+    <div class="explorer-controls">
+      <div class="filter-group">
+        <div class="filter-label">Entry Motion (CBG)</div>
+        <div class="filter-pills">
+          <div class="pill pill-cbg-dec active" data-filter="cbg" data-val="dec" onclick="toggleFilter(this)">Decentralized (CBG 1–2)</div>
+          <div class="pill pill-cbg-cen active" data-filter="cbg" data-val="cen" onclick="toggleFilter(this)">Centralized (CBG 3)</div>
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">MSK Narrative</div>
+        <div class="filter-pills">
+          <div class="pill pill-mskl active" data-filter="msk" data-val="low" onclick="toggleFilter(this)">MSK Low (0–1)</div>
+          <div class="pill pill-mskh active" data-filter="msk" data-val="high" onclick="toggleFilter(this)">MSK High (2–3)</div>
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Competitive Frame (EDB)</div>
+        <div class="filter-pills">
+          <div class="pill pill-edb-1 active" data-filter="edb" data-val="-1" onclick="toggleFilter(this)">–1 Competitor</div>
+          <div class="pill pill-edb0 active" data-filter="edb" data-val="0" onclick="toggleFilter(this)">0 Greenfield</div>
+          <div class="pill pill-edb1 active" data-filter="edb" data-val="1" onclick="toggleFilter(this)">+1 Adjacent</div>
+        </div>
+      </div>
+      <div class="filter-group" style="flex:1;min-width:220px">
+        <div class="filter-label">Search</div>
+        <div class="search-input-wrap">
+          <span class="search-icon">⌕</span>
+          <input class="search-input" id="explorer-search" type="text" placeholder="Company, industry, HQ…" oninput="renderCompanyGrid()">
+        </div>
+      </div>
+    </div>
+    <div class="results-meta"><span class="results-count" id="results-count">${COMPANIES.length}</span> companies match</div>
+    <div class="company-grid" id="company-grid"></div>
+  `;
+  activeFilters.cbg = new Set(['dec','cen']);
+  activeFilters.msk = new Set(['low','high']);
+  activeFilters.edb = new Set(['-1','0','1']);
+  renderCompanyGrid();
 }
 
 function showDataLoader() {
@@ -2542,7 +2712,7 @@ function toggleCriterion(el){
       <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--orange-bg);border-color:var(--orange-dim)">
         <div>
           <div class="guide-criterion-name" style="color:var(--orange-text)">MSK Exposure Relevance</div>
-          <div class="guide-criterion-meta">Weight ~22% · Umbrella: Attractiveness / Willingness to Pay · Scored 0–3</div>
+          <div class="guide-criterion-meta">Weight 20% · Umbrella: Attractiveness / Willingness to Pay · Scored 0–3</div>
         </div>
         <div class="guide-criterion-desc">How significant is the workforce's physical health and MSK burden? Derived from industry classification using the MSK Industry Risk Reference below.</div>
       <span class="guide-criterion-chevron">▾</span>
@@ -2559,16 +2729,16 @@ function toggleCriterion(el){
       <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--blue-bg);border-color:var(--blue-dim)">
         <div>
           <div class="guide-criterion-name" style="color:var(--blue-text)">Employee Headcount</div>
-          <div class="guide-criterion-meta">Weight ~27% · Umbrella: Added Value · Scored 0–3</div>
+          <div class="guide-criterion-meta">Weight 30% · Umbrella: Added Value · Scored 0–3</div>
         </div>
         <div class="guide-criterion-desc">How large is the addressable employee population? The single highest-weighted criterion — headcount is the primary revenue driver at $2 PEPM.</div>
       <span class="guide-criterion-chevron">▾</span>
       </div>
       <div class="guide-bands">
-        <div class="guide-band"><div class="guide-band-score guide-band-0">0</div><div class="guide-band-text">Unverifiable or no information</div></div>
-        <div class="guide-band"><div class="guide-band-score guide-band-1">1</div><div class="guide-band-text">50,000–99,999 employees</div></div>
-        <div class="guide-band"><div class="guide-band-score guide-band-2">2</div><div class="guide-band-text">100,000–149,999 employees</div></div>
-        <div class="guide-band"><div class="guide-band-score guide-band-3">3</div><div class="guide-band-text">150,000+ employees</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-0">0</div><div class="guide-band-text">Below P25 of the dataset — bottom quartile of headcount across all 230 companies</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-1">1</div><div class="guide-band-text">P25 – P50 — between the 25th and 50th percentile of the headcount distribution</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-2">2</div><div class="guide-band-text">P50 – P75 — between the 50th and 75th percentile of the headcount distribution</div></div>
+        <div class="guide-band"><div class="guide-band-score guide-band-3">3</div><div class="guide-band-text">Above P75 — top quartile of headcount. Thresholds recalibrated empirically from the full 230-company dataset using PERCENTILE.INC, ensuring even distribution across bands.</div></div>
       </div>
     </div>
 
@@ -2576,7 +2746,7 @@ function toggleCriterion(el){
       <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--amber-bg);border-color:var(--amber-dim)">
         <div>
           <div class="guide-criterion-name" style="color:var(--amber-text)">Benefits Investment Signal (BIS)</div>
-          <div class="guide-criterion-meta">Weight ~21% · Umbrella: Accessibility / Willingness to Pay · Scored 0–3</div>
+          <div class="guide-criterion-meta">Weight 20% · Umbrella: Accessibility / Willingness to Pay · Scored 0–3</div>
         </div>
         <div class="guide-criterion-desc">How publicly and specifically does the company signal investment in employee wellbeing? Named programs, ESG disclosure depth, and GPTW certification are the key signals.</div>
       <span class="guide-criterion-chevron">▾</span>
@@ -2593,7 +2763,7 @@ function toggleCriterion(el){
       <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--purple-bg);border-color:var(--purple-dim)">
         <div>
           <div class="guide-criterion-name" style="color:var(--purple-text)">Centralized Benefits Governance (CBG)</div>
-          <div class="guide-criterion-meta">Weight ~18% · Umbrella: Ease to Close Deal · Scored 0–3</div>
+          <div class="guide-criterion-meta">Weight 20% · Umbrella: Ease to Close Deal · Scored 0–3</div>
         </div>
         <div class="guide-criterion-desc">How centralized is the company's benefits decision-making? High CBG = one global buyer with mandate. Low CBG = fragmented, country-by-country structure requiring land-and-expand.</div>
       <span class="guide-criterion-chevron">▾</span>
@@ -2610,7 +2780,7 @@ function toggleCriterion(el){
       <div class="guide-criterion-header" onclick="toggleCriterion(this.parentElement)" style="background:var(--teal-bg);border-color:var(--teal-dim)">
         <div>
           <div class="guide-criterion-name" style="color:var(--teal-text)">Existing Digital Benefits Adoption (EDBA)</div>
-          <div class="guide-criterion-meta">Weight ~11% · Umbrella: Ease of Substitution · Scored –1 / 0 / +1</div>
+          <div class="guide-criterion-meta">Weight 10% · Umbrella: Ease of Substitution · Scored –1 / 0 / +1</div>
         </div>
         <div class="guide-criterion-desc">Does the company already offer digital health benefits? A proxy for benefits tech receptivity, existing vendor relationships, and the selling motion required.</div>
       <span class="guide-criterion-chevron">▾</span>
@@ -2711,6 +2881,102 @@ function toggleCriterion(el){
 .guide-color-row{display:flex;align-items:center;gap:14px;padding:10px 14px;border-bottom:1px solid var(--border)}
 .guide-color-chip{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:1px solid;white-space:nowrap;min-width:170px;text-align:center;flex-shrink:0}
 .guide-color-label{font-size:12px;color:var(--text2);line-height:1.5}
+</style>
+
+<!-- PAGE 6: HOW TO USE -->
+<div id="page-howtouse" class="page">
+  <div class="page-header">
+    <div class="page-title">How to Use This Platform</div>
+    <div class="page-sub">A field guide for sales reps. From first login to closing the deal — how to move through the platform with purpose.</div>
+  </div>
+
+  <!-- INTRO CONTEXT -->
+  <div style="background:var(--purple-bg);border:1px solid var(--purple-dim);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:2.5rem">
+    <div style="font-size:13px;color:var(--purple-text);line-height:1.75">
+      This platform is your pre-call intelligence and deal strategy tool. It does not replace your CRM or your conversations — it prepares you for them. Every company in the list has been scored, researched, and ranked. Your job is to use that work to enter every conversation with a sharper hypothesis than your competition.
+    </div>
+  </div>
+
+  <!-- STEP BY STEP -->
+  <div class="htu-steps">
+
+    <div class="htu-step">
+      <div class="htu-step-num">01</div>
+      <div class="htu-step-body">
+        <div class="htu-step-title">Find your accounts — Company Explorer</div>
+        <div class="htu-step-text">Start here every time. Load your Excel file and use the filters to narrow to the accounts that match your motion. If you run an enterprise direct play, filter to CBG 3 Centralized. If you are building a land-and-expand pipeline, filter to CBG 1–2 Decentralized. Layer MSK to find the right narrative — High MSK for ROI and absenteeism, Low MSK for talent and productivity. Use the search bar to find a specific company by name, industry, or HQ.</div>
+        <div class="htu-step-tip">The rank reflects research-based prioritisation across five weighted criteria. Use it as your default order, but let your territory and relationships override it where relevant.</div>
+      </div>
+    </div>
+
+    <div class="htu-step">
+      <div class="htu-step-num">02</div>
+      <div class="htu-step-body">
+        <div class="htu-step-title">Open the company playbook — read intelligence first</div>
+        <div class="htu-step-text">Click any company to open its assembled playbook. The first section — Company Intelligence — is the only section you need before making your first contact. It tells you who to call (Named Buyer), what wellbeing infrastructure is already in place (BIS), what digital health tools they use (EDB), whether a competitor is installed, and the sourced evidence behind each score. Read this before you touch LinkedIn.</div>
+        <div class="htu-step-tip">The CBG Source and BIS Source fields link directly to the LinkedIn profiles and ESG reports used in the research. Use them to verify the named buyer is still in role before outreaching.</div>
+      </div>
+    </div>
+
+    <div class="htu-step">
+      <div class="htu-step-num">03</div>
+      <div class="htu-step-body">
+        <div class="htu-step-title">Frame your entry — Competitive Landscape and Positioning</div>
+        <div class="htu-step-text">Before crafting your outreach, check the EDB state. Greenfield accounts need category education first — do not lead with product. Adjacent accounts have digital health infrastructure in place; lead with the MSK gap. Competitor accounts require a displacement framing — check whether a battle card is available for the named competitor and use it to anchor your differentiation. Then move to Positioning to find the right headline message and proof points for this specific workforce type.</div>
+        <div class="htu-step-tip">For EDB –1 accounts with a named competitor, the battle card in §02 shows the competitor's specific vulnerabilities and the three Sword positioning points to lead with. Do not open with a generic pitch.</div>
+      </div>
+    </div>
+
+    <div class="htu-step">
+      <div class="htu-step-num">04</div>
+      <div class="htu-step-body">
+        <div class="htu-step-title">Prepare your messaging — Messaging section</div>
+        <div class="htu-step-text">The Messaging section gives you three pre-written statement variants for every account — Standard Opening, Finance-First, and Operations-First for High MSK; Standard, People-First, and Productivity-First for Low MSK. Pick the one that matches your buyer. The pre-written opening at the top is already tailored to the company's EDB state — use it as your first outreach hook or call opener verbatim, then follow with the statement that resonates most with the specific buyer persona you are targeting.</div>
+        <div class="htu-step-tip">The Finance-First statement is built for the CFO or Procurement conversation. The Operations-First statement is built for CHRO or HR Operations. Match the statement to the person, not the company.</div>
+      </div>
+    </div>
+
+    <div class="htu-step">
+      <div class="htu-step-num">05</div>
+      <div class="htu-step-body">
+        <div class="htu-step-title">Run the right sales motion — GTM Motion & Sales Stages</div>
+        <div class="htu-step-text">The GTM Motion section tells you which phase you are in, what exit criteria you need to hit before moving forward, and what questions to ask in discovery. For Centralized accounts, follow the 5-area Discovery Questionnaire before proposing anything. For Decentralized accounts, use the Beachhead Questionnaire to map the local stakeholder landscape and confirm signing authority. The exit criteria for each phase are your deal qualification checklist — if you cannot tick them, you are not ready to advance.</div>
+        <div class="htu-step-tip">The region selection formula in Phase 2 is not a suggestion — use it to score and rank potential pilot markets before proposing one. It prevents you from anchoring on the most obvious market rather than the highest-probability one.</div>
+      </div>
+    </div>
+
+    <div class="htu-step">
+      <div class="htu-step-num">06</div>
+      <div class="htu-step-body">
+        <div class="htu-step-title">Prepare for the objections you will face — Objection Handling</div>
+        <div class="htu-step-text">Before every significant conversation, scan the Objection Handling section. The objections are split by governance model and MSK profile — so a Centralized High MSK account has a different objection set than a Decentralized Low MSK account. Each row tells you what the objection actually signals (what the buyer is really worried about), not just what they say. Prepare your response to the two or three most likely objections before the call. Do not wait until you are in the meeting to think through your answer.</div>
+        <div class="htu-step-tip">Pay attention to the note rows — they flag reroute signals. If MSK is not a priority for a Decentralized account, the note tells you to pivot to Mind or employer brand framing rather than continuing to push the MSK narrative.</div>
+      </div>
+    </div>
+
+    <div class="htu-step" style="border-bottom:none">
+      <div class="htu-step-num">07</div>
+      <div class="htu-step-body">
+        <div class="htu-step-title">For new accounts or strategy sessions — GTM Builder</div>
+        <div class="htu-step-text">The GTM Builder is not a per-company tool — it is a template configuration tool. Use it when you are preparing for a new account type not yet in the ranked list, building a strategy for a territory review, or aligning with your manager on the right motion for a segment. Swap the CBG and MSK modules to preview different strategic configurations. The pricing section gives you the exact discount structure and approval thresholds you need for commercial conversations.</div>
+        <div class="htu-step-tip">The GTM Builder is also useful for onboarding — stepping through the modules with a new team member is the fastest way to walk them through the full Thrive Global GTM logic in one session.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+/* HOW TO USE PAGE */
+.htu-steps{display:flex;flex-direction:column;gap:0}
+.htu-step{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.htu-step-num{font-family:'Fraunces',serif;font-size:32px;font-weight:300;color:var(--accent);opacity:0.35;min-width:48px;line-height:1;padding-top:4px;flex-shrink:0}
+.htu-step-body{flex:1}
+.htu-step-title{font-size:15px;font-weight:600;color:var(--text);letter-spacing:-0.01em;margin-bottom:10px}
+.htu-step-text{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:10px}
+.htu-step-tip{font-size:12px;color:var(--accent);background:var(--purple-bg);border:1px solid var(--purple-dim);border-radius:var(--radius);padding:9px 13px;line-height:1.6}
+.htu-step-tip::before{content:'→ ';font-weight:700}
 </style>
 
 </body>
