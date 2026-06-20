@@ -1271,6 +1271,77 @@ function renderBattleCard(competitorRaw) {
 }
 
 
+function parseBuyers(raw) {
+  if (!raw || raw === 'N/A' || raw === 'NOT FOUND' || raw.startsWith('NOT FOUND')) return [];
+  const parts = raw.split(/;|\n/).map(s => s.trim()).filter(Boolean);
+  return parts.map(part => {
+    // Extract note from parentheses
+    const noteMatch = part.match(/\(([^)]+)\)/);
+    const note = noteMatch ? noteMatch[1].trim() : '';
+    const clean = part.replace(/\([^)]*\)/g, '').trim();
+    // Extract name (before first comma) and title (after first comma)
+    const commaIdx = clean.indexOf(',');
+    if (commaIdx === -1) return { name: clean, title: '', note, raw: part };
+    const name = clean.slice(0, commaIdx).trim();
+    const title = clean.slice(commaIdx + 1).trim();
+    return { name, title, note, raw: part };
+  }).filter(b => b.name.length > 2 && b.name.length < 60);
+}
+
+function matchLinkedIn(name, urls) {
+  if (!name || !urls) return null;
+  // Normalize name: lowercase, remove accents, keep letters and spaces
+  const norm = (s) => s.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .trim();
+  const nameParts = norm(name).split(/\s+/).filter(p => p.length > 2);
+  const liUrls = urls.split(/;|\n|\s+/).map(s => s.trim())
+    .filter(u => u.startsWith('http') && u.includes('linkedin.com/in/'));
+  // Score each URL against name parts
+  let best = null, bestScore = 0;
+  for (const url of liUrls) {
+    const slug = norm(url.split('/in/')[1] || '').replace(/-/g, ' ');
+    let score = 0;
+    for (const part of nameParts) {
+      if (slug.includes(part)) score++;
+    }
+    if (score > bestScore) { bestScore = score; best = url; }
+  }
+  return bestScore > 0 ? best : null;
+}
+
+function renderBuyers(buyerRaw, sourceRaw) {
+  const buyers = parseBuyers(buyerRaw);
+  // Single buyer — keep original simple display
+  if (buyers.length <= 1) {
+    return `<div class="pb-field-value"><strong>${buyerRaw || 'Not identified'}</strong></div>`;
+  }
+  // Multiple buyers — render table
+  const liIcon = `<svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="border-radius:3px;flex-shrink:0;vertical-align:middle"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path d="M7.5 9.5H5V19H7.5V9.5ZM6.25 8.5C7.08 8.5 7.75 7.83 7.75 7C7.75 6.17 7.08 5.5 6.25 5.5C5.42 5.5 4.75 6.17 4.75 7C4.75 7.83 5.42 8.5 6.25 8.5ZM19 19H16.5V14C16.5 12.62 15.38 11.5 14 11.5C12.62 11.5 11.5 12.62 11.5 14V19H9V9.5H11.5V10.76C12.2 9.95 13.26 9.5 14.5 9.5C16.98 9.5 19 11.52 19 14V19Z" fill="white"/></svg>`;
+  const rows = buyers.map((b, i) => {
+    const liUrl = matchLinkedIn(b.name, sourceRaw);
+    const liLink = liUrl
+      ? `<a href="${liUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;text-decoration:none">${liIcon}<span style="font-size:11px;color:var(--accent);text-decoration:underline">LinkedIn</span></a>`
+      : '';
+    return `<tr style="${i % 2 === 0 ? 'background:var(--surface2)' : ''}">
+      <td style="padding:7px 10px;border:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text);white-space:nowrap">${b.name}</td>
+      <td style="padding:7px 10px;border:1px solid var(--border);font-size:12px;color:var(--text2)">${b.title}</td>
+      <td style="padding:7px 10px;border:1px solid var(--border);white-space:nowrap">${liLink}</td>
+      <td style="padding:7px 10px;border:1px solid var(--border);font-size:11px;color:var(--text3);font-style:italic">${b.note || ''}</td>
+    </tr>`;
+  }).join('');
+  return `<table style="width:100%;border-collapse:collapse;margin-top:4px">
+    <thead><tr>
+      <th style="padding:6px 10px;border:1px solid var(--border);font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;text-align:left;background:var(--surface2)">Name</th>
+      <th style="padding:6px 10px;border:1px solid var(--border);font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;text-align:left;background:var(--surface2)">Title</th>
+      <th style="padding:6px 10px;border:1px solid var(--border);font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;text-align:left;background:var(--surface2)">LinkedIn</th>
+      <th style="padding:6px 10px;border:1px solid var(--border);font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;text-align:left;background:var(--surface2)">Notes</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
 function renderSources(raw) {
   if (!raw || raw === 'N/A' || raw === '') return '<span style="color:var(--text3);font-size:12px">Not available</span>';
   const parts = raw.split(/;|\n|(?=https?:\/\/)/).map(s => s.trim()).filter(Boolean);
@@ -1588,7 +1659,7 @@ function openPlaybook(rank){
 
       <div class="intel-group intel-group-cbg">
         <div class="intel-group-label">CBG — Centralized Benefits Governance</div>
-        <div class="pb-field"><div class="pb-field-label">Named Buyer</div><div class="pb-field-value"><strong>${c.buyer || 'Not identified'}</strong></div></div>
+        <div class="pb-field"><div class="pb-field-label">Named Buyer</div>${renderBuyers(c.buyer, c.cbgSource)}</div>
         <div class="pb-field"><div class="pb-field-label">CBG Evidence</div><div class="pb-field-value" style="font-size:12px;color:var(--text2);line-height:1.6">${c.cbgEvidence || 'Not available'}</div></div>
         <div class="pb-field" style="margin-bottom:0"><div class="pb-field-label">CBG Source</div><div class="pb-field-value">${renderSources(c.cbgSource)}</div></div>
       </div>
