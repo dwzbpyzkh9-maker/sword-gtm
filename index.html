@@ -237,8 +237,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop
   </div>
   <div class="nav-tabs">
     <button class="nav-tab active" onclick="showPage('explorer')">Company Explorer</button>
-    <button class="nav-tab" onclick="showPage('modules')">Module Library</button>
     <button class="nav-tab" onclick="showPage('playbook')" id="tab-playbook" style="display:none">Playbook</button>
+    <button class="nav-tab" onclick="showPage('modules')">Module Library</button>
     <button class="nav-tab" onclick="showPage('builder')">GTM Builder</button>
     <button class="nav-tab" onclick="showPage('guide')">How to Read</button>
     <button class="nav-tab" onclick="showPage('howtouse')">How to Use</button>
@@ -355,23 +355,23 @@ async function loadContent(){
     <div class="filter-group">
       <div class="filter-label">Entry Motion (CBG)</div>
       <div class="filter-pills">
-        <div class="pill pill-cbg-dec active" data-filter="cbg" data-val="dec" onclick="toggleFilter(this)">Decentralized (CBG 1–2)</div>
-        <div class="pill pill-cbg-cen active" data-filter="cbg" data-val="cen" onclick="toggleFilter(this)">Centralized (CBG 3)</div>
+        <div class="pill pill-cbg-dec" data-filter="cbg" data-val="dec" onclick="toggleFilter(this)">Decentralized (CBG 1–2)</div>
+        <div class="pill pill-cbg-cen" data-filter="cbg" data-val="cen" onclick="toggleFilter(this)">Centralized (CBG 3)</div>
       </div>
     </div>
     <div class="filter-group">
       <div class="filter-label">MSK Narrative</div>
       <div class="filter-pills">
-        <div class="pill pill-mskl active" data-filter="msk" data-val="low" onclick="toggleFilter(this)">MSK Low (0–1)</div>
-        <div class="pill pill-mskh active" data-filter="msk" data-val="high" onclick="toggleFilter(this)">MSK High (2–3)</div>
+        <div class="pill pill-mskl" data-filter="msk" data-val="low" onclick="toggleFilter(this)">MSK Low (1)</div>
+        <div class="pill pill-mskh" data-filter="msk" data-val="high" onclick="toggleFilter(this)">MSK High (2–3)</div>
       </div>
     </div>
     <div class="filter-group">
       <div class="filter-label">Competitive Frame (EDB)</div>
       <div class="filter-pills">
-        <div class="pill pill-edb-1 active" data-filter="edb" data-val="-1" onclick="toggleFilter(this)">–1 Competitor</div>
-        <div class="pill pill-edb0 active" data-filter="edb" data-val="0" onclick="toggleFilter(this)">0 Greenfield</div>
-        <div class="pill pill-edb1 active" data-filter="edb" data-val="1" onclick="toggleFilter(this)">+1 Adjacent</div>
+        <div class="pill pill-edb-1" data-filter="edb" data-val="-1" onclick="toggleFilter(this)">–1 Competitor</div>
+        <div class="pill pill-edb0" data-filter="edb" data-val="0" onclick="toggleFilter(this)">0 Greenfield</div>
+        <div class="pill pill-edb1" data-filter="edb" data-val="1" onclick="toggleFilter(this)">+1 Adjacent</div>
       </div>
     </div>
   </div>
@@ -424,7 +424,7 @@ const MODULES = {
     }
   },
   msk: {
-    low: {label:"MSK Low — Talent & Productivity",sub:"MSK Risk 0–1 · Office-first, knowledge workforce",color:"blue",
+    low: {label:"MSK Low — Talent & Productivity",sub:"MSK Risk 1 · Office-first, knowledge workforce",color:"blue",
       industries:"Banking, Financial Services, Software, Technology, Consulting, Insurance, Professional Services",
       pain:"Talent competition, employer brand differentiation, and the invisible productivity drag of presenteeism in high-value knowledge workers. The MSK burden is lower in absolute terms but the cost-per-affected-employee is disproportionately high — a knowledge worker in pain or at reduced cognitive capacity represents significant lost value that never appears in an absenteeism report.",
       narrative:"Sword Health is not a factory floor solution. It is a workforce performance platform for the employees your competitors are trying to hire. In a talent market where benefits are a differentiator, offering clinically validated MSK and mental health support — the two leading drivers of reduced workplace performance — is a statement about the kind of employer you are. The ROI case here is talent retention, employer brand perception, and the productivity recovery of your highest-value population.",
@@ -969,7 +969,7 @@ const MODULES_V2 = {
 
 
 // --- FILTERS STATE ---
-const activeFilters = {cbg: new Set(['dec','cen']), msk: new Set(['low','high']), edb: new Set(['-1','0','1'])};
+const activeFilters = {cbg: new Set(), msk: new Set(), edb: new Set()};
 
 function mskBand(msk){ return msk <= 1 ? 'low' : 'high'; }
 function edbKey(edb){ return edb === -1 ? '-1' : edb === 0 ? '0' : '+1'; }
@@ -1023,7 +1023,7 @@ function renderModules(){
       <div class="module-row"><div class="module-row-label">CHRO Message</div><div class="module-row-content">${m.chro}</div></div>
       <div class="module-row"><div class="module-row-label">CFO Message</div><div class="module-row-content">${m.cfo}</div></div>
     `;
-    mskContainer.innerHTML += buildModuleCard(`msk-${band}`, m.color, band==='low'?'MSK 0–1':'MSK 2–3', m.label, m.sub, _bmsk);
+    mskContainer.innerHTML += buildModuleCard(`msk-${band}`, m.color, band==='low'?'MSK 1':'MSK 2–3', m.label, m.sub, _bmsk);
   });
   // EDB
   const edbContainer = document.getElementById('edb-cards');
@@ -1062,7 +1062,7 @@ function toggleFilter(el){
   const filter = el.dataset.filter === 'cag' ? 'cbg' : el.dataset.filter;
   const val = el.dataset.val;
   const set = activeFilters[filter];
-  if(set.has(val)){ if(set.size>1){ set.delete(val); el.classList.remove('active'); } }
+  if(set.has(val)){ set.delete(val); el.classList.remove('active'); }
   else { set.add(val); el.classList.add('active'); }
   renderCompanyGrid();
 }
@@ -1078,7 +1078,7 @@ function renderCompanyGrid(){
     const mband = mskBand(c.msk);
     const eval_ = edbVal(c.edb);
     const cgrp = cbgGroup(c.cag||c.cbg||0);
-    const matchesPills = cbgActive.has(cgrp) && mskActive.has(mband) && edbActive.has(eval_);
+    const matchesPills = (cbgActive.size===0 || cbgActive.has(cgrp)) && (mskActive.size===0 || mskActive.has(mband)) && (edbActive.size===0 || edbActive.has(eval_));
     if(!matchesPills) return false;
     if(!query) return true;
     return (c.name||'').toLowerCase().includes(query) ||
@@ -1843,23 +1843,23 @@ function buildExplorerPage() {
       <div class="filter-group">
         <div class="filter-label">Entry Motion (CBG)</div>
         <div class="filter-pills">
-          <div class="pill pill-cbg-dec active" data-filter="cbg" data-val="dec" onclick="toggleFilter(this)">Decentralized (CBG 1–2)</div>
-          <div class="pill pill-cbg-cen active" data-filter="cbg" data-val="cen" onclick="toggleFilter(this)">Centralized (CBG 3)</div>
+          <div class="pill pill-cbg-dec" data-filter="cbg" data-val="dec" onclick="toggleFilter(this)">Decentralized (CBG 1–2)</div>
+          <div class="pill pill-cbg-cen" data-filter="cbg" data-val="cen" onclick="toggleFilter(this)">Centralized (CBG 3)</div>
         </div>
       </div>
       <div class="filter-group">
         <div class="filter-label">MSK Narrative</div>
         <div class="filter-pills">
-          <div class="pill pill-mskl active" data-filter="msk" data-val="low" onclick="toggleFilter(this)">MSK Low (0–1)</div>
-          <div class="pill pill-mskh active" data-filter="msk" data-val="high" onclick="toggleFilter(this)">MSK High (2–3)</div>
+          <div class="pill pill-mskl" data-filter="msk" data-val="low" onclick="toggleFilter(this)">MSK Low (1)</div>
+          <div class="pill pill-mskh" data-filter="msk" data-val="high" onclick="toggleFilter(this)">MSK High (2–3)</div>
         </div>
       </div>
       <div class="filter-group">
         <div class="filter-label">Competitive Frame (EDB)</div>
         <div class="filter-pills">
-          <div class="pill pill-edb-1 active" data-filter="edb" data-val="-1" onclick="toggleFilter(this)">–1 Competitor</div>
-          <div class="pill pill-edb0 active" data-filter="edb" data-val="0" onclick="toggleFilter(this)">0 Greenfield</div>
-          <div class="pill pill-edb1 active" data-filter="edb" data-val="1" onclick="toggleFilter(this)">+1 Adjacent</div>
+          <div class="pill pill-edb-1" data-filter="edb" data-val="-1" onclick="toggleFilter(this)">–1 Competitor</div>
+          <div class="pill pill-edb0" data-filter="edb" data-val="0" onclick="toggleFilter(this)">0 Greenfield</div>
+          <div class="pill pill-edb1" data-filter="edb" data-val="1" onclick="toggleFilter(this)">+1 Adjacent</div>
         </div>
       </div>
       <div class="filter-group" style="flex:1;min-width:220px">
@@ -1873,9 +1873,9 @@ function buildExplorerPage() {
     <div class="results-meta"><span class="results-count" id="results-count">${COMPANIES.length}</span> companies match</div>
     <div class="company-grid" id="company-grid"></div>
   `;
-  activeFilters.cbg = new Set(['dec','cen']);
-  activeFilters.msk = new Set(['low','high']);
-  activeFilters.edb = new Set(['-1','0','1']);
+  activeFilters.cbg = new Set();
+  activeFilters.msk = new Set();
+  activeFilters.edb = new Set();
   renderCompanyGrid();
 }
 
@@ -2660,7 +2660,7 @@ function getBuilderSections(){
       id:'positioning', num:'03', title:'Positioning', modular:true,
       content:`
         <div class="doc-label" style="margin-bottom:8px">Value Proposition by MSK Profile</div>
-        ${buildSwapper('msk','MSK Risk — High (2–3) vs. Low (0–1)','')}
+        ${buildSwapper('msk','MSK Risk — High (2–3) vs. Low (1)','')}
       `
     },
 
@@ -2877,8 +2877,8 @@ function toggleCriterion(el){
   <!-- MSK INDUSTRY REFERENCE -->
   <div class="guide-section">
     <div class="guide-section-title">MSK Industry Risk Reference</div>
-    <div class="guide-section-sub">Every company is mapped to a NAICS-style industry classification. Each industry is assigned a score 0–3 based on BLS-type metrics reflecting physical injury rates, absenteeism, and MSK prevalence.</div>
-    <div class="guide-msk-grid">
+    <div class="guide-section-sub">Every company is mapped to a NAICS-style industry classification. Each industry is assigned a score 1–3 based on BLS-type metrics reflecting physical injury rates, absenteeism, and MSK prevalence. There is no score 0 — every industry carries at least some MSK burden.</div>
+    <div class="guide-msk-grid" style="grid-template-columns:repeat(3,1fr)">
       <div class="guide-msk-col">
         <div class="guide-msk-header" style="background:var(--orange-bg);border-color:var(--orange-dim);color:var(--orange-text)">
           <span class="guide-msk-score">3</span> High — Physical / Industrial
@@ -2893,15 +2893,9 @@ function toggleCriterion(el){
       </div>
       <div class="guide-msk-col">
         <div class="guide-msk-header" style="background:var(--blue-bg);border-color:var(--blue-dim);color:var(--blue-text)">
-          <span class="guide-msk-score">1</span> Low — Mixed / Light Physical
+          <span class="guide-msk-score">1</span> Low — Sedentary / Light Physical
         </div>
-        <div class="guide-msk-list">Apparel &amp; Footwear · Beverage · Coffeehouse &amp; Retail · Conglomerate · Consumer Goods · Convenience Retail · Electronics · Electronics &amp; Semiconductors · Electronics Retail · Fashion Retail · Food &amp; Beverage · Food Retail &amp; Consumer Goods · Industrial &amp; Technology · Industrial Automation · Industrial Technology · Postal &amp; Financial Services · Postal Services · Scientific Instruments · Technology Hardware · Trading Company</div>
-      </div>
-      <div class="guide-msk-col">
-        <div class="guide-msk-header" style="background:var(--surface2);border-color:var(--border);color:var(--text2)">
-          <span class="guide-msk-score" style="background:var(--surface3);color:var(--text2);border-color:var(--border)">0</span> Sedentary — Knowledge Workforce
-        </div>
-        <div class="guide-msk-list">Asset Management · Banking · Banking &amp; Asset Services · Banking &amp; Financial Services · Banking &amp; Wealth Management · Cloud Software · Cosmetics · E-commerce &amp; Cloud Computing · Electronics &amp; Entertainment · Enterprise Software · Entertainment &amp; Media · Financial Services · Information Technology Consulting · Investment Banking · Luxury Goods · Media &amp; Telecommunications · Networking Technology · Real Estate Services · Social Media &amp; Technology · Software &amp; Cloud Computing · Technology &amp; Consumer Electronics · Technology &amp; Consulting · Technology &amp; Internet Services · Technology &amp; Software · Telecommunications · Telecommunications &amp; Investment</div>
+        <div class="guide-msk-list">Apparel &amp; Footwear · Asset Management · Banking · Banking &amp; Asset Services · Banking &amp; Financial Services · Banking &amp; Wealth Management · Beverage · Cloud Software · Coffeehouse &amp; Retail · Conglomerate · Consumer Goods · Convenience Retail · Cosmetics · E-commerce &amp; Cloud Computing · Electronics · Electronics &amp; Entertainment · Electronics &amp; Semiconductors · Electronics Retail · Enterprise Software · Entertainment &amp; Media · Fashion Retail · Financial Services · Food &amp; Beverage · Food Retail &amp; Consumer Goods · Industrial &amp; Technology · Industrial Automation · Industrial Technology · Information Technology Consulting · Investment Banking · Luxury Goods · Media &amp; Telecommunications · Networking Technology · Postal &amp; Financial Services · Postal Services · Real Estate Services · Scientific Instruments · Social Media &amp; Technology · Software &amp; Cloud Computing · Technology &amp; Consulting · Technology &amp; Consumer Electronics · Technology &amp; Internet Services · Technology &amp; Software · Technology Hardware · Telecommunications · Telecommunications &amp; Investment · Trading Company</div>
       </div>
     </div>
   </div>
@@ -2914,7 +2908,7 @@ function toggleCriterion(el){
       <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--purple-bg);border-color:var(--purple-dim);color:var(--purple-text)">CBG 3 · Centralized</div><div class="guide-color-label">Enterprise Direct play — global buyer, single contract, compressed cycle</div></div>
       <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--amber-bg);border-color:var(--amber-dim);color:var(--amber-text)">CBG 1–2 · Decentralized</div><div class="guide-color-label">Land &amp; Expand — country or regional entry, earned expansion</div></div>
       <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--orange-bg);border-color:var(--orange-dim);color:var(--orange-text)">MSK High (2–3)</div><div class="guide-color-label">Physical workforce — absenteeism, ROI, surgery avoidance narrative</div></div>
-      <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--blue-bg);border-color:var(--blue-dim);color:var(--blue-text)">MSK Low (0–1)</div><div class="guide-color-label">Knowledge workforce — talent, productivity, employer brand narrative</div></div>
+      <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--blue-bg);border-color:var(--blue-dim);color:var(--blue-text)">MSK Low (1)</div><div class="guide-color-label">Knowledge workforce — talent, productivity, employer brand narrative</div></div>
       <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--red-bg);border-color:var(--red-dim);color:var(--red-text)">EDB –1 · Competitor</div><div class="guide-color-label">Direct competitor installed — displacement sale required</div></div>
       <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--surface2);border-color:var(--border);color:var(--text2)">EDB 0 · Greenfield</div><div class="guide-color-label">No digital health benefits — category creation conversation</div></div>
       <div class="guide-color-row"><div class="guide-color-chip" style="background:var(--teal-bg);border-color:var(--teal-dim);color:var(--teal-text)">EDB +1 · Adjacent</div><div class="guide-color-label">Digital health present, no direct competitor — warm entry</div></div>
