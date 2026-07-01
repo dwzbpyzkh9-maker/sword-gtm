@@ -1714,7 +1714,6 @@ function openPlaybook(rank){
           ${c.competitor && c.competitor !== 'N/A' && c.competitor !== '' ? `&nbsp;· Competitor: <strong style="color:var(--red-text)">${c.competitor}</strong>` : ''}
         </div></div>
         ${c.competitorCat && c.competitorCat !== 'N/A' && c.competitorCat !== '' ? `<div class="pb-field"><div class="pb-field-label">Competitive Category</div><div class="pb-field-value">${c.competitorCat}</div></div>` : ''}
-        <div class="pb-field"><div class="pb-field-label">Digital Health Tools in Place</div><div class="pb-field-value">${c.tool || 'None identified'}</div></div>
         <div class="pb-field" style="margin-bottom:0"><div class="pb-field-label">EDB Evidence</div><div class="pb-field-value" style="font-size:12px;color:var(--text2);line-height:1.6">${c.edbEvidence || 'Not available'}</div></div>
       </div>
     `},
@@ -2030,9 +2029,6 @@ function parseWorkbook(wb) {
     const program = (col(bisData,
       'Named Wellbeing Program', 'named wellbeing program',
       'Named program', 'Program', 'program') || 'Not identified').toString().trim();
-    const tool = (col(bisData,
-      'Digital benefit identified', 'Digital Benefit Identified',
-      'Digital benefit', 'Tool', 'Key Evidence (EDB)', 'Key Evidence EDB') || 'Not identified').toString().trim();
     const gptw = (col(bisData,
       'GPTW Status', 'GPTW status', 'gptw status', 'GPTW') || 'Not identified').toString().trim();
 
@@ -2068,7 +2064,7 @@ function parseWorkbook(wb) {
     // Structured CBG contacts + split sources (LinkedIn paired to contacts)
     const { contacts, otherSources: cbgOtherSources } = parseCbgContacts(buyer, cbgSource);
 
-    companies.push({ rank: r, name, hq, industry, employees, msk, bis, edb, cag, buyer, program, tool, gptw, competitor, competitorCat, bisEvidence, bisSource, edbEvidence, cbgEvidence, cbgSource, contacts, cbgOtherSources });
+    companies.push({ rank: r, name, hq, industry, employees, msk, bis, edb, cag, buyer, program, gptw, competitor, competitorCat, bisEvidence, bisSource, edbEvidence, cbgEvidence, cbgSource, contacts, cbgOtherSources });
   });
 
   return companies.filter(c => c.name && c.cag > 0);
