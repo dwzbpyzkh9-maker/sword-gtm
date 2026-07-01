@@ -1293,24 +1293,51 @@ function parseCbgContacts(rolesRaw, sourcesRaw) {
     .replace(/[^a-z0-9\s-]/g, ' ')
     .trim();
 
-  // --- Split source URLs into LinkedIn vs other ---
-  const urls = String(sourcesRaw || '')
+  // --- Extract URL-like tokens (protocol optional) and classify LinkedIn vs other ---
+  // Source cells often omit "http(s)://" (e.g. "theorg.com/..." or even
+  // "linkedin.com/in/name") \u2014 a plain prefix check drops those entirely, so
+  // we detect a domain shape instead and add the protocol back for display.
+  const urlRe = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/[^\s)]*)?/i;
+  const urls = [];
+  String(sourcesRaw || '')
     .split(/;|\n|(?=https?:\/\/)/)
     .map(s => s.trim())
-    .filter(s => /^https?:\/\//i.test(s));
-  const linkedins = urls
-    .filter(u => /linkedin\.com/i.test(u))
-    .map(u => {
-      let slug = '';
-      try { slug = new URL(u).pathname.replace(/\/+$/, '').split('/').pop() || ''; }
-      catch (e) { slug = u; }
-      const words = new Set(norm(slug).split(/[\s-]+/).filter(Boolean));
-      return { url: u, words, used: false };
+    .filter(Boolean)
+    .forEach(p => {
+      // Strip a trailing "(...)" annotation before testing for a URL shape,
+      // e.g. "careers.tesco.com (Head of Executive Reward, 168226)".
+      const stripped = p.replace(/\s*\([^)]*\)\s*$/, '').trim();
+      const m = stripped.match(urlRe);
+      if (!m) return;
+      urls.push(/^https?:\/\//i.test(m[0]) ? m[0] : 'https://' + m[0]);
     });
-  const otherSources = urls.filter(u => !/linkedin\.com/i.test(u));
+
+  // Only genuine personal-profile links (/in/... or /pub/...) are eligible to
+  // be attached to a specific contact as "their profile" \u2014 job posts, company
+  // pages, and activity/post links are real LinkedIn URLs but not a stand-in
+  // for someone's profile, so those fall through to otherSources instead.
+  const linkedins = [];
+  const otherSources = [];
+  urls.forEach(u => {
+    if (/linkedin\.com/i.test(u)) {
+      let pathname = '';
+      try { pathname = new URL(u).pathname; } catch (e) {}
+      if (/^\/(in|pub)\//i.test(pathname)) {
+        let slug = pathname.replace(/\/+$/, '').split('/').pop() || '';
+        try { slug = decodeURIComponent(slug); } catch (e) {}
+        const flat = norm(slug).replace(/[\s-]+/g, '');
+        linkedins.push({ url: u, flat, used: false });
+      } else {
+        otherSources.push(u);
+      }
+    } else {
+      otherSources.push(u);
+    }
+  });
 
   // --- Parse contacts ---
   const contacts = [];
+  const stopWords = new Set(['dr','mr','mrs','ms','prof','sir','dame']);
   String(rolesRaw || '')
     .split(';')
     .map(s => s.trim())
@@ -1332,18 +1359,43 @@ function parseCbgContacts(rolesRaw, sourcesRaw) {
       name = name.replace(/[,;\s]+$/, '').trim();
       title = title.replace(/[,;\s]+$/, '').trim();
 
-      // Match a LinkedIn URL by name tokens against the slug words
-      const tokens = norm(name).split(/[\s-]+/).filter(t => t.length >= 2);
-      const need = tokens.length >= 2 ? 2 : 1;
+      // Match against LinkedIn profile candidates with a substring-based score
+      // that tolerates fused slugs ("natasharice"), fused trailing digits
+      // ("woodruff2023"), and first-initial+surname slugs ("tbrightman") \u2014
+      // all common real-world LinkedIn vanity URL patterns that a strict
+      // exact-word match misses. The surname must always appear in the slug
+      // or the candidate scores zero: that's the anti-false-positive anchor
+      // that stops us ever attaching a stranger's profile to a contact.
+      const tokens = norm(name).split(/[\s-]+/).filter(t => t.length >= 2 && !stopWords.has(t));
       let best = null, bestScore = 0;
-      linkedins.forEach(li => {
-        if (li.used) return;
-        let score = 0;
-        tokens.forEach(t => { if (li.words.has(t)) score++; });
-        if (score > bestScore) { bestScore = score; best = li; }
-      });
+      if (tokens.length) {
+        const last = tokens[tokens.length - 1];
+        const rest = tokens.slice(0, -1);
+        linkedins.forEach(li => {
+          if (li.used) return;
+          if (!li.flat.includes(last)) return;
+          let score = last.length >= 3 ? 2 : 1;
+          let bonus = 0;
+          if (rest.length) {
+            rest.forEach(t => {
+              if (li.flat.includes(t)) bonus = Math.max(bonus, 2);
+              else if (li.flat.includes(t[0] + last)) bonus = Math.max(bonus, 1);
+            });
+          } else if (last.length >= 5 && li.flat.startsWith(last)) {
+            // Single-token name (e.g. surname given only as an initial in the
+            // source data) — only trust it if the slug actually starts with
+            // that full token, a much stronger signal than a mid-string hit.
+            bonus = 1;
+          }
+          score += bonus;
+          if (score > bestScore) { bestScore = score; best = li; }
+        });
+      }
+      // Require a minimum combined score of 3 (surname anchor + some first-
+      // name signal) before attaching \u2014 a bare, unconfirmed surname match is
+      // never enough on its own.
       let linkedin = '';
-      if (best && bestScore >= need) { linkedin = best.url; best.used = true; }
+      if (best && bestScore >= 3) { linkedin = best.url; best.used = true; }
 
       contacts.push({ name, title, notes, linkedin });
     });
